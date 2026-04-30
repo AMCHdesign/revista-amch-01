@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dos colegios de la Fundación Westphal reciben reconocimiento de Excelencia Académica — Revista AMCh</title>
+<meta name="description" content="El Colegio Adventista Santiago Poniente y el Colegio Adventista Santiago Norte obtienen el sello de Excelencia Académica del Ministerio de Educación para el período 2026–2027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+/* ── Variables ── */
+:root {
+  --azul-division: #003366;
+  --azul-denim:    #2f557f;
+  --azul-ming:     #3e8391;
+  --naranja:       #e36520;
+  --dorado:        #ffa92d;
+  --blanco:        #ffffff;
+  --gris-claro:    #f4f4f0;
+  --gris-medio:    #e0e0d8;
+  --gris-texto:    #444440;
+  --negro-suave:   #1a1a18;
+  --font-sans:     'Noto Sans', sans-serif;
+  --font-serif:    'Noto Serif', serif;
+  --radio:         4px;
+  --sombra:        0 2px 16px rgba(0,0,0,0.10);
+  --sombra-fuerte: 0 6px 32px rgba(0,0,0,0.18);
+  --t:             0.25s ease;
+  --cat-educacion: #27ae60;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:18px}
+body{font-family:var(--font-sans);color:var(--gris-texto);background:var(--gris-claro);line-height:1.7;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+p{margin-bottom:1.1em}
+.container{max-width:960px;margin:0 auto;padding:0 1.25rem}
+
+/* ── NAV ── */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--azul-division);border-bottom:3px solid var(--naranja);height:56px;display:flex;align-items:center}
+.nav-inner{width:100%;max-width:960px;margin:0 auto;padding:0 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-logo{font-weight:800;font-size:.95rem;color:var(--blanco);letter-spacing:.05em;white-space:nowrap}
+.nav-logo span{color:var(--dorado)}
+.nav-back{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:.4rem;transition:color var(--t)}
+.nav-back:hover{color:var(--dorado)}
+.nav-seccion{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--naranja);background:rgba(227,101,32,.15);border:1px solid rgba(227,101,32,.3);padding:.25em .75em;border-radius:20px}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.nav-hamburger span{display:block;width:24px;height:2px;background:var(--blanco);border-radius:2px}
+.nav-mobile{display:none;position:fixed;top:56px;left:0;right:0;background:var(--azul-division);z-index:999;padding:1rem 1.25rem;border-bottom:3px solid var(--naranja);flex-direction:column;gap:.5rem}
+.nav-mobile a{font-size:.85rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.85);padding:.65rem .5rem;border-bottom:1px solid rgba(255,255,255,.08);display:block}
+.nav-mobile.open{display:flex}
+
+/* ── HERO ── */
+#hero{
+  margin-top:56px;
+  position:relative;
+  background:var(--negro-suave);
+  overflow:hidden;
+}
+.hero-img-wrap{
+  width:100%;
+  aspect-ratio:16/9;
+  position:relative;
+  overflow:hidden;
+}
+.hero-ph{
+  width:100%;height:100%;
+  background:linear-gradient(135deg,#d5eed9 0%,#27ae6022 40%,#c8e6ca 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;
+}
+.hero-ph-icon{font-size:3rem;opacity:.25}
+.hero-ph-label{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(0,0,0,.25)}
+.hero-img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+  transform:scale(1.04);
+  animation:heroReveal 1.4s cubic-bezier(.22,1,.36,1) forwards;
+}
+@keyframes heroReveal{to{transform:scale(1)}}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 30%,rgba(0,0,0,.18) 60%,rgba(0,0,0,.55) 100%);
+  pointer-events:none;
+}
+.hero-cat-bar{
+  position:absolute;top:0;left:0;right:0;
+  height:4px;
+  background:linear-gradient(90deg,var(--cat-educacion),#2ecc71,var(--azul-ming));
+}
+
+/* ── FICHA ── */
+.articulo-ficha{background:var(--blanco);padding:2.5rem 0 0}
+.ficha-inner{max-width:760px;margin:0 auto;padding:0 1.25rem}
+.ficha-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;margin-bottom:1.5rem}
+.tag{display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blanco);padding:.22em .7em;border-radius:2px}
+.tag--educacion{background:var(--cat-educacion)}
+.ficha-fecha{font-size:.7rem;font-weight:600;letter-spacing:.06em;color:rgba(0,0,0,.35)}
+.ficha-fecha::before{content:'·';margin-right:.75rem;color:var(--gris-medio)}
+.articulo-titulo{font-family:var(--font-serif);font-size:clamp(1.7rem,4.5vw,2.6rem);font-weight:700;color:var(--azul-division);line-height:1.18;margin-bottom:1.5rem}
+.articulo-bajada{font-family:var(--font-serif);font-size:1.08rem;font-style:italic;color:var(--azul-denim);line-height:1.65;border-left:3px solid var(--naranja);padding-left:1.25rem;margin-bottom:2.5rem}
+
+/* ── CUERPO ── */
+.articulo-body{background:var(--blanco);padding:1.75rem 0 4rem}
+.body-inner{max-width:760px;margin:0 auto;padding:0 1.25rem}
+.articulo-texto p{font-size:.97rem;line-height:1.9;color:var(--gris-texto);margin-bottom:1.4em}
+
+/* ── IMAGEN HORIZONTAL ANCHO COMPLETO (16:9) ── */
+.galeria-horizontal{
+  margin:2rem 0;
+  border-radius:var(--radio);
+  overflow:hidden;
+  box-shadow:var(--sombra-fuerte);
+  background:var(--gris-medio);
+}
+.galeria-horizontal img{
+  width:100%;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  display:block;
+  transition:transform .5s ease;
+}
+.galeria-horizontal:hover img{transform:scale(1.02)}
+.galeria-horizontal .ph{
+  aspect-ratio:16/9;
+  min-height:unset;
+}
+
+/* Caption */
+.img-caption{
+  font-size:.68rem;color:rgba(0,0,0,.38);font-weight:600;
+  letter-spacing:.04em;padding:.5rem .75rem;
+  background:rgba(0,0,0,.03);
+  border-top:1px solid rgba(0,0,0,.06);
+  line-height:1.4;
+}
+
+/* ── SELLO DESTACADO ── */
+.sello-destaque{
+  display:flex;align-items:center;gap:1.25rem;
+  background:linear-gradient(135deg,rgba(39,174,96,.08),rgba(39,174,96,.03));
+  border:1px solid rgba(39,174,96,.2);
+  border-left:4px solid var(--cat-educacion);
+  border-radius:var(--radio);
+  padding:1.25rem 1.5rem;
+  margin:2rem 0;
+}
+.sello-icono{font-size:2.2rem;flex-shrink:0}
+.sello-texto-wrap{}
+.sello-label{font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--cat-educacion);margin-bottom:.25rem}
+.sello-texto{font-family:var(--font-serif);font-size:.97rem;font-weight:700;color:var(--azul-division);line-height:1.4}
+.sello-periodo{font-size:.75rem;color:rgba(0,0,0,.4);margin-top:.15rem}
+
+/* ── COLEGIOS RECONOCIDOS — dos badges lado a lado ── */
+.colegios-reconocidos{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1rem;margin:2rem 0;
+}
+.colegio-badge{
+  border-radius:var(--radio);overflow:hidden;
+  box-shadow:var(--sombra);
+}
+.colegio-badge-header{
+  padding:.85rem 1.1rem;
+  background:linear-gradient(90deg,var(--azul-division),var(--azul-denim));
+  display:flex;align-items:center;gap:.6rem;
+}
+.colegio-badge-icono{font-size:1.1rem}
+.colegio-badge-nombre{font-size:.8rem;font-weight:700;color:var(--blanco);line-height:1.3}
+.colegio-badge-sello{
+  background:var(--blanco);
+  padding:.85rem 1.1rem;
+  display:flex;align-items:center;gap:.5rem;
+  border-top:none;
+}
+.sello-estrella{color:var(--cat-educacion);font-size:.9rem}
+.sello-tag-txt{font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--cat-educacion)}
+
+/* ── CRITERIOS — lista visual ── */
+.criterios-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:.75rem;margin:2rem 0;
+}
+.criterio-item{
+  display:flex;align-items:flex-start;gap:.75rem;
+  background:var(--gris-claro);
+  border-radius:var(--radio);
+  padding:.9rem 1rem;
+}
+.criterio-icono{font-size:1.1rem;flex-shrink:0;margin-top:.05rem}
+.criterio-texto{font-size:.82rem;color:var(--gris-texto);line-height:1.5;font-weight:500}
+
+/* ── PULL QUOTE ── */
+.pull-quote{
+  margin:2.5rem 0;padding:1.75rem 2rem;
+  background:linear-gradient(135deg,var(--azul-division),var(--azul-denim));
+  border-radius:var(--radio);position:relative;overflow:hidden;
+}
+.pull-quote::before{content:'"';position:absolute;top:-.5rem;left:1rem;font-family:var(--font-serif);font-size:7rem;color:rgba(255,169,45,.15);line-height:1;pointer-events:none}
+.pull-quote p{font-family:var(--font-serif);font-size:1.1rem;font-style:italic;color:var(--blanco);line-height:1.65;margin-bottom:0;position:relative;z-index:1}
+.pull-quote-line{width:32px;height:3px;background:var(--naranja);margin-bottom:.85rem}
+
+/* ── BLOQUE CIERRE ── */
+.bloque-cierre{
+  margin:2.5rem 0 0;
+  padding:1.4rem 1.75rem;
+  background:linear-gradient(90deg,rgba(39,174,96,.07),transparent);
+  border-left:4px solid var(--cat-educacion);
+  border-radius:0 var(--radio) var(--radio) 0;
+}
+.bloque-cierre p{font-size:.92rem;color:var(--gris-texto);line-height:1.8;margin-bottom:0}
+
+/* ── NAVEGACIÓN ENTRE NOTAS ── */
+#nav-notas{background:var(--negro-suave);padding:2.5rem 0;border-top:3px solid var(--naranja)}
+.nav-notas-inner{max-width:960px;margin:0 auto;padding:0 1.25rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1.5rem}
+.nav-nota-btn{display:flex;align-items:center;gap:.75rem;color:rgba(255,255,255,.6);padding:.75rem;border-radius:var(--radio);transition:color var(--t),background var(--t)}
+.nav-nota-btn:hover{color:var(--blanco);background:rgba(255,255,255,.06)}
+.nav-nota-btn--next{justify-content:flex-end;text-align:right}
+.nav-nota-arrow{font-size:1.2rem;color:var(--naranja);flex-shrink:0}
+.nav-nota-info{display:flex;flex-direction:column;gap:.2rem}
+.nav-nota-label{font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.nav-nota-titulo{font-size:.82rem;font-weight:600;color:inherit;line-height:1.3}
+.nav-notas-volver{text-align:center}
+.nav-notas-volver a{display:inline-flex;align-items:center;gap:.4rem;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.15);padding:.5rem 1.1rem;border-radius:20px;transition:all var(--t)}
+.nav-notas-volver a:hover{color:var(--blanco);border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.06)}
+
+/* ── FOOTER ── */
+footer{background:#0f1820;color:rgba(255,255,255,.4);text-align:center;padding:2rem 1.25rem;font-size:.75rem;letter-spacing:.05em;line-height:1.8}
+footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font-weight:700;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase}
+
+/* Back to top */
+#back-to-top{position:fixed;bottom:1.5rem;right:1.5rem;width:44px;height:44px;background:var(--naranja);color:var(--blanco);border:none;border-radius:50%;font-size:1.1rem;cursor:pointer;box-shadow:0 4px 16px rgba(227,101,32,.4);transition:all var(--t);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;z-index:900}
+#back-to-top.visible{opacity:1;pointer-events:all}
+#back-to-top:hover{background:#c45510;transform:translateY(-2px)}
+
+/* ── REVELADO ── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .75s ease,transform .75s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .75s ease,transform .75s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(32px);transition:opacity .75s ease,transform .75s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.96);transition:opacity .8s ease,transform .8s ease}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+
+/* Placeholder */
+.ph{
+  width:100%;height:100%;
+  background:linear-gradient(135deg,#d5eed9,#c8e6ca);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:.5rem;min-height:160px;
+}
+.ph-icon{font-size:1.6rem;opacity:.28}
+.ph-label{font-size:.52rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,0,0,.25);text-align:center;padding:0 .75rem}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  html{font-size:17px}
+  .nav-hamburger{display:flex}
+  .nav-seccion{display:none}
+  .colegios-reconocidos{grid-template-columns:1fr}
+  .criterios-grid{grid-template-columns:1fr}
+  .nav-notas-inner{grid-template-columns:1fr 1fr;grid-template-rows:auto auto}
+  .nav-notas-volver{grid-column:1/-1}
+}
+@media(max-width:480px){
+  html{font-size:16px}
+  .ficha-inner,.body-inner{padding:0 1rem}
+  .sello-destaque{flex-direction:column;gap:.75rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Revista <span>AMCh</span></a>
+    <div style="display:flex;align-items:center;gap:1rem">
+      <span class="nav-seccion">Educación</span>
+      <a href="../index.html#noticias" class="nav-back">← Volver a Noticias</a>
+    </div>
+    <button class="nav-hamburger" id="menuBtn" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="../index.html">← Volver al inicio</a>
+  <a href="../index.html#noticias">Noticias</a>
+  <a href="../index.html#historias">Historias</a>
+  <a href="../index.html#numeros">Números</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-img-wrap reveal-scale">
+    <!--
+      REEMPLAZAR POR IMAGEN REAL:
+      <img src="../assets/img/noticias/12-portada.jpg"
+           alt="Colegio Adventista Santiago Poniente — Sello Excelencia Académica 2026"
+           class="hero-img">
+      Proporción: 16:9 nativa
+    -->
+    <div class="hero-ph">
+      <span class="hero-ph-icon">🏅</span>
+      <span class="hero-ph-label">Imagen portada · 16:9 · Colegio Adventista Santiago Poniente</span>
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-cat-bar"></div>
+</section>
+
+<!-- FICHA + CUERPO: bloque blanco continuo -->
+<div style="background:var(--blanco)">
+
+<!-- FICHA -->
+<div class="articulo-ficha">
+  <div class="ficha-inner">
+    <div class="ficha-meta reveal">
+      <span class="tag tag--educacion">Educación</span>
+      <span class="ficha-fecha">12 de marzo de 2026</span>
+    </div>
+    <h1 class="articulo-titulo reveal">
+      Dos colegios de la Fundación Westphal reciben reconocimiento de Excelencia Académica
+    </h1>
+    <p class="articulo-bajada reveal">
+      El trabajo constante tiene nombre: el Colegio Adventista Santiago Poniente y el Colegio Adventista Santiago Norte obtienen el sello de Excelencia Académica del Ministerio de Educación para el período 2026–2027.
+    </p>
+  </div>
+</div>
+
+<!-- CUERPO -->
+<div class="articulo-body">
+  <div class="body-inner">
+
+    <!-- Párrafo intro -->
+    <div class="articulo-texto reveal">
+      <p>El Colegio Adventista Santiago Poniente y el Colegio Adventista Santiago Norte fueron reconocidos por el Ministerio de Educación con el sello de Excelencia Académica para el período 2026–2027, destacando su trabajo sostenido en la formación integral de sus estudiantes.</p>
+    </div>
+
+    <!-- Sello destacado -->
+    <div class="sello-destaque reveal">
+      <span class="sello-icono">🏅</span>
+      <div class="sello-texto-wrap">
+        <div class="sello-label">Ministerio de Educación · Chile</div>
+        <div class="sello-texto">Sello de Excelencia Académica</div>
+        <div class="sello-periodo">Período 2026–2027</div>
+      </div>
+    </div>
+
+    <!-- Badges de colegios -->
+    <div class="colegios-reconocidos">
+      <div class="colegio-badge reveal-left">
+        <div class="colegio-badge-header">
+          <span class="colegio-badge-icono">🏫</span>
+          <span class="colegio-badge-nombre">Colegio Adventista Santiago Poniente</span>
+        </div>
+        <div class="colegio-badge-sello">
+          <span class="sello-estrella">★★★</span>
+          <span class="sello-tag-txt">Excelencia Académica</span>
+        </div>
+      </div>
+      <div class="colegio-badge reveal-right">
+        <div class="colegio-badge-header">
+          <span class="colegio-badge-icono">🏫</span>
+          <span class="colegio-badge-nombre">Colegio Adventista Santiago Norte</span>
+        </div>
+        <div class="colegio-badge-sello">
+          <span class="sello-estrella">★★★</span>
+          <span class="sello-tag-txt">Excelencia Académica</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Párrafo criterios -->
+    <div class="articulo-texto reveal">
+      <p>Este reconocimiento considera distintos aspectos del quehacer educativo, posicionando a ambos establecimientos como referentes dentro de sus comunidades.</p>
+    </div>
+
+    <!-- Criterios visuales -->
+    <div class="criterios-grid reveal">
+      <div class="criterio-item">
+        <span class="criterio-icono">📊</span>
+        <span class="criterio-texto">Resultados académicos</span>
+      </div>
+      <div class="criterio-item">
+        <span class="criterio-icono">💡</span>
+        <span class="criterio-texto">Innovación pedagógica</span>
+      </div>
+      <div class="criterio-item">
+        <span class="criterio-icono">🤝</span>
+        <span class="criterio-texto">Convivencia escolar</span>
+      </div>
+      <div class="criterio-item">
+        <span class="criterio-icono">🏛️</span>
+        <span class="criterio-texto">Gestión institucional</span>
+      </div>
+    </div>
+
+    <!-- Imagen 1: Santiago Poniente (16:9) -->
+    <div class="galeria-horizontal reveal">
+      <!--
+        REEMPLAZAR POR IMAGEN REAL:
+        <img src="../assets/img/noticias/12-portada.jpg"
+             alt="Colegio Adventista Santiago Poniente">
+        Proporción: 16:9
+      -->
+      <div class="ph">
+        <span class="ph-icon">🏫</span>
+        <span class="ph-label">Imagen 1 · 16:9 · Colegio Adventista Santiago Poniente</span>
+      </div>
+      
+    </div>
+
+    <!-- Pull quote -->
+    <div class="pull-quote reveal">
+      <div class="pull-quote-line"></div>
+      <p>Este reconocimiento refleja un proceso constante de trabajo, donde docentes, equipos de apoyo, estudiantes y familias han contribuido de manera conjunta al desarrollo de una educación de calidad.</p>
+    </div>
+
+    <!-- Párrafo educación adventista -->
+    <div class="articulo-texto reveal">
+      <p>En este contexto, la educación adventista reafirma su enfoque formativo, donde el aprendizaje académico se complementa con el desarrollo valórico y personal, buscando formar estudiantes con propósito, responsabilidad y compromiso con su entorno.</p>
+    </div>
+
+    <!-- Imagen 2: Santiago Norte (16:9) -->
+    <div class="galeria-horizontal reveal">
+      <!--
+        REEMPLAZAR POR IMAGEN REAL:
+        <img src="../assets/img/noticias/12-body-h1.jpg"
+             alt="Colegio Adventista Santiago Norte">
+        Proporción: 16:9
+      -->
+      <div class="ph">
+        <span class="ph-icon">🏫</span>
+        <span class="ph-label">Imagen 2 · 16:9 · Colegio Adventista Santiago Norte</span>
+      </div>
+      
+    </div>
+
+    <!-- Bloque cierre -->
+    <div class="bloque-cierre reveal">
+      <p>La obtención de este sello no sólo valida el camino recorrido, sino que también proyecta nuevos desafíos, motivando a seguir fortaleciendo una educación centrada en las personas y orientada a la excelencia en todas sus dimensiones.</p>
+    </div>
+
+  </div><!-- /body-inner -->
+</div><!-- /articulo-body -->
+</div><!-- /bloque blanco -->
+
+<!-- NAVEGACIÓN ENTRE NOTAS -->
+<nav id="nav-notas">
+  <div class="nav-notas-inner">
+    <a href="10-simce-2025.html" class="nav-nota-btn">
+      <span class="nav-nota-arrow">←</span>
+      <div class="nav-nota-info">
+        <span class="nav-nota-label">Nota anterior</span>
+        <span class="nav-nota-titulo">Resultados SIMCE 2025 confirman avances en los colegios de la Fundación Westphal</span>
+      </div>
+    </a>
+    <div class="nav-notas-volver">
+      <a href="../index.html#noticias">↑ Ver todas las noticias</a>
+    </div>
+    <a href="12-dia-joven-adventista.html" class="nav-nota-btn nav-nota-btn--next">
+      <div class="nav-nota-info">
+        <span class="nav-nota-label">Siguiente nota</span>
+        <span class="nav-nota-titulo">Día del Joven Adventista</span>
+      </div>
+      <span class="nav-nota-arrow">→</span>
+    </a>
+  </div>
+</nav>
+
+<footer>
+  <div class="container">
+    <strong>Revista AMCh</strong>
+    Asociación Metropolitana Adventista de Chile · Santiago, Chile<br>
+    Publicación trimestral · © 2026 · Todos los derechos reservados
+  </div>
+</footer>
+
+<button id="back-to-top" aria-label="Volver arriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const backBtn = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => backBtn.classList.toggle('visible', window.scrollY > 400), {passive:true});
+
+const menuBtn = document.getElementById('menuBtn');
+const navMobile = document.getElementById('navMobile');
+menuBtn?.addEventListener('click', () => navMobile.classList.toggle('open'));
+document.querySelectorAll('.nav-mobile a').forEach(l => l.addEventListener('click', () => navMobile.classList.remove('open')));
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => revealObserver.observe(el));
+
+window.addEventListener('load', () => {
+  document.querySelectorAll('.reveal-scale').forEach(el => el.classList.add('visible'));
+});
+</script>
+</body>
+</html>

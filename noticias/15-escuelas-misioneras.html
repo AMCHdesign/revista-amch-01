@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escuelas Misioneras movilizan a toda la iglesia en el Gran Santiago — Revista AMCh</title>
+<meta name="description" content="Capacitación, inspiración y acción mes a mes: la Asociación Metropolitana lanza las Escuelas Misioneras para equipar a cada miembro con herramientas concretas para el servicio comunitario.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --azul-division: #003366;
+  --azul-denim:    #2f557f;
+  --azul-ming:     #3e8391;
+  --naranja:       #e36520;
+  --dorado:        #ffa92d;
+  --blanco:        #ffffff;
+  --gris-claro:    #f4f4f0;
+  --gris-medio:    #e0e0d8;
+  --gris-texto:    #444440;
+  --negro-suave:   #1a1a18;
+  --font-sans:     'Noto Sans', sans-serif;
+  --font-serif:    'Noto Serif', serif;
+  --radio:         4px;
+  --sombra:        0 2px 16px rgba(0,0,0,0.10);
+  --sombra-fuerte: 0 6px 32px rgba(0,0,0,0.18);
+  --t:             0.25s ease;
+  --cat-evangelismo: #c0392b;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:18px}
+body{font-family:var(--font-sans);color:var(--gris-texto);background:var(--gris-claro);line-height:1.7;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+p{margin-bottom:1.1em}
+.container{max-width:960px;margin:0 auto;padding:0 1.25rem}
+
+/* NAV */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--azul-division);border-bottom:3px solid var(--naranja);height:56px;display:flex;align-items:center}
+.nav-inner{width:100%;max-width:960px;margin:0 auto;padding:0 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-logo{font-weight:800;font-size:.95rem;color:var(--blanco);letter-spacing:.05em;white-space:nowrap}
+.nav-logo span{color:var(--dorado)}
+.nav-back{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:.4rem;transition:color var(--t)}
+.nav-back:hover{color:var(--dorado)}
+.nav-seccion{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--naranja);background:rgba(227,101,32,.15);border:1px solid rgba(227,101,32,.3);padding:.25em .75em;border-radius:20px}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.nav-hamburger span{display:block;width:24px;height:2px;background:var(--blanco);border-radius:2px}
+.nav-mobile{display:none;position:fixed;top:56px;left:0;right:0;background:var(--azul-division);z-index:999;padding:1rem 1.25rem;border-bottom:3px solid var(--naranja);flex-direction:column;gap:.5rem}
+.nav-mobile a{font-size:.85rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.85);padding:.65rem .5rem;border-bottom:1px solid rgba(255,255,255,.08);display:block}
+.nav-mobile.open{display:flex}
+
+/* HERO — 2336x1557 ≈ 3:2, encuadrado en 21:9 */
+#hero{margin-top:56px;position:relative;background:var(--negro-suave);overflow:hidden}
+.hero-img-wrap{width:100%;aspect-ratio:21/9;position:relative;overflow:hidden}
+.hero-ph{
+  width:100%;height:100%;
+  background:linear-gradient(135deg,#f5dede 0%,#c0392b22 50%,#ecc8c8 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;
+}
+.hero-ph-icon{font-size:3rem;opacity:.25}
+.hero-ph-label{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(0,0,0,.25)}
+/* Imagen real:
+   <img src="../assets/img/noticias/15-portada.jpg"
+        alt="Escuelas Misioneras — Gran Santiago 2026"
+        class="hero-img"> */
+.hero-img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transform:scale(1.04);animation:heroReveal 1.4s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes heroReveal{to{transform:scale(1)}}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(0,0,0,.18) 60%,rgba(0,0,0,.55) 100%);pointer-events:none}
+.hero-cat-bar{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--cat-evangelismo),#e74c3c,var(--naranja))}
+
+/* FICHA + CUERPO */
+.articulo-ficha{background:var(--blanco);padding:2.5rem 0 0}
+.ficha-inner{max-width:760px;margin:0 auto;padding:0 1.25rem}
+.ficha-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;margin-bottom:1.5rem}
+.tag{display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blanco);padding:.22em .7em;border-radius:2px}
+.tag--evangelismo{background:var(--cat-evangelismo)}
+.ficha-fecha{font-size:.7rem;font-weight:600;letter-spacing:.06em;color:rgba(0,0,0,.35)}
+.ficha-fecha::before{content:'·';margin-right:.75rem;color:var(--gris-medio)}
+.articulo-titulo{font-family:var(--font-serif);font-size:clamp(1.7rem,4.5vw,2.6rem);font-weight:700;color:var(--azul-division);line-height:1.18;margin-bottom:1.5rem}
+.articulo-bajada{font-family:var(--font-serif);font-size:1.08rem;font-style:italic;color:var(--azul-denim);line-height:1.65;border-left:3px solid var(--naranja);padding-left:1.25rem;margin-bottom:2.5rem}
+
+.articulo-body{background:var(--blanco);padding:1.75rem 0 4rem}
+.body-inner{max-width:760px;margin:0 auto;padding:0 1.25rem}
+.articulo-texto p{font-size:.97rem;line-height:1.9;color:var(--gris-texto);margin-bottom:1.4em}
+
+/* CITA DIRECTA DEL PASTOR */
+.cita-pastor{
+  margin:2.25rem 0;
+  padding:1.75rem 2rem;
+  background:linear-gradient(135deg,var(--azul-division),var(--azul-denim));
+  border-radius:var(--radio);
+  position:relative;overflow:hidden;
+}
+.cita-pastor::before{
+  content:'"';position:absolute;top:-.5rem;left:1rem;
+  font-family:var(--font-serif);font-size:7rem;
+  color:rgba(255,169,45,.15);line-height:1;pointer-events:none;
+}
+.cita-pastor p{
+  font-family:var(--font-serif);font-size:1.05rem;font-style:italic;
+  color:var(--blanco);line-height:1.7;margin-bottom:.75rem;
+  position:relative;z-index:1;
+}
+.cita-pastor .cita-autor{
+  font-family:var(--font-sans);font-size:.7rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--dorado);font-style:normal;
+  position:relative;z-index:1;
+}
+.cita-pastor-line{width:32px;height:3px;background:var(--naranja);margin-bottom:.85rem}
+
+/* IMÁGENES VERTICALES 2:3 — trío */
+.galeria-trio-v{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+  margin:2.5rem 0;
+}
+.galeria-trio-v-item{
+  border-radius:var(--radio);overflow:hidden;
+  box-shadow:var(--sombra);background:var(--gris-medio);
+}
+.galeria-trio-v-item .img-wrap{aspect-ratio:2/3;overflow:hidden}
+.galeria-trio-v-item img,
+.galeria-trio-v-item .ph-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.galeria-trio-v-item:hover img{transform:scale(1.03)}
+.galeria-trio-v-item:nth-child(2){transition-delay:.1s}
+.galeria-trio-v-item:nth-child(3){transition-delay:.2s}
+
+/* Placeholder */
+.ph-img{
+  width:100%;height:100%;
+  background:linear-gradient(135deg,#f5dede,#ecc8c8);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;
+}
+.ph-icon{font-size:1.6rem;opacity:.28}
+.ph-label{font-size:.52rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,0,0,.25);text-align:center;padding:0 .75rem}
+
+/* BLOQUE DATO CONTINUO — "todos los meses" */
+.bloque-dato{
+  margin:2.5rem 0;
+  display:grid;grid-template-columns:auto 1fr;
+  gap:1.25rem;align-items:center;
+  padding:1.5rem 1.75rem;
+  background:linear-gradient(135deg,rgba(192,57,43,.07),rgba(192,57,43,.03));
+  border-left:4px solid var(--cat-evangelismo);
+  border-radius:0 var(--radio) var(--radio) 0;
+}
+.bloque-dato-num{
+  font-family:var(--font-serif);font-size:2.8rem;font-weight:700;
+  color:var(--cat-evangelismo);line-height:1;
+}
+.bloque-dato-texto .bd-label{
+  font-size:.6rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cat-evangelismo);
+  margin-bottom:.3rem;display:block;
+}
+.bloque-dato-texto p{
+  font-size:.9rem;color:var(--gris-texto);
+  line-height:1.65;margin-bottom:0;
+}
+
+/* REVELADO AL SCROLL */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .75s ease,transform .75s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .75s ease,transform .75s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(32px);transition:opacity .75s ease,transform .75s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.96);transition:opacity .8s ease,transform .8s ease}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+
+/* NAV NOTAS */
+#nav-notas{background:var(--negro-suave);padding:2.5rem 0;border-top:3px solid var(--naranja)}
+.nav-notas-inner{max-width:960px;margin:0 auto;padding:0 1.25rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1.5rem}
+.nav-nota-btn{display:flex;align-items:center;gap:.75rem;color:rgba(255,255,255,.6);padding:.75rem;border-radius:var(--radio);transition:color var(--t),background var(--t)}
+.nav-nota-btn:hover{color:var(--blanco);background:rgba(255,255,255,.06)}
+.nav-nota-btn--next{justify-content:flex-end;text-align:right}
+.nav-nota-arrow{font-size:1.2rem;color:var(--naranja);flex-shrink:0}
+.nav-nota-info{display:flex;flex-direction:column;gap:.2rem}
+.nav-nota-label{font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.nav-nota-titulo{font-size:.82rem;font-weight:600;color:inherit;line-height:1.3}
+.nav-notas-volver{text-align:center}
+.nav-notas-volver a{display:inline-flex;align-items:center;gap:.4rem;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.15);padding:.5rem 1.1rem;border-radius:20px;transition:all var(--t)}
+.nav-notas-volver a:hover{color:var(--blanco);border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.06)}
+
+footer{background:#0f1820;color:rgba(255,255,255,.4);text-align:center;padding:2rem 1.25rem;font-size:.75rem;letter-spacing:.05em;line-height:1.8}
+footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font-weight:700;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase}
+#back-to-top{position:fixed;bottom:1.5rem;right:1.5rem;width:44px;height:44px;background:var(--naranja);color:var(--blanco);border:none;border-radius:50%;font-size:1.1rem;cursor:pointer;box-shadow:0 4px 16px rgba(227,101,32,.4);transition:all var(--t);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;z-index:900}
+#back-to-top.visible{opacity:1;pointer-events:all}
+#back-to-top:hover{background:#c45510;transform:translateY(-2px)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  html{font-size:17px}
+  .nav-hamburger{display:flex}
+  .nav-seccion{display:none}
+  .hero-img-wrap{aspect-ratio:3/2}
+  .articulo-titulo{font-size:clamp(1.5rem,6vw,2rem)}
+  .galeria-trio-v{grid-template-columns:1fr 1fr}
+  .galeria-trio-v-item:nth-child(3){grid-column:1/-1}
+  .galeria-trio-v-item:nth-child(3) .img-wrap{aspect-ratio:3/2}
+  .bloque-dato{grid-template-columns:1fr}
+  .bloque-dato-num{font-size:2rem}
+  .nav-notas-inner{grid-template-columns:1fr 1fr;grid-template-rows:auto auto}
+  .nav-notas-volver{grid-column:1/-1}
+}
+@media(max-width:480px){
+  html{font-size:16px}
+  .ficha-inner,.body-inner{padding:0 1rem}
+  .hero-img-wrap{aspect-ratio:1/1}
+  .galeria-trio-v{grid-template-columns:1fr}
+  .galeria-trio-v-item:nth-child(3){grid-column:auto}
+  .galeria-trio-v-item:nth-child(3) .img-wrap{aspect-ratio:2/3}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Revista <span>AMCh</span></a>
+    <div style="display:flex;align-items:center;gap:1rem">
+      <span class="nav-seccion">Evangelismo</span>
+      <a href="../index.html#noticias" class="nav-back">← Volver a Noticias</a>
+    </div>
+    <button class="nav-hamburger" id="menuBtn" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="../index.html">← Volver al inicio</a>
+  <a href="../index.html#noticias">Noticias</a>
+  <a href="../index.html#historias">Historias</a>
+  <a href="../index.html#numeros">Números</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-img-wrap reveal-scale">
+    <!--
+      REEMPLAZAR:
+      <img src="../assets/img/noticias/15-portada.jpg"
+           alt="Escuelas Misioneras — Gran Santiago 2026"
+           class="hero-img">
+    -->
+    <div class="hero-ph">
+      <span class="hero-ph-icon">📢</span>
+      <span class="hero-ph-label">Imagen portada · 2336×1557 · Escuelas Misioneras</span>
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-cat-bar"></div>
+</section>
+
+<!-- FICHA + CUERPO: bloque blanco continuo -->
+<div style="background:var(--blanco)">
+
+<div class="articulo-ficha">
+  <div class="ficha-inner">
+    <div class="ficha-meta reveal">
+      <span class="tag tag--evangelismo">Evangelismo</span>
+      <span class="ficha-fecha">25 de abril de 2026</span>
+    </div>
+    <h1 class="articulo-titulo reveal">
+      Escuelas Misioneras movilizan a toda la iglesia en el Gran Santiago
+    </h1>
+    <p class="articulo-bajada reveal">
+      Capacitación, inspiración y acción mes a mes: la Asociación Metropolitana de Chile lanza las Escuelas Misioneras para equipar a cada miembro con herramientas concretas para el servicio comunitario.
+    </p>
+  </div>
+</div>
+
+<div class="articulo-body">
+  <div class="body-inner">
+
+    <!-- Párrafo 1 -->
+    <div class="articulo-texto reveal">
+      <p>Con el objetivo de fortalecer el compromiso misionero en cada congregación, la Asociación Metropolitana de Chile ha comenzado a implementar un nuevo movimiento de formación en sus distritos: las Escuelas Misioneras, una iniciativa orientada a capacitar a los miembros con herramientas prácticas para el servicio en la comunidad.</p>
+      <p>Durante la última semana de abril, varios distritos del Gran Santiago dieron inicio a estas instancias de capacitación, marcando el comienzo de un proceso que no solo busca informar, sino también inspirar y movilizar a la hermandad hacia una participación activa en la misión.</p>
+    </div>
+
+    <!-- Galería: 3 verticales 2:3 -->
+    <div class="galeria-trio-v">
+      <div class="galeria-trio-v-item reveal-left">
+        <div class="img-wrap">
+          <!--
+            REEMPLAZAR:
+            <img src="../assets/img/noticias/15-body-v1.jpg"
+                 alt="Escuela Misionera en distrito del Gran Santiago">
+          -->
+          <div class="ph-img">
+            <span class="ph-icon">🏘️</span>
+            <span class="ph-label">Imagen 2 · Vertical 2:3</span>
+          </div>
+        </div>
+      </div>
+      <div class="galeria-trio-v-item reveal">
+        <div class="img-wrap">
+          <!--
+            REEMPLAZAR:
+            <img src="../assets/img/noticias/15-body-v2.jpg"
+                 alt="Miembros capacitándose en la Escuela Misionera">
+          -->
+          <div class="ph-img">
+            <span class="ph-icon">📖</span>
+            <span class="ph-label">Imagen 3 · Vertical 2:3</span>
+          </div>
+        </div>
+      </div>
+      <div class="galeria-trio-v-item reveal-right">
+        <div class="img-wrap">
+          <!--
+            REEMPLAZAR:
+            <img src="../assets/img/noticias/15-body-v3.jpg"
+                 alt="Pastor José Salgado junto a participantes">
+          -->
+          <div class="ph-img">
+            <span class="ph-icon">🙌</span>
+            <span class="ph-label">Imagen 4 · Vertical 2:3</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cita directa del pastor -->
+    <div class="cita-pastor reveal">
+      <div class="cita-pastor-line"></div>
+      <p>"Estamos muy contentos por el desafío que hemos planteado a cada distrito de la Asociación de establecer las escuelas misioneras y de entrenamiento a cada miembro de la iglesia. Esta semana hemos logrado iniciar ya varias de estas escuelas, en donde se ha entrenado a los hermanos, se ha inspirado, se les ha animado y entregado herramientas también para poder realizar la misión en el Gran Santiago."</p>
+      <span class="cita-autor">Pr. José Salgado · Director de Evangelismo, AMCh</span>
+    </div>
+
+    <!-- Párrafo 2 -->
+    <div class="articulo-texto reveal">
+      <p>El proyecto es liderado por el pastor José Salgado, quien destacó el impacto inicial de la iniciativa y subrayó el espíritu de compromiso que ha caracterizado la respuesta de los distritos participantes.</p>
+    </div>
+
+    <!-- Bloque dato continuo -->
+    <div class="bloque-dato reveal">
+      <div class="bloque-dato-num">12×</div>
+      <div class="bloque-dato-texto">
+        <span class="bd-label">Escuelas durante todo el año</span>
+        <p>"Lo más desafiante y lo más lindo es que también se han aventurado a hacerla durante todo el año, así que todos los meses en los distritos tendremos escuelas misioneras y de entrenamiento para cada uno de los hermanos de iglesia." — Pr. José Salgado</p>
+      </div>
+    </div>
+
+    <!-- Párrafo final -->
+    <div class="articulo-texto reveal">
+      <p>La iniciativa responde a una necesidad concreta: preparar a los miembros no solo desde la motivación, sino también desde la acción, entregando herramientas útiles y aplicables para compartir el mensaje de esperanza en sus entornos cotidianos.</p>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /bloque blanco -->
+
+<!-- NAVEGACIÓN ENTRE NOTAS -->
+<nav id="nav-notas">
+  <div class="nav-notas-inner">
+    <a href="14-escuelas-mision-inicio.html" class="nav-nota-btn">
+      <span class="nav-nota-arrow">←</span>
+      <div class="nav-nota-info">
+        <span class="nav-nota-label">Nota anterior</span>
+        <span class="nav-nota-titulo">Asociación Metropolitana da inicio a sus Escuelas de Misión</span>
+      </div>
+    </a>
+    <div class="nav-notas-volver">
+      <a href="../index.html#noticias">↑ Ver todas las noticias</a>
+    </div>
+    <a href="16-asamblea-ministerial-abril.html" class="nav-nota-btn nav-nota-btn--next">
+      <div class="nav-nota-info">
+        <span class="nav-nota-label">Siguiente nota</span>
+        <span class="nav-nota-titulo">Asamblea Ministerial fortalece la unidad y proyección del trabajo pastoral</span>
+      </div>
+      <span class="nav-nota-arrow">→</span>
+    </a>
+  </div>
+</nav>
+
+<footer>
+  <div class="container">
+    <strong>Revista AMCh</strong>
+    Asociación Metropolitana Adventista de Chile · Santiago, Chile<br>
+    Publicación trimestral · © 2026 · Todos los derechos reservados
+  </div>
+</footer>
+
+<button id="back-to-top" aria-label="Volver arriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const backBtn = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => backBtn.classList.toggle('visible', window.scrollY > 400), {passive:true});
+
+const menuBtn = document.getElementById('menuBtn');
+const navMobile = document.getElementById('navMobile');
+menuBtn?.addEventListener('click', () => navMobile.classList.toggle('open'));
+document.querySelectorAll('.nav-mobile a').forEach(l => l.addEventListener('click', () => navMobile.classList.remove('open')));
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+  revealObserver.observe(el);
+});
+
+window.addEventListener('load', () => {
+  document.querySelectorAll('.reveal-scale').forEach(el => el.classList.add('visible'));
+});
+</script>
+</body>
+</html>

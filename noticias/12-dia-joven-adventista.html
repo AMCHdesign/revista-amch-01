@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Más de 1.200 jóvenes se movilizan con propósito en el Día del Joven Adventista — Revista AMCh</title>
+<meta name="description" content="Fe en movimiento: más de 1.200 jóvenes adventistas salieron a las calles de Santiago para servir, adorar y demostrar que ser joven adventista es una decisión que se vive cada día.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+/* ── Variables ── */
+:root {
+  --azul-division: #003366;
+  --azul-denim:    #2f557f;
+  --azul-ming:     #3e8391;
+  --naranja:       #e36520;
+  --dorado:        #ffa92d;
+  --blanco:        #ffffff;
+  --gris-claro:    #f4f4f0;
+  --gris-medio:    #e0e0d8;
+  --gris-texto:    #444440;
+  --negro-suave:   #1a1a18;
+  --font-sans:     'Noto Sans', sans-serif;
+  --font-serif:    'Noto Serif', serif;
+  --radio:         4px;
+  --sombra:        0 2px 16px rgba(0,0,0,0.10);
+  --sombra-fuerte: 0 6px 32px rgba(0,0,0,0.18);
+  --t:             0.25s ease;
+  --cat-jovenes:   #8e44ad;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:18px}
+body{font-family:var(--font-sans);color:var(--gris-texto);background:var(--gris-claro);line-height:1.7;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+p{margin-bottom:1.1em}
+.container{max-width:960px;margin:0 auto;padding:0 1.25rem}
+
+/* ── NAV ── */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--azul-division);border-bottom:3px solid var(--naranja);height:56px;display:flex;align-items:center}
+.nav-inner{width:100%;max-width:960px;margin:0 auto;padding:0 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-logo{font-weight:800;font-size:.95rem;color:var(--blanco);letter-spacing:.05em;white-space:nowrap}
+.nav-logo span{color:var(--dorado)}
+.nav-back{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:.4rem;transition:color var(--t)}
+.nav-back:hover{color:var(--dorado)}
+.nav-seccion{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--naranja);background:rgba(227,101,32,.15);border:1px solid rgba(227,101,32,.3);padding:.25em .75em;border-radius:20px}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.nav-hamburger span{display:block;width:24px;height:2px;background:var(--blanco);border-radius:2px}
+.nav-mobile{display:none;position:fixed;top:56px;left:0;right:0;background:var(--azul-division);z-index:999;padding:1rem 1.25rem;border-bottom:3px solid var(--naranja);flex-direction:column;gap:.5rem}
+.nav-mobile a{font-size:.85rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.85);padding:.65rem .5rem;border-bottom:1px solid rgba(255,255,255,.08);display:block}
+.nav-mobile.open{display:flex}
+
+/* ── HERO ── */
+#hero{margin-top:56px;position:relative;background:var(--negro-suave);overflow:hidden}
+.hero-img-wrap{width:100%;aspect-ratio:21/9;position:relative;overflow:hidden}
+.hero-ph{
+  width:100%;height:100%;
+  background:linear-gradient(135deg,#e8d5f5 0%,#8e44ad22 40%,#d5c5e8 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;
+}
+.hero-ph-icon{font-size:3rem;opacity:.25}
+.hero-ph-label{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(0,0,0,.25)}
+.hero-img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transform:scale(1.04);animation:heroReveal 1.4s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes heroReveal{to{transform:scale(1)}}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(0,0,0,.18) 60%,rgba(0,0,0,.55) 100%);pointer-events:none}
+.hero-cat-bar{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--cat-jovenes),#a569bd,var(--naranja))}
+
+/* ── FICHA ── */
+.articulo-ficha{background:var(--blanco);padding:2.5rem 0 0}
+.ficha-inner{max-width:760px;margin:0 auto;padding:0 1.25rem}
+.ficha-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;margin-bottom:1.5rem}
+.tag{display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blanco);padding:.22em .7em;border-radius:2px}
+.tag--jovenes{background:var(--cat-jovenes)}
+.ficha-fecha{font-size:.7rem;font-weight:600;letter-spacing:.06em;color:rgba(0,0,0,.35)}
+.ficha-fecha::before{content:'·';margin-right:.75rem;color:var(--gris-medio)}
+.articulo-titulo{font-family:var(--font-serif);font-size:clamp(1.7rem,4.5vw,2.6rem);font-weight:700;color:var(--azul-division);line-height:1.18;margin-bottom:1.5rem}
+.articulo-bajada{font-family:var(--font-serif);font-size:1.08rem;font-style:italic;color:var(--azul-denim);line-height:1.65;border-left:3px solid var(--naranja);padding-left:1.25rem;margin-bottom:2.5rem}
+
+/* ── CUERPO ── */
+.articulo-body{background:var(--blanco);padding:1.75rem 0 4rem}
+.body-inner{max-width:760px;margin:0 auto;padding:0 1.25rem}
+.articulo-texto p{font-size:.97rem;line-height:1.9;color:var(--gris-texto);margin-bottom:1.4em}
+
+/* ── CIFRA DESTACADA ── */
+.cifra-destaque{
+  display:flex;align-items:center;gap:1.5rem;
+  background:linear-gradient(135deg,rgba(142,68,173,.08),rgba(142,68,173,.03));
+  border:1px solid rgba(142,68,173,.2);
+  border-left:4px solid var(--cat-jovenes);
+  border-radius:var(--radio);
+  padding:1.25rem 1.75rem;
+  margin:2rem 0;
+}
+.cifra-numero{
+  font-family:var(--font-sans);font-size:3rem;font-weight:800;
+  color:var(--cat-jovenes);line-height:1;white-space:nowrap;
+}
+.cifra-texto-wrap{}
+.cifra-label{font-size:.6rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(0,0,0,.35);margin-bottom:.2rem}
+.cifra-descripcion{font-family:var(--font-serif);font-size:.95rem;color:var(--azul-division);font-weight:600;line-height:1.4}
+
+/* ── IMÁGENES FLOTANTES ── */
+/* Vertical 4:5 — más cuadrada, ancho algo mayor */
+.galeria-inline-derecha--45{
+  display:grid;
+  grid-template-columns:1fr 280px;
+  gap:1.75rem;align-items:start;margin:1.5rem 0 2rem;
+}
+.galeria-inline-izquierda--45{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:1.75rem;align-items:start;margin:1.5rem 0 2rem;
+}
+.galeria-inline-izquierda--45 .galeria-img-flotante{order:-1}
+
+/* Vertical 2:3 — más estrecha */
+.galeria-inline-derecha--23{
+  display:grid;
+  grid-template-columns:1fr 240px;
+  gap:1.75rem;align-items:start;margin:1.5rem 0 2rem;
+}
+.galeria-inline-izquierda--23{
+  display:grid;
+  grid-template-columns:240px 1fr;
+  gap:1.75rem;align-items:start;margin:1.5rem 0 2rem;
+}
+.galeria-inline-izquierda--23 .galeria-img-flotante{order:-1}
+
+.galeria-img-flotante{border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra-fuerte);background:var(--gris-medio)}
+.galeria-img-flotante img{width:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.galeria-img-flotante:hover img{transform:scale(1.03)}
+
+/* Aspect ratios de imagen real */
+.galeria-img-flotante img.ar-45{aspect-ratio:4/5}
+.galeria-img-flotante img.ar-23{aspect-ratio:2/3}
+
+/* Placeholders con sus proporciones */
+.ph-45{aspect-ratio:4/5;min-height:unset}
+.ph-23{aspect-ratio:2/3;min-height:unset}
+
+/* Imagen 16:9 ancho completo */
+.galeria-horizontal{margin:2rem 0;border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra-fuerte);background:var(--gris-medio)}
+.galeria-horizontal img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;transition:transform .5s ease}
+.galeria-horizontal:hover img{transform:scale(1.02)}
+.galeria-horizontal .ph-169{aspect-ratio:16/9;min-height:unset}
+
+/* Caption */
+.img-caption{font-size:.68rem;color:rgba(0,0,0,.38);font-weight:600;letter-spacing:.04em;padding:.5rem .75rem;background:rgba(0,0,0,.03);border-top:1px solid rgba(0,0,0,.06);line-height:1.4}
+
+/* ── CITA DE PERSONA ── */
+.cita-persona{
+  margin:2rem 0;
+  padding:1.5rem 1.75rem;
+  background:var(--gris-claro);
+  border-radius:var(--radio);
+  border-left:4px solid var(--cat-jovenes);
+  position:relative;
+}
+.cita-persona::before{
+  content:'"';
+  position:absolute;top:-.3rem;left:1.1rem;
+  font-family:var(--font-serif);font-size:5rem;
+  color:rgba(142,68,173,.12);line-height:1;pointer-events:none;
+}
+.cita-texto{
+  font-family:var(--font-serif);font-size:.97rem;font-style:italic;
+  color:var(--gris-texto);line-height:1.75;margin-bottom:.75rem;
+  position:relative;z-index:1;
+}
+.cita-autor{display:flex;align-items:center;gap:.6rem}
+.cita-autor-icono{
+  width:30px;height:30px;border-radius:50%;
+  background:var(--cat-jovenes);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;flex-shrink:0;
+}
+.cita-autor-info{}
+.cita-autor-nombre{font-size:.75rem;font-weight:700;color:var(--azul-division)}
+.cita-autor-rol{font-size:.65rem;color:rgba(0,0,0,.4);letter-spacing:.03em}
+
+/* ── PULL QUOTE ── */
+.pull-quote{margin:2.5rem 0;padding:1.75rem 2rem;background:linear-gradient(135deg,var(--azul-division),var(--azul-denim));border-radius:var(--radio);position:relative;overflow:hidden}
+.pull-quote::before{content:'"';position:absolute;top:-.5rem;left:1rem;font-family:var(--font-serif);font-size:7rem;color:rgba(255,169,45,.15);line-height:1;pointer-events:none}
+.pull-quote p{font-family:var(--font-serif);font-size:1.1rem;font-style:italic;color:var(--blanco);line-height:1.65;margin-bottom:0;position:relative;z-index:1}
+.pull-quote-line{width:32px;height:3px;background:var(--naranja);margin-bottom:.85rem}
+
+/* ── NAVEGACIÓN ENTRE NOTAS ── */
+#nav-notas{background:var(--negro-suave);padding:2.5rem 0;border-top:3px solid var(--naranja)}
+.nav-notas-inner{max-width:960px;margin:0 auto;padding:0 1.25rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1.5rem}
+.nav-nota-btn{display:flex;align-items:center;gap:.75rem;color:rgba(255,255,255,.6);padding:.75rem;border-radius:var(--radio);transition:color var(--t),background var(--t)}
+.nav-nota-btn:hover{color:var(--blanco);background:rgba(255,255,255,.06)}
+.nav-nota-btn--next{justify-content:flex-end;text-align:right}
+.nav-nota-arrow{font-size:1.2rem;color:var(--naranja);flex-shrink:0}
+.nav-nota-info{display:flex;flex-direction:column;gap:.2rem}
+.nav-nota-label{font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.nav-nota-titulo{font-size:.82rem;font-weight:600;color:inherit;line-height:1.3}
+.nav-notas-volver{text-align:center}
+.nav-notas-volver a{display:inline-flex;align-items:center;gap:.4rem;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.15);padding:.5rem 1.1rem;border-radius:20px;transition:all var(--t)}
+.nav-notas-volver a:hover{color:var(--blanco);border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.06)}
+
+/* ── FOOTER ── */
+footer{background:#0f1820;color:rgba(255,255,255,.4);text-align:center;padding:2rem 1.25rem;font-size:.75rem;letter-spacing:.05em;line-height:1.8}
+footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font-weight:700;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase}
+
+/* Back to top */
+#back-to-top{position:fixed;bottom:1.5rem;right:1.5rem;width:44px;height:44px;background:var(--naranja);color:var(--blanco);border:none;border-radius:50%;font-size:1.1rem;cursor:pointer;box-shadow:0 4px 16px rgba(227,101,32,.4);transition:all var(--t);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;z-index:900}
+#back-to-top.visible{opacity:1;pointer-events:all}
+#back-to-top:hover{background:#c45510;transform:translateY(-2px)}
+
+/* ── REVELADO ── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .75s ease,transform .75s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .75s ease,transform .75s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(32px);transition:opacity .75s ease,transform .75s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.96);transition:opacity .8s ease,transform .8s ease}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+
+/* Placeholder genérico */
+.ph{
+  width:100%;height:100%;
+  background:linear-gradient(135deg,#ede0f7,#d5c5e8);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:.5rem;min-height:160px;
+}
+.ph-icon{font-size:1.6rem;opacity:.28}
+.ph-label{font-size:.52rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,0,0,.25);text-align:center;padding:0 .75rem}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  html{font-size:17px}
+  .nav-hamburger{display:flex}
+  .nav-seccion{display:none}
+  .hero-img-wrap{aspect-ratio:4/3}
+  .galeria-inline-derecha--45,.galeria-inline-izquierda--45,
+  .galeria-inline-derecha--23,.galeria-inline-izquierda--23{
+    grid-template-columns:1fr;gap:1.25rem;
+  }
+  .galeria-inline-izquierda--45 .galeria-img-flotante,
+  .galeria-inline-izquierda--23 .galeria-img-flotante{order:0}
+  .ph-45,.ph-23,.galeria-img-flotante img{aspect-ratio:4/3!important}
+  .cifra-destaque{flex-direction:column;gap:.75rem;text-align:center}
+  .nav-notas-inner{grid-template-columns:1fr 1fr;grid-template-rows:auto auto}
+  .nav-notas-volver{grid-column:1/-1}
+}
+@media(max-width:480px){
+  html{font-size:16px}
+  .ficha-inner,.body-inner{padding:0 1rem}
+  .cifra-numero{font-size:2.2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Revista <span>AMCh</span></a>
+    <div style="display:flex;align-items:center;gap:1rem">
+      <span class="nav-seccion">Jóvenes</span>
+      <a href="../index.html#noticias" class="nav-back">← Volver a Noticias</a>
+    </div>
+    <button class="nav-hamburger" id="menuBtn" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="../index.html">← Volver al inicio</a>
+  <a href="../index.html#noticias">Noticias</a>
+  <a href="../index.html#historias">Historias</a>
+  <a href="../index.html#numeros">Números</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-img-wrap reveal-scale">
+    <!--
+      REEMPLAZAR POR IMAGEN REAL:
+      <img src="../assets/img/noticias/13-portada.jpg"
+           alt="Día del Joven Adventista 2026 — Más de 1.200 jóvenes en Santiago"
+           class="hero-img">
+      Proporción original: 3:2 — se recorta a 21:9 con object-fit:cover / object-position:center top
+    -->
+    <div class="hero-ph">
+      <span class="hero-ph-icon">✊</span>
+      <span class="hero-ph-label">Imagen portada · Proporción 3:2 → encuadre 21:9</span>
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-cat-bar"></div>
+</section>
+
+<!-- FICHA + CUERPO: bloque blanco continuo -->
+<div style="background:var(--blanco)">
+
+<!-- FICHA -->
+<div class="articulo-ficha">
+  <div class="ficha-inner">
+    <div class="ficha-meta reveal">
+      <span class="tag tag--jovenes">Jóvenes</span>
+      <span class="ficha-fecha">21 de marzo de 2026</span>
+    </div>
+    <h1 class="articulo-titulo reveal">
+      Más de 1.200 jóvenes se movilizan con propósito en el Día del Joven Adventista
+    </h1>
+    <p class="articulo-bajada reveal">
+      Fe en movimiento: más de 1.200 jóvenes adventistas salieron a las calles de Santiago para servir, adorar y demostrar que ser joven adventista es mucho más que una identidad: es una decisión que se vive cada día.
+    </p>
+  </div>
+</div>
+
+<!-- CUERPO -->
+<div class="articulo-body">
+  <div class="body-inner">
+
+    <!-- Párrafo 1 + Imagen 2 (4:5) flotando derecha -->
+    <div class="galeria-inline-derecha--45 reveal">
+      <div class="articulo-texto">
+        <p>El Gran Santiago fue escenario de una jornada marcada por la fe, la unidad y el compromiso, en el marco del Día Mundial del Joven Adventista. Más de 1.200 jóvenes de la Asociación Metropolitana de Chile se reunieron con un propósito claro: vivir su fe de manera activa y significativa.</p>
+      </div>
+      <div class="galeria-img-flotante reveal-right">
+        <!--
+          REEMPLAZAR:
+          <img src="../assets/img/noticias/13-body-v1.jpg"
+               alt="Jóvenes adventistas reunidos durante el Día del Joven Adventista 2026"
+               class="ar-45">
+        -->
+        <div class="ph ph-45">
+          <span class="ph-icon">✊</span>
+          <span class="ph-label">Imagen 2 · 4:5</span>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Cifra destacada -->
+    <div class="cifra-destaque reveal">
+      <div class="cifra-numero">+1.200</div>
+      <div class="cifra-texto-wrap">
+        <div class="cifra-label">Participantes · AMCh · Marzo 2026</div>
+        <div class="cifra-descripcion">Jóvenes movilizados en el Gran Santiago durante el Día del Joven Adventista</div>
+      </div>
+    </div>
+
+    <!-- Párrafo 2 + Imagen 3 (2:3) flotando izquierda -->
+    <div class="galeria-inline-izquierda--23 reveal">
+      <div class="galeria-img-flotante reveal-left">
+        <!--
+          REEMPLAZAR:
+          <img src="../assets/img/noticias/13-body-v2.jpg"
+               alt="Momento de alabanza durante el Día del Joven Adventista"
+               class="ar-23">
+        -->
+        <div class="ph ph-23">
+          <span class="ph-icon">🎵</span>
+          <span class="ph-label">Imagen 3 · 2:3</span>
+        </div>
+        
+      </div>
+      <div class="articulo-texto">
+        <p>Durante la jornada, los participantes fueron parte de espacios de alabanza, comunión y reflexión, donde se reforzó la identidad y el llamado de la juventud adventista. El pastor Carlos Campitelli, líder de jóvenes de la División Sudamericana, compartió un mensaje centrado en la identidad y esperanza cristiana, recordando a los jóvenes su rol como "luz del mundo" y la certeza del pronto regreso de Jesús.</p>
+      </div>
+    </div>
+
+    <!-- Párrafo 3 + Imagen 4 (4:5) flotando derecha -->
+    <div class="galeria-inline-derecha--45 reveal">
+      <div class="articulo-texto">
+        <p>La programación culminó con un encuentro en el Auditorio Ictus, con momentos de adoración junto al ministerio musical Adoradores 5, en un ambiente de unidad y renovación espiritual.</p>
+        <p>Más allá del encuentro, uno de los énfasis principales fue la acción. Diversos grupos participaron en iniciativas de servicio comunitario, llevando ayuda concreta y acompañamiento a distintas personas en la ciudad.</p>
+      </div>
+      <div class="galeria-img-flotante reveal-right">
+        <!--
+          REEMPLAZAR:
+          <img src="../assets/img/noticias/13-body-v3.jpg"
+               alt="Jóvenes en acción de servicio comunitario"
+               class="ar-45">
+        -->
+        <div class="ph ph-45">
+          <span class="ph-icon">🤲</span>
+          <span class="ph-label">Imagen 4 · 4:5</span>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Cita Camila Quilodrán -->
+    <div class="cita-persona reveal">
+      <p class="cita-texto">Para mí fue una experiencia bastante grata porque vamos a poner un granito de arena. Usando el método de Cristo podemos ir a buscar y alcanzar a más personas que necesitan el amor de nuestro Dios.</p>
+      <div class="cita-autor">
+        <div class="cita-autor-icono">✨</div>
+        <div class="cita-autor-info">
+          <div class="cita-autor-nombre">Camila Quilodrán</div>
+          <div class="cita-autor-rol">Joven, Iglesia de Maipú Central</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Imagen 5 (2:3) flotando izquierda -->
+    <div class="galeria-inline-izquierda--23 reveal">
+      <div class="galeria-img-flotante reveal-left">
+        <!--
+          REEMPLAZAR:
+          <img src="../assets/img/noticias/13-body-v4.jpg"
+               alt="Jóvenes durante el Auditorio Ictus — Adoradores 5"
+               class="ar-23">
+        -->
+        <div class="ph ph-23">
+          <span class="ph-icon">🙌</span>
+          <span class="ph-label">Imagen 5 · 2:3</span>
+        </div>
+        
+      </div>
+      <div class="articulo-texto">
+        <!-- Cita Pr. Alfredo Rivera -->
+        <div class="cita-persona" style="margin:0 0 1em">
+          <p class="cita-texto">Creemos que son muy importantes estos espacios donde los jóvenes son convocados a participar de algo más grande, salir de la iglesia hacia la comunidad y hacerse presentes con el mensaje de esperanza.</p>
+          <div class="cita-autor">
+            <div class="cita-autor-icono">🎤</div>
+            <div class="cita-autor-info">
+              <div class="cita-autor-nombre">Pr. Alfredo Rivera</div>
+              <div class="cita-autor-rol">Asociación Metropolitana de Chile</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Imagen 6 — panorámica 16:9 de cierre -->
+    <div class="galeria-horizontal reveal">
+      <!--
+        REEMPLAZAR:
+        <img src="../assets/img/noticias/13-body-h1.jpg"
+             alt="Vista panorámica del encuentro del Día del Joven Adventista 2026">
+      -->
+      <div class="ph ph-169">
+        <span class="ph-icon">🌆</span>
+        <span class="ph-label">Imagen 6 · 16:9 · Panorámica del encuentro</span>
+      </div>
+      
+    </div>
+
+    <!-- Pull quote final -->
+    <div class="pull-quote reveal">
+      <div class="pull-quote-line"></div>
+      <p>Ser joven adventista es mucho más que una identidad: es una decisión que se vive cada día, en la calle, en el servicio y en la comunidad.</p>
+    </div>
+
+  </div><!-- /body-inner -->
+</div><!-- /articulo-body -->
+</div><!-- /bloque blanco -->
+
+<!-- NAVEGACIÓN ENTRE NOTAS -->
+<nav id="nav-notas">
+  <div class="nav-notas-inner">
+    <a href="11-colegios-excelencia.html" class="nav-nota-btn">
+      <span class="nav-nota-arrow">←</span>
+      <div class="nav-nota-info">
+        <span class="nav-nota-label">Nota anterior</span>
+        <span class="nav-nota-titulo">Dos colegios de la Fundación Westphal reciben reconocimiento de Excelencia Académica</span>
+      </div>
+    </a>
+    <div class="nav-notas-volver">
+      <a href="../index.html#noticias">↑ Ver todas las noticias</a>
+    </div>
+    <a href="13-ruta-evangelio-vive.html" class="nav-nota-btn nav-nota-btn--next">
+      <div class="nav-nota-info">
+        <span class="nav-nota-label">Siguiente nota</span>
+        <span class="nav-nota-titulo">Ruta Evangelio Vive</span>
+      </div>
+      <span class="nav-nota-arrow">→</span>
+    </a>
+  </div>
+</nav>
+
+<footer>
+  <div class="container">
+    <strong>Revista AMCh</strong>
+    Asociación Metropolitana Adventista de Chile · Santiago, Chile<br>
+    Publicación trimestral · © 2026 · Todos los derechos reservados
+  </div>
+</footer>
+
+<button id="back-to-top" aria-label="Volver arriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const backBtn = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => backBtn.classList.toggle('visible', window.scrollY > 400), {passive:true});
+
+const menuBtn = document.getElementById('menuBtn');
+const navMobile = document.getElementById('navMobile');
+menuBtn?.addEventListener('click', () => navMobile.classList.toggle('open'));
+document.querySelectorAll('.nav-mobile a').forEach(l => l.addEventListener('click', () => navMobile.classList.remove('open')));
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => revealObserver.observe(el));
+
+window.addEventListener('load', () => {
+  document.querySelectorAll('.reveal-scale').forEach(el => el.classList.add('visible'));
+});
+</script>
+</body>
+</html>
