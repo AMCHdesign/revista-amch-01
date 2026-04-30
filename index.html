@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revista AMCh — Edición N°1 · Enero–Abril 2026</title>
+<meta name="description" content="Revista oficial de la Asociación Metropolitana Adventista de Chile. Noticias, testimonios e inspiración para toda la comunidad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --azul-division: #003366;
+  --azul-denim: #2f557f;
+  --azul-ming: #3e8391;
+  --naranja: #e36520;
+  --dorado: #ffa92d;
+  --blanco: #ffffff;
+  --gris-claro: #f4f4f0;
+  --gris-medio: #e0e0d8;
+  --gris-texto: #444440;
+  --negro-suave: #1a1a18;
+  --font-sans: 'Noto Sans', sans-serif;
+  --font-serif: 'Noto Serif', serif;
+  --radio: 4px;
+  --sombra: 0 2px 16px rgba(0,0,0,0.10);
+  --sombra-fuerte: 0 6px 32px rgba(0,0,0,0.18);
+  --t: 0.25s ease;
+  --cat-evangelismo:    #c0392b;
+  --cat-administracion: #003366;
+  --cat-educacion:      #27ae60;
+  --cat-jovenes:        #8e44ad;
+  --cat-servicio:       #2980b9;
+  --cat-afam:           #d35400;
+  --cat-mujer:          #b7338a;
+  --cat-publicaciones:  #16a085;
+  --cat-secretaria:     #16a085;
+  --cat-libertad:       #546e7a;
+  --cat-infantil:       #e67e22;
+  --cat-recepcion:      #0097a7;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:18px}
+body{font-family:var(--font-sans);color:var(--gris-texto);background:var(--gris-claro);line-height:1.7;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+p{margin-bottom:1em}
+.container{max-width:960px;margin:0 auto;padding:0 1.25rem}
+
+/* Tags */
+.tag{display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blanco);padding:.22em .7em;border-radius:2px;margin-bottom:.5rem;margin-right:.25rem}
+.tag--evangelismo{background:var(--cat-evangelismo)}
+.tag--administracion{background:var(--cat-administracion)}
+.tag--educacion{background:var(--cat-educacion)}
+.tag--jovenes{background:var(--cat-jovenes)}
+.tag--servicio{background:var(--cat-servicio)}
+.tag--afam{background:var(--cat-afam)}
+.tag--mujer{background:var(--cat-mujer)}
+.tag--publicaciones{background:var(--cat-publicaciones)}
+.tag--secretaria{background:var(--cat-secretaria)}
+.tag--libertad{background:var(--cat-libertad)}
+.tag--infantil{background:var(--cat-infantil)}
+.tag--recepcion{background:var(--cat-recepcion)}
+.tag--ming{background:var(--azul-ming)}
+.tag--dorado{background:var(--dorado);color:var(--negro-suave)}
+
+.seccion-label{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--azul-ming);margin-bottom:.4rem}
+.divider{width:40px;height:3px;background:var(--naranja);margin:.75rem 0 1.5rem}
+.divider--blanco{background:rgba(255,255,255,.5)}
+
+/* NAV */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--azul-division);border-bottom:3px solid var(--naranja);height:56px;display:flex;align-items:center}
+.nav-inner{width:100%;max-width:960px;margin:0 auto;padding:0 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-logo{font-weight:800;font-size:.95rem;color:var(--blanco);letter-spacing:.05em;white-space:nowrap}
+.nav-logo span{color:var(--dorado)}
+.nav-links{display:flex;align-items:center;gap:.15rem;list-style:none}
+.nav-links a{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.75);padding:.4rem .6rem;border-radius:3px;transition:color var(--t),background var(--t);white-space:nowrap}
+.nav-links a:hover{color:var(--blanco);background:rgba(255,255,255,.1)}
+.nav-btn-indice{background:var(--naranja)!important;color:var(--blanco)!important}
+.nav-btn-indice:hover{background:#c45510!important}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.nav-hamburger span{display:block;width:24px;height:2px;background:var(--blanco);border-radius:2px}
+.nav-mobile{display:none;position:fixed;top:56px;left:0;right:0;background:var(--azul-division);z-index:999;padding:1rem 1.25rem;border-bottom:3px solid var(--naranja);flex-direction:column;gap:.5rem}
+.nav-mobile a{font-size:.85rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.85);padding:.65rem .5rem;border-bottom:1px solid rgba(255,255,255,.08);display:block}
+.nav-mobile.open{display:flex}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.5rem;border-radius:var(--radio);font-weight:700;font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:all var(--t);border:none}
+.btn--primario{background:var(--naranja);color:var(--blanco);box-shadow:0 4px 16px rgba(227,101,32,.4)}
+.btn--primario:hover{background:#c45510;transform:translateY(-1px)}
+.btn--secundario{background:rgba(255,255,255,.12);color:var(--blanco);border:1px solid rgba(255,255,255,.3)}
+.btn--secundario:hover{background:rgba(255,255,255,.2);transform:translateY(-1px)}
+
+/* PORTADA — alineado al centro, sin espacio excesivo arriba */
+#portada{
+  margin-top:56px;
+  min-height:calc(100vh - 56px);
+  background:linear-gradient(160deg,rgba(0,30,70,.92) 0%,rgba(0,51,102,.80) 50%,rgba(46,85,127,.65) 100%),
+             url('https://cdn2.picryl.com/photo/2015/09/06/skyline-of-santiago-chile-d2bea5-1024.jpg') center/cover no-repeat;
+  display:flex;align-items:center;
+  padding:3rem 0;
+  position:relative;overflow:hidden;
+}
+.portada-deco{position:absolute;top:0;right:0;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,169,45,.06));pointer-events:none}
+.portada-linea{position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--naranja),var(--dorado),var(--naranja))}
+.portada-inner{position:relative;z-index:2}
+.portada-edicion{font-size:.65rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--dorado);margin-bottom:1rem;display:flex;align-items:center;gap:.75rem}
+.portada-edicion::before{content:'';display:block;width:32px;height:2px;background:var(--dorado)}
+.portada-titulo{font-family:var(--font-serif);font-size:clamp(2.4rem,7vw,4.2rem);font-weight:700;color:var(--blanco);line-height:1.1;margin-bottom:1rem;max-width:680px}
+.portada-titulo em{font-style:italic;color:var(--dorado)}
+.portada-subtitulo{font-size:1rem;color:rgba(255,255,255,.75);max-width:520px;margin-bottom:2.5rem;font-weight:300;line-height:1.65}
+.portada-ctas{display:flex;flex-wrap:wrap;gap:.75rem}
+.portada-scroll{position:absolute;bottom:1.5rem;right:1.5rem;display:flex;flex-direction:column;align-items:center;gap:.4rem;color:rgba(255,255,255,.5);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase}
+.portada-scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,rgba(255,255,255,.5),transparent);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:1;transform:scaleY(1)}50%{opacity:.4;transform:scaleY(.7)}}
+
+/* ÍNDICE */
+#indice{background:var(--negro-suave);padding:3.5rem 0}
+.indice-titulo{font-family:var(--font-serif);font-size:1.6rem;font-weight:700;color:var(--blanco);margin-bottom:.4rem}
+.indice-subtitulo{font-size:.8rem;color:rgba(255,255,255,.45);letter-spacing:.08em;margin-bottom:2.5rem}
+.indice-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.06);border-radius:var(--radio);overflow:hidden}
+.indice-item{background:rgba(255,255,255,.02);padding:1.25rem 1rem;display:flex;gap:.75rem;align-items:flex-start;transition:background var(--t);cursor:pointer}
+.indice-item:hover{background:rgba(255,255,255,.07)}
+.indice-num{font-family:var(--font-serif);font-size:1.6rem;font-weight:700;color:var(--naranja);line-height:1;min-width:2rem}
+.indice-seccion{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
+.indice-nombre{font-size:.88rem;font-weight:600;color:var(--blanco);line-height:1.3}
+
+.seccion{padding:4rem 0}
+.seccion-header{margin-bottom:2.5rem}
+.seccion-header h2{font-family:var(--font-serif);font-size:clamp(1.5rem,4vw,2.1rem);font-weight:700;color:var(--azul-division);line-height:1.25}
+
+/* 01 APERTURA */
+#apertura{background:linear-gradient(135deg,var(--azul-division) 0%,var(--azul-denim) 100%);color:var(--blanco);padding:4.5rem 0}
+.apertura-grid{display:grid;grid-template-columns:220px 1fr;gap:3rem;align-items:start}
+.apertura-foto-wrap{position:relative;flex-shrink:0}
+.apertura-foto-placeholder{width:100%;aspect-ratio:3/4;border-radius:var(--radio);background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,169,45,.12));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;border:2px dashed rgba(255,169,45,.3)}
+.apertura-foto-placeholder svg{opacity:.35}
+.apertura-foto-placeholder span{font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);text-align:center;padding:0 1rem}
+.apertura-foto-deco{position:absolute;top:-10px;left:-10px;width:100%;height:100%;border:2px solid rgba(255,169,45,.4);border-radius:var(--radio);pointer-events:none}
+.apertura-contenido .seccion-label{color:var(--dorado);opacity:.8}
+.apertura-contenido h2{font-family:var(--font-serif);font-size:clamp(1.5rem,3.5vw,2.1rem);font-weight:700;color:var(--blanco);line-height:1.2;margin-bottom:1.25rem}
+.apertura-contenido h2 em{font-style:italic;color:var(--dorado)}
+.apertura-lectura{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dorado);opacity:.7;margin-bottom:1.25rem;display:block}
+.apertura-cita{font-family:var(--font-serif);font-size:1.05rem;font-style:italic;color:rgba(255,255,255,.85);border-left:3px solid var(--naranja);padding-left:1.25rem;margin:1.5rem 0;line-height:1.65}
+.apertura-texto{font-size:.9rem;color:rgba(255,255,255,.80);line-height:1.9}
+.apertura-firma{margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.15)}
+.apertura-firma-nombre{font-weight:700;color:var(--blanco);font-size:1rem}
+.apertura-firma-cargo{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.2rem}
+
+/* 02 NOTICIAS */
+#noticias{background:var(--gris-claro);padding:4rem 0}
+.noticias-filtros{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:2.5rem}
+.filtro-btn{background:var(--blanco);border:1.5px solid var(--gris-medio);color:var(--gris-texto);font-family:var(--font-sans);font-size:.63rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:.38em 1em;border-radius:20px;cursor:pointer;transition:all var(--t);white-space:nowrap}
+.filtro-btn:hover{border-color:var(--azul-denim);color:var(--azul-division)}
+.filtro-btn.activo{background:var(--azul-division);border-color:var(--azul-division);color:var(--blanco)}
+
+/* Grid 2 columnas */
+.noticias-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+
+/* Tarjeta principal: ocupa las 2 columnas */
+.noticia-card--principal{grid-column:1 / -1}
+.noticia-card--principal .noticia-card-img{aspect-ratio:21/9}
+.noticia-card--principal .noticia-card-body{padding:1.75rem 2rem 2rem}
+.noticia-card--principal .noticia-card-body h3{font-size:1.45rem;line-height:1.28}
+.noticia-card--principal .noticia-card-body p{font-size:.9rem}
+.noticia-card--principal .nc-fecha{font-size:.72rem}
+.noticia-card--principal .leer-nota{font-size:.75rem}
+
+/* Tarjeta noticia: imagen arriba, texto abajo */
+.noticia-card{background:var(--blanco);border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra);display:flex;flex-direction:column;transition:transform var(--t),box-shadow var(--t)}
+.noticia-card:hover{transform:translateY(-4px);box-shadow:var(--sombra-fuerte)}
+.noticia-card-img{width:100%;aspect-ratio:16/9;overflow:hidden;flex-shrink:0;position:relative}
+.noticia-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.noticia-card:hover .noticia-card-img img{transform:scale(1.03)}
+.noticia-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem}
+.noticia-ph-icon{font-size:1.8rem;opacity:.35}
+.noticia-ph-label{font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,0,0,.28);text-align:center;padding:0 1rem}
+
+/* Placeholders de color */
+.ph-evangelismo   {background:linear-gradient(135deg,#f5dede,#ecc8c8)}
+.ph-administracion{background:linear-gradient(135deg,#d4dde8,#bfcede)}
+.ph-educacion     {background:linear-gradient(135deg,#d4e8da,#bfddcb)}
+.ph-jovenes       {background:linear-gradient(135deg,#e8d8f0,#d8c4e8)}
+.ph-servicio      {background:linear-gradient(135deg,#d4e8f5,#bfd8ee)}
+.ph-afam          {background:linear-gradient(135deg,#f5e4d4,#eed2b8)}
+.ph-mujer         {background:linear-gradient(135deg,#f5d4e8,#eebfd8)}
+.ph-publicaciones {background:linear-gradient(135deg,#d4f0ec,#bfe8e2)}
+.ph-secretaria    {background:linear-gradient(135deg,#d4f0ec,#bfe8e2)}
+.ph-libertad      {background:linear-gradient(135deg,#e2e6e8,#d2d8dc)}
+.ph-infantil      {background:linear-gradient(135deg,#fdecd4,#fad8aa)}
+.ph-recepcion     {background:linear-gradient(135deg,#d4f0f5,#bfe4ec)}
+
+/* Cuerpo tarjeta */
+.noticia-card-body{padding:1.35rem 1.4rem 1.5rem;flex:1;display:flex;flex-direction:column}
+.nc-fecha{font-size:.65rem;font-weight:600;letter-spacing:.05em;color:rgba(0,0,0,.35);margin-bottom:.5rem;display:block}
+.nc-tags{margin-bottom:.6rem;display:flex;flex-wrap:wrap;gap:.2rem}
+.nc-tags .tag{margin-bottom:0}
+.noticia-card-body h3{font-family:var(--font-serif);font-size:1.1rem;font-weight:700;color:var(--azul-division);line-height:1.35;margin-bottom:.75rem;flex:1}
+.noticia-card-body p{font-size:.83rem;line-height:1.75;color:var(--gris-texto);margin-bottom:1rem}
+.leer-nota{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--naranja);display:inline-flex;align-items:center;gap:.35rem;transition:gap var(--t);margin-top:auto}
+.leer-nota:hover{gap:.6rem}
+
+/* 03 HISTORIAS */
+#historias{background:var(--blanco)}
+.historia-unica{max-width:760px;margin:0 auto;background:var(--negro-suave);border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra-fuerte)}
+.historia-video-wrap{position:relative;aspect-ratio:16/9;background:#111;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.historia-video-placeholder{width:100%;height:100%;background:linear-gradient(135deg,#1a1a18,#2d2d2a);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.85rem}
+.historia-play-btn{width:64px;height:64px;border-radius:50%;border:2px solid rgba(255,255,255,.45);display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--blanco);transition:all var(--t);background:rgba(255,255,255,.1);cursor:pointer}
+.historia-unica:hover .historia-play-btn{background:var(--naranja);border-color:var(--naranja);transform:scale(1.08)}
+.historia-video-label{font-size:.6rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.historia-body{padding:2rem 2.25rem}
+.historia-body .tag{margin-bottom:.85rem}
+.historia-body h3{font-family:var(--font-serif);font-size:1.3rem;font-weight:700;color:var(--blanco);line-height:1.35;margin-bottom:.85rem}
+.historia-body p{font-size:.88rem;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:1rem}
+.historia-body .leer-nota{color:var(--dorado)}
+
+/* 04 NÚMEROS */
+#numeros{background:var(--azul-division);padding:4rem 0}
+#numeros .seccion-label{color:var(--dorado);opacity:.8}
+#numeros .divider{background:var(--naranja)}
+.numeros-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.08);border-radius:var(--radio);overflow:hidden;margin-bottom:2.5rem}
+.numero-item{background:rgba(255,255,255,.04);padding:2rem 1rem;text-align:center;transition:background var(--t)}
+.numero-item:hover{background:rgba(255,255,255,.08)}
+.numero-valor{font-family:var(--font-serif);font-size:clamp(2.2rem,5vw,3.2rem);font-weight:700;color:var(--dorado);line-height:1;display:block;margin-bottom:.35rem}
+.numero-icono{font-size:1.5rem;display:block;margin-bottom:.5rem}
+.numero-label{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.numero-desc{font-size:.72rem;color:rgba(255,255,255,.35);margin-top:.3rem}
+.progreso-titulo{font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem}
+.barra-item{margin-bottom:1.1rem}
+.barra-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.35rem}
+.barra-nombre{font-size:.85rem;font-weight:600;color:rgba(255,255,255,.8)}
+.barra-pct{font-family:var(--font-serif);font-size:.9rem;font-weight:700;color:var(--dorado)}
+.barra-track{height:6px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
+.barra-fill{height:100%;background:linear-gradient(90deg,var(--naranja),var(--dorado));border-radius:3px;width:0;transition:width 1.2s ease}
+
+/* 05 TEMA CENTRAL */
+#tema-central{background:var(--gris-claro);padding:4.5rem 0}
+.tema-hero{background:linear-gradient(rgba(0,30,70,.87),rgba(0,51,102,.77)),url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=1200&q=80') center/cover no-repeat;border-radius:var(--radio);padding:3.5rem 2.5rem;position:relative;overflow:hidden}
+.tema-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--naranja),var(--dorado))}
+.tema-hero-contenido{max-width:580px}
+.tema-hero h2{font-family:var(--font-serif);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;color:var(--blanco);line-height:1.2;margin-bottom:1rem}
+.tema-hero h2 em{color:var(--dorado);font-style:italic}
+.tema-hero-texto{font-size:1rem;color:rgba(255,255,255,.8);line-height:1.8;margin-bottom:1.5rem}
+.tema-versiculo{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:var(--radio);padding:1rem 1.25rem;font-family:var(--font-serif);font-style:italic;font-size:.95rem;color:rgba(255,255,255,.9);line-height:1.6}
+.tema-versiculo span{display:block;font-style:normal;font-family:var(--font-sans);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dorado);margin-top:.4rem}
+
+/* 06 MULTIMEDIA */
+#multimedia{background:var(--negro-suave);padding:4rem 0}
+#multimedia .seccion-header h2{color:var(--blanco)}
+#multimedia .seccion-label{color:var(--naranja);opacity:.9}
+#multimedia .divider{background:var(--naranja)}
+.multimedia-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.media-card{border-radius:var(--radio);overflow:hidden;position:relative;background:#111;aspect-ratio:16/9;cursor:pointer;box-shadow:var(--sombra-fuerte)}
+.media-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;background:linear-gradient(135deg,#1e2d3d,#0a1628)}
+.media-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1rem;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 60%)}
+.media-tipo{position:absolute;top:.75rem;left:.75rem}
+.media-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.5);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:all var(--t)}
+.media-card:hover .media-play{background:var(--naranja);border-color:var(--naranja);transform:translate(-50%,-50%) scale(1.1)}
+.media-titulo{font-family:var(--font-serif);font-size:.88rem;font-weight:700;color:var(--blanco);line-height:1.3}
+.redes-cta{margin-top:2.5rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radio);padding:2rem;text-align:center}
+.redes-cta h3{font-family:var(--font-serif);font-size:1.1rem;color:var(--blanco);margin-bottom:.4rem}
+.redes-cta p{font-size:.82rem;color:rgba(255,255,255,.45);margin-bottom:1.25rem}
+.redes-btns{display:flex;justify-content:center;gap:.75rem;flex-wrap:wrap}
+.red-btn{display:inline-flex;align-items:center;gap:.6rem;padding:.65rem 1.25rem;border-radius:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.8);font-size:.78rem;font-weight:600;letter-spacing:.04em;transition:all var(--t)}
+.red-btn:hover{color:#fff}
+.red-btn--ig:hover{background:rgba(225,48,108,.2);border-color:rgba(225,48,108,.5)}
+.red-btn--yt:hover{background:rgba(255,0,0,.2);border-color:rgba(255,0,0,.4)}
+.red-btn--fb:hover{background:rgba(24,119,242,.2);border-color:rgba(24,119,242,.5)}
+
+/* 07 AGENDA */
+#lo-que-viene{background:var(--blanco)}
+.agenda-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.agenda-titulo-mes{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--azul-ming);margin-bottom:.75rem;margin-top:1.5rem}
+.agenda-titulo-mes:first-child{margin-top:0}
+.eventos-lista{display:flex;flex-direction:column;gap:1px;background:var(--gris-medio);border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra)}
+.evento-item{background:var(--blanco);padding:1rem 1.25rem;display:grid;grid-template-columns:56px 1fr auto;align-items:center;gap:1rem;transition:background var(--t)}
+.evento-item:hover{background:var(--gris-claro)}
+.evento-fecha{text-align:center;background:var(--azul-division);border-radius:var(--radio);padding:.45rem .35rem;color:var(--blanco)}
+.evento-fecha-mes{font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dorado);line-height:1}
+.evento-fecha-dia{font-family:var(--font-serif);font-size:1.4rem;font-weight:700;line-height:1.1}
+.evento-info h4{font-size:.88rem;font-weight:700;color:var(--azul-division);margin-bottom:.1rem;line-height:1.3}
+.evento-info p{font-size:.72rem;color:var(--gris-texto);opacity:.7;margin-bottom:0;line-height:1.4}
+.evento-badge{font-size:.58rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.22em .6em;border-radius:2px;white-space:nowrap;background:var(--gris-claro);color:var(--azul-division);border:1px solid var(--gris-medio)}
+.agenda-calendario{background:var(--gris-claro);border-radius:var(--radio);padding:1.4rem;box-shadow:var(--sombra);margin-bottom:1rem}
+.cal-mes-header{font-family:var(--font-serif);font-size:1rem;font-weight:700;color:var(--azul-division);margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:2px solid var(--naranja)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;font-size:.63rem}
+.cal-dia-nombre{text-align:center;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:rgba(0,0,0,.35);padding:.4rem 0}
+.cal-dia{text-align:center;padding:.4rem .1rem;border-radius:3px;font-weight:600;color:var(--gris-texto);min-height:26px;display:flex;align-items:center;justify-content:center}
+.cal-dia.vacio{color:transparent;pointer-events:none}
+.cal-dia.evento{background:rgba(227,101,32,.14);color:var(--naranja);font-weight:700;cursor:pointer;border-radius:3px;position:relative}
+.cal-dia.evento::after{content:'';position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:4px;height:4px;background:var(--naranja);border-radius:50%}
+.cal-leyenda{display:flex;align-items:center;gap:.5rem;font-size:.62rem;color:rgba(0,0,0,.38);font-weight:600;margin-top:.6rem}
+.cal-leyenda-dot{width:12px;height:12px;background:rgba(227,101,32,.18);border-radius:2px;flex-shrink:0}
+
+/* 08 CIERRE */
+#cierre{background:linear-gradient(160deg,rgba(0,20,50,.95) 0%,rgba(0,51,102,.88) 100%),url('https://cdn2.picryl.com/photo/2015/09/06/skyline-of-santiago-chile-d2bea5-1024.jpg') center/cover no-repeat;padding:5rem 0;text-align:center;color:var(--blanco)}
+.cierre-inner{max-width:620px;margin:0 auto}
+.cierre-inner h2{font-family:var(--font-serif);font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;color:var(--blanco);line-height:1.2;margin-bottom:1rem}
+.cierre-inner h2 em{color:var(--dorado);font-style:italic}
+.cierre-versiculo{font-family:var(--font-serif);font-size:1.1rem;font-style:italic;color:rgba(255,255,255,.85);line-height:1.7;margin-bottom:.5rem}
+.cierre-ref{font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--dorado);margin-bottom:2rem}
+.cierre-texto{font-size:.95rem;color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:2rem}
+.cierre-firma{border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+
+footer{background:#0f1820;color:rgba(255,255,255,.4);text-align:center;padding:2rem 1.25rem;font-size:.75rem;letter-spacing:.05em;line-height:1.8}
+footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font-weight:700;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase}
+
+#back-to-top{position:fixed;bottom:1.5rem;right:1.5rem;width:44px;height:44px;background:var(--naranja);color:var(--blanco);border:none;border-radius:50%;font-size:1.1rem;cursor:pointer;box-shadow:0 4px 16px rgba(227,101,32,.4);transition:all var(--t);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;z-index:900}
+#back-to-top.visible{opacity:1;pointer-events:all}
+#back-to-top:hover{background:#c45510;transform:translateY(-2px)}
+
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:900px){.noticias-grid{grid-template-columns:1fr}.noticia-card--principal{grid-column:auto}.noticia-card--principal .noticia-card-img{aspect-ratio:16/9}.noticia-card--principal .noticia-card-body{padding:1.35rem 1.4rem 1.5rem}.noticia-card--principal .noticia-card-body h3{font-size:1.1rem}}
+@media(max-width:768px){
+  html{font-size:17px}
+  .nav-links{display:none}
+  .nav-hamburger{display:flex}
+  .apertura-grid{grid-template-columns:1fr;gap:1.5rem}
+  .apertura-foto-wrap{max-width:140px;margin:0 auto}
+  .numeros-grid{grid-template-columns:repeat(2,1fr)}
+  .multimedia-grid{grid-template-columns:1fr}
+  .agenda-wrap{grid-template-columns:1fr}
+  .evento-item{grid-template-columns:52px 1fr}
+  .evento-badge{display:none}
+  .indice-grid{grid-template-columns:1fr 1fr}
+  .tema-hero{padding:2rem 1.5rem}
+  .historia-body{padding:1.5rem 1.25rem}
+}
+@media(max-width:480px){
+  html{font-size:16px}
+  .indice-grid{grid-template-columns:1fr}
+  .portada-ctas{flex-direction:column}
+  .btn{width:100%;justify-content:center}
+  .noticias-filtros{gap:.35rem}
+  .numeros-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo">Revista <span>AMCh</span></div>
+    <ul class="nav-links">
+      <li><a href="#apertura">Apertura</a></li>
+      <li><a href="#noticias">Noticias</a></li>
+      <li><a href="#historias">Historias</a></li>
+      <li><a href="#lo-que-viene">Agenda</a></li>
+      <li><a href="#multimedia">Redes</a></li>
+      <li><a href="#indice" class="nav-btn-indice">Índice</a></li>
+    </ul>
+    <button class="nav-hamburger" id="menuBtn" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="#apertura" class="nav-ml">01 · Mensaje de Apertura</a>
+  <a href="#noticias" class="nav-ml">02 · Noticias</a>
+  <a href="#historias" class="nav-ml">03 · Historias de Vida</a>
+  <a href="#lo-que-viene" class="nav-ml">04 · Agenda</a>
+  <a href="#multimedia" class="nav-ml">05 · Redes Sociales</a>
+  <a href="#cierre" class="nav-ml">06 · Cierre Espiritual</a>
+</div>
+
+<!-- PORTADA -->
+<section id="portada">
+  <div class="portada-deco"></div>
+  <div class="container">
+    <div class="portada-inner">
+      <div class="portada-edicion">Edición N°1 · Enero–Abril 2026</div>
+      <h1 class="portada-titulo">Integrados<br><em>en la Misión</em></h1>
+      <p class="portada-subtitulo">La revista oficial de la Asociación Metropolitana Adventista de Chile. Noticias, testimonios e inspiración para toda la comunidad.</p>
+      <div class="portada-ctas">
+        <a href="#apertura" class="btn btn--primario">▶ Comenzar a leer</a>
+        <a href="#indice" class="btn btn--secundario">☰ Ver índice</a>
+      </div>
+    </div>
+  </div>
+  <div class="portada-linea"></div>
+  <div class="portada-scroll"><div class="portada-scroll-line"></div>scroll</div>
+</section>
+
+<!-- ÍNDICE -->
+<section id="indice">
+  <div class="container">
+    <p class="seccion-label" style="color:rgba(255,255,255,.4)">Contenido de esta edición</p>
+    <h2 class="indice-titulo">Índice</h2>
+    <p class="indice-subtitulo">Enero · Febrero · Marzo · Abril 2026</p>
+    <div class="indice-grid">
+  <a href="#apertura" class="indice-item"><div class="indice-num">01</div><div><div class="indice-seccion">Editorial</div><div class="indice-nombre">Mensaje de Apertura</div></div></a>
+  <a href="#noticias" class="indice-item"><div class="indice-num">02</div><div><div class="indice-seccion">Noticias</div><div class="indice-nombre">19 noticias del trimestre</div></div></a>
+  <a href="#historias" class="indice-item"><div class="indice-num">03</div><div><div class="indice-seccion">Testimonios</div><div class="indice-nombre">Historias de Vida</div></div></a>
+  <a href="#lo-que-viene" class="indice-item"><div class="indice-num">04</div><div><div class="indice-seccion">Agenda</div><div class="indice-nombre">Próximas Actividades</div></div></a>
+  <a href="#cierre" class="indice-item"><div class="indice-num">05</div><div><div class="indice-seccion">Reflexión</div><div class="indice-nombre">Cierre Espiritual</div></div></a>
+</div>
+  </div>
+</section>
+
+<!-- 01 APERTURA -->
+<section id="apertura">
+  <div class="container">
+    <div class="apertura-grid fade-in">
+      <div class="apertura-foto-wrap">
+        <!-- REEMPLAZAR: <img src="assets/img/pr-jose-ramirez.jpg" alt="Pr. José Ramírez" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:4px;filter:grayscale(15%)"> -->
+        <div class="apertura-foto-placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          <span>Foto<br>Pr. José Ramírez</span>
+        </div>
+        <div class="apertura-foto-deco"></div>
+      </div>
+      <div class="apertura-contenido">
+        <p class="seccion-label">01 · Mensaje de Apertura</p>
+        <div class="divider divider--blanco"></div>
+        <span class="apertura-lectura">Lectura: Marcos 2:1–12</span>
+        <h2><em>Mi Iglesia</em></h2>
+        <p class="apertura-texto">Sin duda existen varias definiciones de iglesia. En términos generales y en un sentido más teórico, se presenta como un conjunto de creyentes unidos bajo un mismo concepto de Dios y de su revelación.</p>
+        <p class="apertura-texto">Pero ¿qué es "Mi Iglesia"? Algunos participan en iglesias grandes, con mucha feligresía y estructuras amplias; otros, en pequeñas capillas con grupos reducidos de miembros. No podríamos definir "Mi Iglesia" simplemente por sus dimensiones estructurales ni por la cantidad de miembros, sino más bien por los propósitos y objetivos por los cuales sus integrantes se unen.</p>
+        <p class="apertura-texto">Quisiera ver el relato de Marcos 2:1–12 como "Mi Iglesia". Sí, un grupo de cuatro personas que se unen bajo un mismo objetivo, que diseñan una estrategia y donde cada uno cumple su función dentro del plan. El objetivo era llevar a una persona a Jesús; en este caso, a su amigo, quien estaba enfermo e imposibilitado de hacerlo por sus propios medios.</p>
+        <p class="apertura-texto">Por lo tanto, para formar "Mi Iglesia" debo, en primer lugar, reunir un pequeño grupo de personas que crean que Jesús es capaz de solucionar los problemas, incapacidades y necesidades más profundas del ser humano. En realidad, deben creer que Jesús puede resolver el verdadero problema de la humanidad: el pecado.</p>
+        <p class="apertura-texto">"Mi Iglesia" debe tener una estrategia para enfrentar los desafíos y alcanzar el objetivo. Debe avanzar y superar el obstáculo de la multitud que impide el acceso, contar con los recursos necesarios para bajar al amigo desde el techo y permitir que se encuentre con Jesús. Esa es "Mi Iglesia". Y mi Biblia es un elemento indispensable en ese proceso.</p>
+        <p class="apertura-texto">Debo tener una función en "Mi Iglesia"; debo saber exactamente cuál es mi responsabilidad. Quizás deba llevar la cuerda adecuada, despejar el techo para descender al amigo o dirigir el plan que se desarrollará. Independientemente de la responsabilidad que reciba, debo tener claro que en "Mi Iglesia" no existen funciones más importantes que otras. Lo esencial es cumplir fielmente la función que me corresponde.</p>
+        <blockquote class="apertura-cita">El trabajo en equipo, la estrategia y un objetivo común condujeron al éxito. Pero lo más asombroso no fue solo llevar al amigo hasta donde estaba Jesús —eso era la parte humana, que requería esfuerzo y disposición—, sino que, al hacerlo, ocurrió un milagro.</blockquote>
+        <p class="apertura-texto">En ese momento ellos no podían intervenir; solo podían creer.</p>
+        <p class="apertura-texto">Así es "Mi Iglesia".<br>Y así espero que sea tu iglesia.</p>
+        <div class="apertura-firma">
+          <div class="apertura-firma-nombre">Pr. José Ramírez</div>
+          <div class="apertura-firma-cargo">Presidente — Asociación Metropolitana Adventista de Chile</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 NOTICIAS -->
+<section id="noticias" class="seccion">
+  <div class="container">
+    <div class="seccion-header fade-in">
+      <p class="seccion-label">02 · Noticias</p>
+      <div class="divider"></div>
+      <h2>Lo que vivimos este trimestre</h2>
+    </div>
+
+    <!-- Filtros -->
+    <div class="noticias-filtros fade-in">
+      <button class="filtro-btn activo" data-filtro="todos">Todas (19)</button>
+      <button class="filtro-btn" data-filtro="evangelismo">Evangelismo</button>
+      <button class="filtro-btn" data-filtro="administracion">Administración</button>
+      <button class="filtro-btn" data-filtro="educacion">Educación</button>
+      <button class="filtro-btn" data-filtro="jovenes">Jóvenes</button>
+      <button class="filtro-btn" data-filtro="servicio">Serv. Voluntario</button>
+      <button class="filtro-btn" data-filtro="secretaria">Secretaría</button>
+      <button class="filtro-btn" data-filtro="publicaciones">Publicaciones</button>
+      <button class="filtro-btn" data-filtro="afam">AFAM</button>
+      <button class="filtro-btn" data-filtro="infantil">Min. Infantil</button>
+      <button class="filtro-btn" data-filtro="mujer">Min. de la Mujer</button>
+      <button class="filtro-btn" data-filtro="libertad">Libertad Religiosa</button>
+    </div>
+
+    <!-- 19 tarjetas en orden del documento -->
+    <div class="noticias-grid fade-in" id="noticias-grid">
+
+      <!-- 01 -->
+      <a href="noticias/01-bautismos-2026.html" class="noticia-card noticia-card--principal" data-cats="evangelismo">
+        <div class="noticia-card-img"><div class="noticia-ph ph-evangelismo"><span class="noticia-ph-icon">✝</span><span class="noticia-ph-label">Imagen portada · Bautismos Enero 2026</span></div></div>
+        <div class="noticia-card-body">
+          <span class="nc-fecha">Enero de 2026</span>
+          <div class="nc-tags"><span class="tag tag--evangelismo">Evangelismo</span></div>
+          <h3>Primicias 2026: Bautismos marcan el inicio del año en la Asociación Metropolitana de Chile</h3>
+          <p>Con gozo y gratitud, la Asociación Metropolitana celebró las primeras decisiones de fe del año. Desde enero, iglesias de toda la asociación reportaron nuevos miembros que sellaron su compromiso con Dios a través del bautismo.</p>
+          <span class="leer-nota">Leer nota completa →</span>
+        </div>
+      </a>
+
+      <!-- 02 -->
+      <a href="noticias/02-voluntaria-argentina.html" class="noticia-card" data-cats="servicio">
+        <div class="noticia-card-img"><div class="noticia-ph ph-servicio"><span class="noticia-ph-icon">✈️</span><span class="noticia-ph-label">Imagen portada · Voluntaria Argentina</span></div></div>
+        <div class="noticia-card-body">
+          <span class="nc-fecha">16 de febrero de 2026</span>
+          <div class="nc-tags"><span class="tag tag--servicio">Serv. Voluntario</span></div>
+          <h3>Voluntaria inicia nueva etapa misionera en Argentina</h3>
+          <p>Una joven de la Asociación Metropolitana emprendió su misión voluntaria al país vecino, respondiendo al llamado del servicio adventista internacional.</p>
+          <span class="leer-nota">Leer nota completa →</span>
+        </div>
+      </a>
+
+      <!-- 03 -->
+      <a href="noticias/03-asamblea-ministerial-2026.html" class="noticia-card" data-cats="administracion">
+        <div class="noticia-card-img"><div class="noticia-ph ph-administracion"><span class="noticia-ph-icon">🤝</span><span class="noticia-ph-label">Imagen portada · Asamblea Ministerial 2026</span></div></div>
+        <div class="noticia-card-body">
+          <span class="nc-fecha">17 de febrero de 2026</span>
+          <div class="nc-tags"><span class="tag tag--administracion">Administración</span></div>
+          <h3>Asamblea Ministerial 2026 proyecta la misión y da la bienvenida a nuevos líderes</h3>
+          <p>La reunión marcó el inicio del año de trabajo ministerial con el ingreso oficial de nuevos pastores y el trazado de metas para la Asociación Metropolitana.</p>
+          <span class="leer-nota">Leer nota completa →</span>
+        </div>
+      </a>
+
+      <!-- 04 -->
+      <a href="noticias/04-aventuras-desierto.html" class="noticia-card" data-cats="infantil">
+        <div class="noticia-card-img"><div class="noticia-ph ph-infantil"><span class="noticia-ph-icon">⛺</span><span class="noticia-ph-label">Imagen portada · Aventuras en el Desierto</span></div></div>
+        <div class="noticia-card-body">
+          <span class="nc-fecha">Febrero de 2026</span>
+          <div class="nc-tags"><span class="tag tag--infantil">Ministerio Infantil</span></div>
+          <h3>Aventuras en el Desierto: una experiencia que fortalece la fe de las nuevas generaciones</h3>
+          <p>Niños y jóvenes vivieron días de convivencia, fe y aventura en una experiencia pensada para conectarlos profundamente con Dios y con la naturaleza.</p>
+          <span class="leer-nota">Leer nota completa →</span>
+        </div>
+      </a>
+
+      <!-- 05 -->
+      <a href="noticias/05-capacitacion-secretarias.html" class="noticia-card" data-cats="secretaria">
+        <div class="noticia-card-img"><div class="noticia-ph ph-secretaria"><span class="noticia-ph-icon">📁</span><span class="noticia-ph-label">Imagen portada · Capacitación Secretarías</span></div></div>
+        <div class="noticia-card-body">
+          <span class="nc-fecha">21 de febrero de 2026</span>
+          <div class="nc-tags"><span class="tag tag--secretaria">Secretaría</span></div>
+          <h3>Capacitación a secretarías fortalece la gestión y el servicio en las iglesias</h3>
+          <p>Un espacio de formación práctica para quienes sostienen la administración de las iglesias locales, con herramientas para mejorar la gestión desde el servicio.</p>
+          <span class="leer-nota">Leer nota completa →</span>
+        </div>
+      </a>
+
+      <!-- 06 -->
+      <a href="noticias/06-encuentro-publicaciones.html" class="noticia-card" data-cats="publicaciones">
+        <div class="noticia-card-img"><div class="noticia-ph ph-publicaciones"><span class="noticia-ph-icon">📚</span><span class="noticia-ph-label">Imagen portada · Encuentro Publicaciones</span></div></div>
+        <div class="noticia-card-body">
+          <span class="nc-fecha">21 de febrero de 2026</span>
+          <div class="nc-tags"><span class="tag tag--publicaciones">Publicaciones</span></div>
+          <h3>Encuentro de Publicaciones fortalece la misión a través de la literatura</h3>
+          <p>El encuentro reunió a colaboradores del ministerio de publicaciones para proyectar la distribución de literatura evangelística durante el año.</p>
+          <span class="leer-nota">Leer nota completa →</span>
+        </div>
+      </a>
+
+      <!-- 07 -->
+      <a href="noticias/07-encuentro-afam.html" class="noticia-card" data-cats="afam">
+        <div class="noticia-card-img"><div class="noticia-ph ph-afam"><span class="noticia-ph-icon">🙏</span><span class="noticia-ph-label">Imagen portada · Encuentro AFAM</span></div></div>
+        <div class="noticia-card-body">
+          <span class="nc-fecha">22 de febrero de 2026</span>
+          <div class="nc-tags"><span class="tag tag--afam">Ministerio AFAM</span></div>
+          <h3>Encuentro AFAM fortalece el acompañamiento y la unidad en el ministerio pastoral</h3>
+          <p>Las esposas de pastores se reunieron en un espacio de comunión, reflexión y apoyo mutuo, renovando el compromiso conjunto con el ministerio pastoral.</p>
+          <span class="leer-nota">Leer nota completa →</span>
+        </div>
+      </a>
+
+      <!-- 08 — doble etiqueta -->
+      <a href="noticias/08-capacitacion-ministerio-infantil.html" class="noticia-card" data-cats="infantil recepcion">
+        <div class="noticia-card-img"><div class="noticia-ph ph-infantil"><span class="noticia-ph-icon">🎨</span><span class="noticia-ph-label">Imagen portada · Ministerio Infantil Talagante</span></div></div>
+        <div class="noticia-card-body">
+          <span class="nc-fecha">21 de febrero de 2026</span>
+          <div class="nc-tags">
+            <span class="tag tag--infantil">Ministerio Infantil</span>
+            <span class="tag tag--recepcion">Min. Recepción</span>
+          </div>
+          <h3>Capacitación fortalece el trabajo del Ministerio Infantil y Recepción en Talagante</h3>
+          <p>Líderes del ministerio infantil de la zona Talagante recibieron herramientas prácticas para el trabajo con niños y para el ministerio de recepción en sus iglesias.</p>
+          <span class="leer-nota">Leer nota completa →</span>
+        </div>
+      </a>
+
+      <!-- 09 -->
+      <a href="noticias/09-asamblea-educativa.html" class="noticia-card" data-cats="educacion">
+        <div class="noticia-card-img"><div class="noticia-ph ph-educacion"><span class="noticia-ph-icon">🏫</span><span class="noticia-ph-label">Imagen portada · Asamblea Educativa</span></div></div>
+        <div class="noticia-card-body">
+          <span class="nc-fecha">2 de marzo de 2026</span>
+          <div class="nc-tags"><span class="tag tag--educacion">Educación</span></div>
+          <h3>Asamblea Educativa fortalece la identidad y el compromiso del equipo escolar</h3>
+          <p>Docentes y directivos de los colegios de la Fundación Westphal renovaron su compromiso con la educación adventista y proyectaron el año escolar.</p>
+          <span class="leer-nota">Leer nota completa →</span>
+        </div>
+      </a>
+
+      <!-- 10 -->
+      <a href="noticias/10-simce-2025.html" class="noticia-card" data-cats="educacion">
+        <div class="noticia-card-img"><div class="noticia-ph ph-educacion"><span class="noticia-ph-icon">📊</span><span class="noticia-ph-label">Imagen portada · Resultados SIMCE</span></div></div>
+        <div class="noticia-card-body">
+          <span class="nc-fecha">12 de marzo de 2026</span>
+          <div class="nc-tags"><span class="tag tag--educacion">Educación</span></div>
+          <h3>Resultados SIMCE 2025 confirman avances en los colegios de la Fundación Westphal</h3>
+          <p>Los resultados posicionan a los colegios adventistas entre los de mejor rendimiento en sus comunas, superando el promedio regional y nacional.</p>
+          <span class="leer-nota">Leer nota completa →</span>
+        </div>
+      </a>
+
+      <!-- 11 -->
+      <a href="noticias/11-colegios-excelencia.html" class="noticia-card" data-cats="educacion">
+        <div class="noticia-card-img"><div class="noticia-ph ph-educacion"><span class="noticia-ph-icon">🏆</span><span class="noticia-ph-label">Imagen portada · Reconocimiento Excelencia</span></div></div>
+        <div class="noticia-card-body">
+          <span class="nc-fecha">12 de marzo de 2026</span>
+          <div class="nc-tags"><span class="tag tag--educacion">Educación</span></div>
+          <h3>Dos colegios de la Fundación Westphal reciben reconocimiento de Excelencia Académica</h3>
+          <p>El Ministerio de Educación distinguió a dos establecimientos adventistas por sus resultados académicos y su proyecto educativo inclusivo de largo aliento.</p>
+          <span class="leer-nota">Leer nota completa →</span>
+        </div>
+      </a>
+
+      <!-- 12 -->
+      <a href="noticias/12-dia-joven-adventista.html" class="noticia-card" data-cats="jovenes">
+        <div class="noticia-card-img"><div class="noticia-ph ph-jovenes"><span class="noticia-ph-icon">🙌</span><span class="noticia-ph-label">Imagen portada · Día del Joven Adventista</span></div></div>
+        <div class="noticia-card-body">
+          <span class="nc-fecha">21 de marzo de 2026</span>
+          <div class="nc-tags"><span class="tag tag--jovenes">Jóvenes</span></div>
+          <h3>Más de 1.200 jóvenes se movilizan con propósito en el Día del Joven Adventista</h3>
+          <p>En una jornada de servicio, oración y testimonio, la juventud adventista de la asociación demostró que la misión también es cosa de jóvenes comprometidos.</p>
+          <span class="leer-nota">Leer nota completa →</span>
+        </div>
+      </a>
+
+      <!-- 13 -->
+      <a href="noticias/13-ruta-evangelio-vive.html" class="noticia-card" data-cats="mujer">
+        <div class="noticia-card-img"><div class="noticia-ph ph-mujer"><span class="noticia-ph-icon">🚶</span><span class="noticia-ph-label">Imagen portada · Ruta Evangelio Vive</span></div></div>
+        <div class="noticia-card-body">
+          <span class="nc-fecha">11 de abril de 2026</span>
+          <div class="nc-tags"><span class="tag tag--mujer">Min. de la Mujer</span></div>
+          <h3>Ruta del Evangelio Vive: una invitación a conectar y compartir esperanza</h3>
+          <p>Una iniciativa del Ministerio de la Mujer que invita a la comunidad a recorrer la ciudad compartiendo esperanza de forma creativa y cercana.</p>
+          <span class="leer-nota">Leer nota completa →</span>
+        </div>
+      </a>
+
+      <!-- 14 -->
+      <a href="noticias/14-escuelas-mision-inicio.html" class="noticia-card" data-cats="servicio">
+        <div class="noticia-card-img"><div class="noticia-ph ph-servicio"><span class="noticia-ph-icon">🎒</span><span class="noticia-ph-label">Imagen portada · Escuelas de Misión</span></div></div>
+        <div class="noticia-card-body">
+          <span class="nc-fecha">11 de abril de 2026</span>
+          <div class="nc-tags"><span class="tag tag--servicio">Serv. Voluntario</span></div>
+          <h3>Asociación Metropolitana da inicio a sus Escuelas de Misión</h3>
+          <p>Con gran convocatoria, arrancaron las Escuelas de Misión: espacios de formación para quienes desean servir como voluntarios adventistas en Chile y el mundo.</p>
+          <span class="leer-nota">Leer nota completa →</span>
+        </div>
+      </a>
+
+      <!-- 15 -->
+      <a href="noticias/15-escuelas-misioneras.html" class="noticia-card" data-cats="evangelismo">
+        <div class="noticia-card-img"><div class="noticia-ph ph-evangelismo"><span class="noticia-ph-icon">📢</span><span class="noticia-ph-label">Imagen portada · Escuelas Misioneras</span></div></div>
+        <div class="noticia-card-body">
+          <span class="nc-fecha">25 de abril de 2026</span>
+          <div class="nc-tags"><span class="tag tag--evangelismo">Evangelismo</span></div>
+          <h3>Escuelas Misioneras: una iniciativa que busca movilizar a toda la iglesia</h3>
+          <p>La propuesta busca que cada miembro sea un misionero activo, con herramientas y formación concreta para compartir el Evangelio en su entorno cotidiano.</p>
+          <span class="leer-nota">Leer nota completa →</span>
+        </div>
+      </a>
+
+      <!-- 16 -->
+      <a href="noticias/16-asamblea-ministerial-abril.html" class="noticia-card" data-cats="administracion">
+        <div class="noticia-card-img"><div class="noticia-ph ph-administracion"><span class="noticia-ph-icon">📋</span><span class="noticia-ph-label">Imagen portada · Asamblea Ministerial Abril</span></div></div>
+        <div class="noticia-card-body">
+          <span class="nc-fecha">7 de abril de 2026</span>
+          <div class="nc-tags"><span class="tag tag--administracion">Administración</span></div>
+          <h3>Asamblea Ministerial fortalece la unidad y proyección del trabajo pastoral</h3>
+          <p>La asamblea de abril consolidó los avances del primer trimestre y trazó el rumbo para el segundo semestre, con foco en la misión integral de la asociación.</p>
+          <span class="leer-nota">Leer nota completa →</span>
+        </div>
+      </a>
+
+      <!-- 17 -->
+      <a href="noticias/17-dialogo-autoridad-regional.html" class="noticia-card" data-cats="libertad">
+        <div class="noticia-card-img"><div class="noticia-ph ph-libertad"><span class="noticia-ph-icon">🤝</span><span class="noticia-ph-label">Imagen portada · Diálogo Autoridad Regional</span></div></div>
+        <div class="noticia-card-body">
+          <span class="nc-fecha">22 de abril de 2026</span>
+          <div class="nc-tags"><span class="tag tag--libertad">Libertad Religiosa</span></div>
+          <h3>Diálogo y colaboración: Iglesia Adventista se reúne con autoridad regional</h3>
+          <p>Un encuentro que abre puertas para la colaboración entre la iglesia y las autoridades civiles en beneficio de la comunidad del territorio metropolitano.</p>
+          <span class="leer-nota">Leer nota completa →</span>
+        </div>
+      </a>
+
+      <!-- 18 -->
+      <a href="noticias/18-saludo-carabineros.html" class="noticia-card" data-cats="libertad">
+        <div class="noticia-card-img"><div class="noticia-ph ph-libertad"><span class="noticia-ph-icon">🚔</span><span class="noticia-ph-label">Imagen portada · Aniversario Carabineros</span></div></div>
+        <div class="noticia-card-body">
+          <span class="nc-fecha">27 de abril de 2026</span>
+          <div class="nc-tags"><span class="tag tag--libertad">Libertad Religiosa</span></div>
+          <h3>Iglesia Adventista saluda a Carabineros en su 99° aniversario</h3>
+          <p>Como gesto de respeto y valoración a quienes sirven a la comunidad, la Iglesia Adventista participó con distinción en los actos del 99° aniversario de Carabineros de Chile.</p>
+          <span class="leer-nota">Leer nota completa →</span>
+        </div>
+      </a>
+
+      <!-- 19 -->
+      <a href="noticias/19-campo-escuela-lideres.html" class="noticia-card" data-cats="jovenes">
+        <div class="noticia-card-img"><div class="noticia-ph ph-jovenes"><span class="noticia-ph-icon">🏔️</span><span class="noticia-ph-label">Imagen portada · Campo Escuela de Líderes</span></div></div>
+        <div class="noticia-card-body">
+          <span class="nc-fecha">6, 7 y 8 de marzo de 2026</span>
+          <div class="nc-tags"><span class="tag tag--jovenes">Jóvenes</span></div>
+          <h3>Campo Escuela de Líderes reúne a la juventud en torno a la misión</h3>
+          <p>Durante tres días, líderes jóvenes fueron desafiados a reafirmar su identidad en Cristo y renovar su compromiso con la misión en el Cajón del Maipo.</p>
+          <span class="leer-nota">Leer nota completa →</span>
+        </div>
+      </a> 
+
+    </div><!-- /noticias-grid -->
+  </div>
+</section>
+
+<!-- 03 HISTORIAS -->
+<section id="historias" class="seccion">
+  <div class="container">
+    <div class="seccion-header fade-in">
+      <p class="seccion-label">03 · Testimonios</p>
+      <div class="divider"></div>
+      <h2>Historias de vida</h2>
+    </div>
+    <div class="historia-unica fade-in">
+      <a href="testimonios/jesus-alberto-montilla.html" class="historia-video-wrap" style="display:block;cursor:pointer;position:relative;overflow:hidden">
+  <img src="assets/img/testimonios/testimonio-jesus-alberto-montilla-portada.png"
+       alt="Testimonio Jesús Alberto Montilla"
+       style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease">
+  <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55),transparent 55%);display:flex;align-items:center;justify-content:center">
+    <div style="width:56px;height:56px;border-radius:50%;border:2px solid rgba(255,255,255,.6);background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:white;transition:all .25s ease">▶</div>
+  </div>
+</a>
+      <div class="historia-body">
+        <span class="tag">Testimonio</span>
+        <h3>Un tumor, una cirugía y un bautismo: la historia de Jesús Alberto Montilla</h3>
+        <p>Una historia de fe que desafía los límites de lo humanamente posible. En el momento más oscuro de su vida, Jesús Alberto encontró la luz que no esperaba.</p>
+        <a href="testimonios/jesus-alberto-montilla.html" class="leer-nota">Leer testimonio completo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REDES SOCIALES -->
+<div id="multimedia" style="background:var(--negro-suave);padding:3rem 0">
+  <div class="container">
+    <div class="redes-cta fade-in">
+      <h3>Síguenos y comparte la misión</h3>
+      <p>Únete a nuestra comunidad digital y mantente conectado con todo lo que Dios hace en la Asociación Metropolitana</p>
+      <div class="redes-btns">
+        <a href="https://www.instagram.com/iasdmetro/" target="_blank" rel="noopener" class="red-btn red-btn--ig">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          @iasdmetro
+        </a>
+        <a href="https://www.youtube.com/@IASDMetro" target="_blank" rel="noopener" class="red-btn red-btn--yt">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+          @IASDMetro
+        </a>
+        <a href="https://www.facebook.com/IASDMetro" target="_blank" rel="noopener" class="red-btn red-btn--fb">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          @IASDMetro
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 07 AGENDA -->
+<section id="lo-que-viene" class="seccion">
+  <div class="container">
+    <div class="seccion-header fade-in">
+      <p class="seccion-label">07 · Agenda</p>
+      <div class="divider"></div>
+      <h2>Calendario AMCh — Mayo a Diciembre 2026</h2>
+    </div>
+
+    <div class="fade-in agenda-wrap">
+
+      <!-- COLUMNA IZQUIERDA: lista de eventos -->
+      <div>
+
+        <!-- MAYO -->
+        <p class="agenda-titulo-mes">Mayo 2026 · Mes de la Mayordomía</p>
+        <div class="eventos-lista">
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">MAY</div><div class="evento-fecha-dia">02</div></div>
+            <div class="evento-info"><h4>Lanzamiento Pulso Joven</h4><p>Actividades AMCh</p></div>
+            <span class="evento-badge">Jóvenes</span>
+          </div>
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">MAY</div><div class="evento-fecha-dia">16</div></div>
+            <div class="evento-info"><h4>Sábado del Niño · Día Mundial del Aventurero</h4><p>Iglesia local</p></div>
+            <span class="evento-badge">Infantil</span>
+          </div>
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">MAY</div><div class="evento-fecha-dia">23</div></div>
+            <div class="evento-info"><h4>Semana de Mayordomía</h4><p>Actividades AMCh · 23 al 30 de mayo</p></div>
+            <span class="evento-badge">Espiritual</span>
+          </div>
+        </div>
+
+        <!-- JUNIO -->
+        <p class="agenda-titulo-mes">Junio 2026</p>
+        <div class="eventos-lista">
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">JUN</div><div class="evento-fecha-dia">06</div></div>
+            <div class="evento-info"><h4>Sábado Misionero de la Mujer Adventista Zonal</h4><p>Iglesia local</p></div>
+            <span class="evento-badge">Ministerio</span>
+          </div>
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">JUN</div><div class="evento-fecha-dia">13</div></div>
+            <div class="evento-info"><h4>Reencuentro Comunidad Venezolana</h4><p>Actividades AMCh</p></div>
+            <span class="evento-badge">Comunidad</span>
+          </div>
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">JUN</div><div class="evento-fecha-dia">20</div></div>
+            <div class="evento-info"><h4>Encuentro Ancianato y Esposas Distrital</h4><p>Actividades AMCh</p></div>
+            <span class="evento-badge">Pastoral</span>
+          </div>
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">JUN</div><div class="evento-fecha-dia">27</div></div>
+            <div class="evento-info"><h4>Día del Anciano · Encuentro Universitarios Adventistas</h4><p>Iglesia local · Actividades AMCh</p></div>
+            <span class="evento-badge">Comunidad</span>
+          </div>
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">JUN</div><div class="evento-fecha-dia">28</div></div>
+            <div class="evento-info"><h4>Pre Trimestrales Distritales</h4><p>Actividades AMCh</p></div>
+            <span class="evento-badge">Administración</span>
+          </div>
+        </div>
+
+        <!-- JULIO -->
+        <p class="agenda-titulo-mes">Julio 2026 · ECV / Evangelismo Joven</p>
+        <div class="eventos-lista">
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">JUL</div><div class="evento-fecha-dia">04</div></div>
+            <div class="evento-info"><h4>Encuentro Coordinadores NT y Centros de Influencia</h4><p>Actividades AMCh</p></div>
+            <span class="evento-badge">Misión</span>
+          </div>
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">JUL</div><div class="evento-fecha-dia">11</div></div>
+            <div class="evento-info"><h4>Día del Colportor · Sermón de Colportaje</h4><p>Iglesia local · Actividades AMCh</p></div>
+            <span class="evento-badge">Publicaciones</span>
+          </div>
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">JUL</div><div class="evento-fecha-dia">18</div></div>
+            <div class="evento-info"><h4>Semana Evangelismo Joven · Campaña de Invierno</h4><p>Actividades AMCh · 18 al 25 de julio</p></div>
+            <span class="evento-badge">Evangelismo</span>
+          </div>
+        </div>
+
+        <!-- AGOSTO -->
+        <p class="agenda-titulo-mes">Agosto 2026</p>
+        <div class="eventos-lista">
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">AGO</div><div class="evento-fecha-dia">08</div></div>
+            <div class="evento-info"><h4>MRNT Workshops</h4><p>Actividades AMCh</p></div>
+            <span class="evento-badge">Capacitación</span>
+          </div>
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">AGO</div><div class="evento-fecha-dia">15</div></div>
+            <div class="evento-info"><h4>Encuentro de Coordinadores de Publicaciones</h4><p>Actividades AMCh</p></div>
+            <span class="evento-badge">Publicaciones</span>
+          </div>
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">AGO</div><div class="evento-fecha-dia">21</div></div>
+            <div class="evento-info"><h4>Evangelismo Radio Mundial Adventista</h4><p>Actividades AMCh · 21 al 29 de agosto</p></div>
+            <span class="evento-badge">Evangelismo</span>
+          </div>
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">AGO</div><div class="evento-fecha-dia">22</div></div>
+            <div class="evento-info"><h4>Proyecto "Basta de Silencio"</h4><p>Iglesia local</p></div>
+            <span class="evento-badge">Social</span>
+          </div>
+        </div>
+
+      </div><!-- /columna izquierda -->
+
+      <!-- COLUMNA DERECHA: lista de eventos sep-dic + nota -->
+      <div>
+
+        <!-- SEPTIEMBRE -->
+        <p class="agenda-titulo-mes">Septiembre 2026</p>
+        <div class="eventos-lista">
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">SEP</div><div class="evento-fecha-dia">05</div></div>
+            <div class="evento-info"><h4>Semana del Pañolín</h4><p>Actividades AMCh · 5 al 12 de septiembre</p></div>
+            <span class="evento-badge">Infantil</span>
+          </div>
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">SEP</div><div class="evento-fecha-dia">12</div></div>
+            <div class="evento-info"><h4>Día Mundial del Conquistador</h4><p>Iglesia local</p></div>
+            <span class="evento-badge">Infantil</span>
+          </div>
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">SEP</div><div class="evento-fecha-dia">17</div></div>
+            <div class="evento-info"><h4>Congreso JA</h4><p>Actividades AMCh · 17 al 20 de septiembre</p></div>
+            <span class="evento-badge">Jóvenes</span>
+          </div>
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">SEP</div><div class="evento-fecha-dia">19</div></div>
+            <div class="evento-info"><h4>Semana de la Esperanza</h4><p>Iglesia local · 19 al 26 de septiembre</p></div>
+            <span class="evento-badge">Espiritual</span>
+          </div>
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">SEP</div><div class="evento-fecha-dia">26</div></div>
+            <div class="evento-info"><h4>Bautismo de Primavera</h4><p>Iglesia local</p></div>
+            <span class="evento-badge">Evangelismo</span>
+          </div>
+        </div>
+
+        <!-- OCTUBRE -->
+        <p class="agenda-titulo-mes">Octubre 2026</p>
+        <div class="eventos-lista">
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">OCT</div><div class="evento-fecha-dia">03</div></div>
+            <div class="evento-info"><h4>Sábado de la Educación Adventista</h4><p>Iglesia local</p></div>
+            <span class="evento-badge">Educación</span>
+          </div>
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">OCT</div><div class="evento-fecha-dia">09</div></div>
+            <div class="evento-info"><h4>Aventuri AMCh</h4><p>Actividades AMCh · 9 al 12 de octubre</p></div>
+            <span class="evento-badge">Infantil</span>
+          </div>
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">OCT</div><div class="evento-fecha-dia">17</div></div>
+            <div class="evento-info"><h4>Impacto Esperanza · Semana de Evangelismo</h4><p>Iglesia local · Actividades AMCh · 17 al 24</p></div>
+            <span class="evento-badge">Evangelismo</span>
+          </div>
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">OCT</div><div class="evento-fecha-dia">24</div></div>
+            <div class="evento-info"><h4>Sábado de la Creación</h4><p>Iglesia local</p></div>
+            <span class="evento-badge">Espiritual</span>
+          </div>
+        </div>
+
+        <!-- NOVIEMBRE -->
+        <p class="agenda-titulo-mes">Noviembre 2026</p>
+        <div class="eventos-lista">
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">NOV</div><div class="evento-fecha-dia">04</div></div>
+            <div class="evento-info"><h4>Campaña Evangelística Comunidad Venezolana</h4><p>Actividades AMCh · 4 al 7 de noviembre</p></div>
+            <span class="evento-badge">Evangelismo</span>
+          </div>
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">NOV</div><div class="evento-fecha-dia">06</div></div>
+            <div class="evento-info"><h4>Día del Espíritu de Profecía</h4><p>Iglesia local · Actividades AMCh</p></div>
+            <span class="evento-badge">Espiritual</span>
+          </div>
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">NOV</div><div class="evento-fecha-dia">20</div></div>
+            <div class="evento-info"><h4>Celebrateen AMCh</h4><p>Actividades AMCh · 20 al 22 de noviembre</p></div>
+            <span class="evento-badge">Jóvenes</span>
+          </div>
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">NOV</div><div class="evento-fecha-dia">28</div></div>
+            <div class="evento-info"><h4>Lanzamiento Misionero 2027</h4><p>Actividades AMCh</p></div>
+            <span class="evento-badge">Misión</span>
+          </div>
+        </div>
+
+        <!-- DICIEMBRE -->
+        <p class="agenda-titulo-mes">Diciembre 2026</p>
+        <div class="eventos-lista">
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">DIC</div><div class="evento-fecha-dia">06</div></div>
+            <div class="evento-info"><h4>MRNT / RUN</h4><p>Actividades AMCh</p></div>
+            <span class="evento-badge">Misión</span>
+          </div>
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">DIC</div><div class="evento-fecha-dia">13</div></div>
+            <div class="evento-info"><h4>Pre Trimestral AMCh</h4><p>Actividades AMCh</p></div>
+            <span class="evento-badge">Administración</span>
+          </div>
+          <div class="evento-item">
+            <div class="evento-fecha"><div class="evento-fecha-mes">DIC</div><div class="evento-fecha-dia">19</div></div>
+            <div class="evento-info"><h4>Programa "Más Amor en Navidad"</h4><p>Iglesia local</p></div>
+            <span class="evento-badge">Social</span>
+          </div>
+        </div>
+
+        <!-- Nota importante -->
+        <div style="margin-top:1.5rem;padding:1rem 1.25rem;background:rgba(0,51,102,.05);border-left:3px solid var(--azul-ming);border-radius:0 4px 4px 0">
+          <p style="font-size:.75rem;color:var(--gris-texto);line-height:1.6;margin-bottom:0">
+            <strong style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--azul-ming);display:block;margin-bottom:.3rem">Nota importante</strong>
+            Las fechas y actividades son de carácter referencial. Todas las programaciones se encuentran en evaluación constante y pueden sufrir modificaciones.
+          </p>
+        </div>
+
+      </div><!-- /columna derecha -->
+
+    </div><!-- /grid -->
+  </div>
+</section>
+
+<!-- 08 CIERRE -->
+<section id="cierre">
+  <div class="container">
+    <div class="cierre-inner fade-in">
+      <h2>Avancemos juntos, <em>con fe</em></h2>
+      <p class="cierre-versiculo">"Todo lo puedo en Cristo que me fortalece."</p>
+      <p class="cierre-ref">Filipenses 4:13</p>
+      <p class="cierre-texto">Cerramos esta edición con la certeza de que cada historia, cada número, cada actividad registrada aquí es evidencia del obrar de Dios en nuestra comunidad. No somos perfectos, pero somos suyos. Y en su mano, somos capaces de cosas grandes.</p>
+      <p class="cierre-texto">Que cada miembro de la Asociación Metropolitana encuentre en estas páginas motivación para seguir, fuerza para persistir, y la seguridad de que no camina solo. Nos vemos en la siguiente edición.</p>
+      <div class="cierre-firma">Revista AMCh · Edición N°1 · Enero–Abril 2026<br>Asociación Metropolitana Adventista de Chile</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <strong>Revista AMCh</strong>
+    Asociación Metropolitana Adventista de Chile · Santiago, Chile<br>
+    Publicación trimestral · © 2026 · Todos los derechos reservados
+  </div>
+</footer>
+
+<button id="back-to-top" aria-label="Volver arriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// Menú hamburguesa
+const menuBtn = document.getElementById('menuBtn');
+const navMobile = document.getElementById('navMobile');
+menuBtn.addEventListener('click', () => navMobile.classList.toggle('open'));
+document.querySelectorAll('.nav-ml').forEach(l => l.addEventListener('click', () => navMobile.classList.remove('open')));
+
+// Back to top
+const backBtn = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => backBtn.classList.toggle('visible', window.scrollY > 400), {passive:true});
+
+// Fade in + animaciones
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('visible');
+    e.target.querySelectorAll('.barra-fill[data-w]').forEach(b => { b.style.width = b.dataset.w + '%'; });
+    e.target.querySelectorAll('.numero-valor[data-target]').forEach(el => {
+      const target = parseInt(el.dataset.target);
+      const inc = target / (1400/16);
+      let cur = 0;
+      const t = setInterval(() => {
+        cur = Math.min(cur + inc, target);
+        el.textContent = Math.floor(cur).toLocaleString('es-CL');
+        if (cur >= target) clearInterval(t);
+      }, 16);
+    });
+  });
+}, {threshold:0.08});
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Nav activo
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+  navLinks.forEach(l => { l.style.color = l.getAttribute('href') === '#'+cur ? 'var(--dorado)' : ''; });
+}, {passive:true});
+
+// Filtros
+const filtros = document.querySelectorAll('.filtro-btn');
+const cards = document.querySelectorAll('#noticias-grid .noticia-card');
+filtros.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filtros.forEach(b => b.classList.remove('activo'));
+    btn.classList.add('activo');
+    const filtro = btn.dataset.filtro;
+    cards.forEach(card => {
+      if (filtro === 'todos') { card.style.display = ''; return; }
+      const cats = (card.dataset.cats || '').split(' ');
+      card.style.display = cats.includes(filtro) ? '' : 'none';
+    });
+  });
+});
+</script>
+</body>
+</html>
