@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Un tumor, una cirugía y un bautismo: la historia de Jesús Alberto Montilla — Revista AMCh</title>
+<meta name="description" content="Jesús Alberto Montilla no imaginó que una enfermedad sería el punto de partida de su encuentro con Dios. Semanas después de una cirugía exitosa, fue bautizado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --azul-division: #003366;
+  --azul-denim:    #2f557f;
+  --azul-ming:     #3e8391;
+  --naranja:       #e36520;
+  --dorado:        #ffa92d;
+  --blanco:        #ffffff;
+  --gris-claro:    #f4f4f0;
+  --gris-medio:    #e0e0d8;
+  --gris-texto:    #444440;
+  --negro-suave:   #1a1a18;
+  --font-sans:     'Noto Sans', sans-serif;
+  --font-serif:    'Noto Serif', serif;
+  --radio:         4px;
+  --sombra:        0 2px 16px rgba(0,0,0,0.10);
+  --sombra-fuerte: 0 6px 32px rgba(0,0,0,0.18);
+  --t:             0.25s ease;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:18px}
+body{font-family:var(--font-sans);color:var(--gris-texto);background:var(--gris-claro);line-height:1.7;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+p{margin-bottom:1.1em}
+.container{max-width:960px;margin:0 auto;padding:0 1.25rem}
+
+/* NAV */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--azul-division);border-bottom:3px solid var(--naranja);height:56px;display:flex;align-items:center}
+.nav-inner{width:100%;max-width:960px;margin:0 auto;padding:0 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-logo{font-weight:800;font-size:.95rem;color:var(--blanco);letter-spacing:.05em;white-space:nowrap}
+.nav-logo span{color:var(--dorado)}
+.nav-back{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:.4rem;transition:color var(--t)}
+.nav-back:hover{color:var(--dorado)}
+.nav-seccion{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--naranja);background:rgba(227,101,32,.15);border:1px solid rgba(227,101,32,.3);padding:.25em .75em;border-radius:20px}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.nav-hamburger span{display:block;width:24px;height:2px;background:var(--blanco);border-radius:2px}
+.nav-mobile{display:none;position:fixed;top:56px;left:0;right:0;background:var(--azul-division);z-index:999;padding:1rem 1.25rem;border-bottom:3px solid var(--naranja);flex-direction:column;gap:.5rem}
+.nav-mobile a{font-size:.85rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.85);padding:.65rem .5rem;border-bottom:1px solid rgba(255,255,255,.08);display:block}
+.nav-mobile.open{display:flex}
+
+/* HERO OSCURO — sin imagen, tipográfico */
+#hero{
+  margin-top:56px;
+  background:linear-gradient(160deg,#0a1628 0%,#0e2040 50%,#1a2a45 100%);
+  padding:4rem 0 3.5rem;
+  position:relative;overflow:hidden;
+}
+.hero-deco{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-deco-circle{position:absolute;border-radius:50%;background:rgba(255,255,255,.025)}
+.hero-deco-circle:nth-child(1){width:500px;height:500px;top:-150px;right:-100px}
+.hero-deco-circle:nth-child(2){width:300px;height:300px;bottom:-80px;left:-60px}
+.hero-cat-bar{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--naranja),var(--dorado),var(--naranja))}
+.hero-inner{max-width:760px;margin:0 auto;padding:0 1.25rem;position:relative;z-index:2}
+.hero-tag{display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blanco);background:var(--naranja);padding:.22em .7em;border-radius:2px;margin-bottom:1.25rem}
+.hero-fecha{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.hero-fecha::before{content:'';display:block;width:20px;height:1px;background:rgba(255,255,255,.25)}
+.hero-titulo{
+  font-family:var(--font-serif);
+  font-size:clamp(1.8rem,5vw,3rem);
+  font-weight:700;color:var(--blanco);
+  line-height:1.15;margin-bottom:1.5rem;
+}
+.hero-titulo em{color:var(--dorado);font-style:italic}
+.hero-bajada{
+  font-family:var(--font-serif);font-size:1.05rem;font-style:italic;
+  color:rgba(255,255,255,.65);line-height:1.7;
+  border-left:3px solid var(--naranja);padding-left:1.25rem;
+  max-width:600px;
+}
+
+/* CONTENIDO PRINCIPAL */
+.testimonio-wrap{
+  background:var(--blanco);
+  padding:3.5rem 0 4rem;
+}
+.testimonio-inner{max-width:760px;margin:0 auto;padding:0 1.25rem}
+
+/* VIDEO 9:16 centrado con ancho máximo */
+.video-wrap{
+  margin:0 auto 3rem;
+  max-width:360px;           /* ancho máximo para 9:16 en desktop */
+  width:100%;
+}
+.video-container{
+  position:relative;
+  width:100%;
+  aspect-ratio:9/16;
+  background:var(--negro-suave);
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:var(--sombra-fuerte);
+}
+.video-container video{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* TEXTO DEL TESTIMONIO */
+.testimonio-texto{
+  max-width:640px;margin:0 auto;
+}
+.testimonio-texto p{
+  font-size:.97rem;line-height:1.95;
+  color:var(--gris-texto);margin-bottom:1.4em;
+}
+
+/* CITAS TEXTUALES del protagonista */
+.cita-testimonio{
+  margin:2rem 0;
+  padding:1.5rem 1.75rem;
+  background:linear-gradient(135deg,rgba(0,51,102,.05),rgba(0,51,102,.02));
+  border-left:3px solid var(--naranja);
+  border-radius:0 var(--radio) var(--radio) 0;
+}
+.cita-testimonio p{
+  font-family:var(--font-serif);font-size:1.05rem;font-style:italic;
+  color:var(--azul-denim);line-height:1.7;margin-bottom:0;
+}
+
+/* VERSÍCULO FINAL */
+.versiculo-cierre{
+  margin:3rem 0 0;
+  padding:2rem 2.25rem;
+  background:linear-gradient(135deg,var(--azul-division),var(--azul-denim));
+  border-radius:var(--radio);
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.versiculo-cierre::before{
+  content:'"';position:absolute;top:-1rem;left:1rem;
+  font-family:var(--font-serif);font-size:8rem;
+  color:rgba(255,169,45,.12);line-height:1;pointer-events:none;
+}
+.versiculo-cierre p{
+  font-family:var(--font-serif);font-size:1.1rem;font-style:italic;
+  color:var(--blanco);line-height:1.7;margin-bottom:.6rem;
+  position:relative;z-index:1;
+}
+.versiculo-cierre span{
+  font-family:var(--font-sans);font-size:.65rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;
+  color:var(--dorado);position:relative;z-index:1;display:block;
+}
+
+/* VOLVER AL INDEX */
+.volver-wrap{
+  text-align:center;margin-top:3rem;padding-top:2.5rem;
+  border-top:1px solid var(--gris-medio);
+}
+.btn-volver{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--azul-division);border:1.5px solid var(--azul-division);
+  padding:.7rem 1.5rem;border-radius:20px;
+  transition:all var(--t);
+}
+.btn-volver:hover{background:var(--azul-division);color:var(--blanco)}
+
+/* REVELADO AL SCROLL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-scale{opacity:0;transform:scale(.97);transition:opacity .8s ease,transform .8s ease}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+
+/* FOOTER */
+footer{background:#0f1820;color:rgba(255,255,255,.4);text-align:center;padding:2rem 1.25rem;font-size:.75rem;letter-spacing:.05em;line-height:1.8}
+footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font-weight:700;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase}
+
+#back-to-top{position:fixed;bottom:1.5rem;right:1.5rem;width:44px;height:44px;background:var(--naranja);color:var(--blanco);border:none;border-radius:50%;font-size:1.1rem;cursor:pointer;box-shadow:0 4px 16px rgba(227,101,32,.4);transition:all var(--t);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;z-index:900}
+#back-to-top.visible{opacity:1;pointer-events:all}
+#back-to-top:hover{background:#c45510;transform:translateY(-2px)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  html{font-size:17px}
+  .nav-hamburger{display:flex}
+  .nav-seccion{display:none}
+  .hero-titulo{font-size:clamp(1.6rem,6vw,2.2rem)}
+  .video-wrap{max-width:300px}
+}
+@media(max-width:480px){
+  html{font-size:16px}
+  .testimonio-inner{padding:0 1rem}
+  .hero-inner{padding:0 1rem}
+  .video-wrap{max-width:100%;padding:0 1rem}
+  #hero{padding:3rem 0 2.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Revista <span>AMCh</span></a>
+    <div style="display:flex;align-items:center;gap:1rem">
+      <span class="nav-seccion">Testimonio</span>
+      <a href="../index.html#historias" class="nav-back">← Volver a Historias</a>
+    </div>
+    <button class="nav-hamburger" id="menuBtn" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="../index.html">← Volver al inicio</a>
+  <a href="../index.html#historias">Historias de Vida</a>
+  <a href="../index.html#noticias">Noticias</a>
+</div>
+
+<!-- HERO TIPOGRÁFICO -->
+<section id="hero">
+  <div class="hero-deco">
+    <div class="hero-deco-circle"></div>
+    <div class="hero-deco-circle"></div>
+  </div>
+  <div class="hero-cat-bar"></div>
+  <div class="hero-inner">
+    <span class="hero-tag">Testimonio</span>
+    <div class="hero-fecha">Semana Santa 2026</div>
+    <h1 class="hero-titulo">
+      Un tumor, una cirugía<br>y un <em>bautismo</em>
+    </h1>
+    <p class="hero-bajada">
+      La historia de Jesús Alberto Montilla: cómo una enfermedad se convirtió en el punto de partida de su encuentro con Dios.
+    </p>
+  </div>
+</section>
+
+<!-- CONTENIDO -->
+<div class="testimonio-wrap">
+  <div class="testimonio-inner">
+
+    <!-- VIDEO 9:16 -->
+    <div class="video-wrap reveal-scale">
+      <div class="video-container">
+        <video
+          controls
+          playsinline
+          preload="metadata"
+          poster=""
+        >
+          <source src="../assets/video/testimonio-Jesus-Alberto-Montilla.mp4" type="video/mp4">
+          Tu navegador no soporta la reproducción de video.
+        </video>
+      </div>
+    </div>
+
+    <!-- TEXTO DEL TESTIMONIO -->
+    <div class="testimonio-texto">
+
+      <div class="reveal">
+        <p>Hay testimonios que no se planean. Que nacen de una llamada inesperada, de un diagnóstico que cambia el rumbo, de una noche en la que todo lo que creías seguro de pronto se vuelve incierto. El de Jesús Alberto Montilla es uno de esos.</p>
+        <p>Todo comenzó cuando los médicos detectaron un quiste y luego confirmaron un tumor. La noticia llegó con fechas concretas: primero le programaron la intervención quirúrgica para el 25 de marzo. Pero un correo llegó antes de lo esperado: la operación se adelantaba al 25 de febrero.</p>
+      </div>
+
+      <div class="cita-testimonio reveal">
+        <p>"Yo dije: bueno, a Dios. Todo lo puse en manos de él, y siempre supe que él estaba ahí pendiente."</p>
+      </div>
+
+      <div class="reveal">
+        <p>Lo que sorprende en su relato no es solo la calma con la que enfrentó el diagnóstico, sino la honestidad con que describe su fe en ese momento: había creído en Dios, pero sin rumbo exacto, sin mucha claridad. La enfermedad, lejos de hundirlo, fue lo que comenzó a orientarlo.</p>
+        <p>La cirugía salió bien. Y en medio de la recuperación, algo más profundo también estaba sanando. Jesús Alberto fue acercándose poco a poco a Dios, tomando ese rumbo del que antes no tenía certeza. Y llegó a una decisión que había postergado por dos años.</p>
+      </div>
+
+      <div class="cita-testimonio reveal">
+        <p>"Mi corazón está muy feliz porque el próximo sábado voy a entregar mi corazón al Señor. Lo postergué dos años, pero ya tomé esa decisión, y sé que Dios y yo estamos felices por eso."</p>
+      </div>
+
+      <div class="reveal">
+        <p>Esas palabras las dijo días antes de su bautismo, en el marco del Drama de la Pasión que la iglesia preparó para esta Semana Santa. Y lo que entonces era una promesa, pronto se convirtió en realidad: Jesús Alberto fue bautizado, sellando con ese acto el camino que comenzó en una sala de hospital.</p>
+        <p>Su historia habla exactamente de eso: de un Dios que no abandona, que acompaña en la sala de espera, que espera con paciencia cuando uno demora en responder, y que celebra cuando finalmente alguien dice que sí.</p>
+        <p>Jesús Alberto no llegó a la fe desde la comodidad. Llegó desde una cama de hospital, con un tumor diagnosticado y una fecha de operación adelantada. Y en ese lugar donde muchos se quiebran, encontró la mano de alguien que ya lo estaba sosteniendo.</p>
+      </div>
+
+      <!-- Versículo de cierre -->
+      <div class="versiculo-cierre reveal">
+        <p>"Porque yo sé los pensamientos que tengo acerca de vosotros, dice Jehová, pensamientos de paz, y no de mal, para daros el fin que esperáis."</p>
+        <span>Jeremías 29:11</span>
+      </div>
+
+      <!-- Botón volver -->
+      <div class="volver-wrap reveal">
+        <a href="../index.html#historias" class="btn-volver">
+          ← Volver a Historias de Vida
+        </a>
+      </div>
+
+    </div><!-- /testimonio-texto -->
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <strong>Revista AMCh</strong>
+    Asociación Metropolitana Adventista de Chile · Santiago, Chile<br>
+    Publicación trimestral · © 2026 · Todos los derechos reservados
+  </div>
+</footer>
+
+<button id="back-to-top" aria-label="Volver arriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const backBtn = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => backBtn.classList.toggle('visible', window.scrollY > 400), {passive:true});
+
+const menuBtn = document.getElementById('menuBtn');
+const navMobile = document.getElementById('navMobile');
+menuBtn?.addEventListener('click', () => navMobile.classList.toggle('open'));
+document.querySelectorAll('.nav-mobile a').forEach(l => l.addEventListener('click', () => navMobile.classList.remove('open')));
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-scale').forEach(el => {
+  revealObserver.observe(el);
+});
+
+// El video se activa al cargar la página
+window.addEventListener('load', () => {
+  document.querySelectorAll('.reveal-scale').forEach(el => el.classList.add('visible'));
+});
+</script>
+</body>
+</html>
