@@ -47,9 +47,43 @@ a{color:inherit;text-decoration:none}
 p{margin-bottom:1em}
 .container{max-width:960px;margin:0 auto;padding:0 1.25rem}
 
+/* Panel índice desplegable en hero */
+.portada-toggle-btn{background:rgba(255,255,255,.12);color:var(--blanco);border:1px solid rgba(255,255,255,.3);cursor:pointer;font-family:var(--font-sans);font-size:.8rem}
+.portada-toggle-btn:hover{background:rgba(255,255,255,.2)}
+.toggle-arrow{display:inline-block;transition:transform .3s ease;font-style:normal;margin-left:.1rem}
+.portada-indice-panel{
+  overflow:hidden;
+  max-height:0;
+  opacity:0;
+  transition:max-height .4s cubic-bezier(.4,0,.2,1), opacity .3s ease, margin .3s ease;
+  margin-top:0;
+}
+.portada-indice-panel.open{
+  max-height:700px;
+  opacity:1;
+  margin-top:1.25rem;
+  padding-bottom:1rem;
+}
+.portada-indice-sep{width:100%;height:1px;background:rgba(255,255,255,.15);margin-bottom:.75rem}
+.portada-indice-lista{display:flex;flex-direction:column;gap:0}
+.portada-indice-item{
+  display:flex;align-items:center;gap:.85rem;
+  padding:.6rem 0;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  color:var(--blanco);transition:background var(--t);
+  text-decoration:none;
+}
+.portada-indice-item:last-child{border-bottom:none}
+.portada-indice-item:hover{opacity:.85}
+.portada-indice-num{
+  font-family:var(--font-serif);font-size:1.4rem;font-weight:700;
+  color:var(--naranja);line-height:1;min-width:2rem;text-align:left;
+}
+.portada-indice-info{display:flex;flex-direction:column;gap:.05rem}
+.portada-indice-info b{font-size:.88rem;font-weight:700;color:var(--blanco);display:block;line-height:1.3}
+.portada-indice-info span,.portada-indice-info{font-size:.7rem;color:rgba(255,255,255,.5);letter-spacing:.03em}
 /* Tags */
 .tag{display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blanco);padding:.22em .7em;border-radius:2px;margin-bottom:.5rem;margin-right:.25rem}
-.tag--evangelismo{background:var(--cat-evangelismo)}
 .tag--administracion{background:var(--cat-administracion)}
 .tag--educacion{background:var(--cat-educacion)}
 .tag--jovenes{background:var(--cat-jovenes)}
@@ -91,25 +125,29 @@ p{margin-bottom:1em}
 .btn--secundario{background:rgba(255,255,255,.12);color:var(--blanco);border:1px solid rgba(255,255,255,.3)}
 .btn--secundario:hover{background:rgba(255,255,255,.2);transform:translateY(-1px)}
 
-/* PORTADA — alineado al centro, sin espacio excesivo arriba */
+/* PORTADA */
 #portada{
   margin-top:56px;
-  min-height:calc(100vh - 56px);
   background:linear-gradient(160deg,rgba(0,30,70,.92) 0%,rgba(0,51,102,.80) 50%,rgba(46,85,127,.65) 100%),
              url('https://cdn2.picryl.com/photo/2015/09/06/skyline-of-santiago-chile-d2bea5-1024.jpg') center/cover no-repeat;
-  display:flex;align-items:center;
-  padding:3rem 0;
+  display:flex;align-items:flex-start;
+  padding:3.5rem 0 3rem;
   position:relative;overflow:hidden;
+  overflow-anchor:none;
 }
 .portada-deco{position:absolute;top:0;right:0;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,169,45,.06));pointer-events:none}
 .portada-linea{position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--naranja),var(--dorado),var(--naranja))}
-.portada-inner{position:relative;z-index:2}
-.portada-edicion{font-size:.65rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--dorado);margin-bottom:1rem;display:flex;align-items:center;gap:.75rem}
+.portada-inner{position:relative;z-index:2;animation:portadaEntrada 1s cubic-bezier(.22,1,.36,1) both}
+@keyframes portadaEntrada{
+  from{opacity:0;transform:translateY(28px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.portada-edicion{font-size:.65rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--dorado);margin-bottom:1rem;display:flex;align-items:center;gap:.75rem;animation:portadaEntrada .9s .1s cubic-bezier(.22,1,.36,1) both}
 .portada-edicion::before{content:'';display:block;width:32px;height:2px;background:var(--dorado)}
-.portada-titulo{font-family:var(--font-serif);font-size:clamp(2.4rem,7vw,4.2rem);font-weight:700;color:var(--blanco);line-height:1.1;margin-bottom:1rem;max-width:680px}
+.portada-titulo{font-family:var(--font-serif);font-size:clamp(2.4rem,7vw,4.2rem);font-weight:700;color:var(--blanco);line-height:1.1;margin-bottom:1rem;max-width:680px;animation:portadaEntrada .9s .18s cubic-bezier(.22,1,.36,1) both}
 .portada-titulo em{font-style:italic;color:var(--dorado)}
-.portada-subtitulo{font-size:1rem;color:rgba(255,255,255,.75);max-width:520px;margin-bottom:2.5rem;font-weight:300;line-height:1.65}
-.portada-ctas{display:flex;flex-wrap:wrap;gap:.75rem}
+.portada-subtitulo{font-size:1rem;color:rgba(255,255,255,.75);max-width:520px;margin-bottom:2.5rem;font-weight:300;line-height:1.65;animation:portadaEntrada .9s .28s cubic-bezier(.22,1,.36,1) both}
+.portada-ctas{display:flex;flex-wrap:wrap;gap:.75rem;animation:portadaEntrada .9s .38s cubic-bezier(.22,1,.36,1) both}
 .portada-scroll{position:absolute;bottom:1.5rem;right:1.5rem;display:flex;flex-direction:column;align-items:center;gap:.4rem;color:rgba(255,255,255,.5);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase}
 .portada-scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,rgba(255,255,255,.5),transparent);animation:scrollPulse 2s ease-in-out infinite}
 @keyframes scrollPulse{0%,100%{opacity:1;transform:scaleY(1)}50%{opacity:.4;transform:scaleY(.7)}}
@@ -304,6 +342,12 @@ p{margin-bottom:1em}
 
 footer{background:#0f1820;color:rgba(255,255,255,.4);text-align:center;padding:2rem 1.25rem;font-size:.75rem;letter-spacing:.05em;line-height:1.8}
 footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font-weight:700;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase}
+.footer-redes{display:flex;justify-content:center;gap:.6rem;margin-bottom:1.25rem}
+.footer-red-btn{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;transition:all var(--t)}
+.footer-red-btn:hover{color:#fff;transform:translateY(-2px)}
+.footer-red-btn--ig:hover{background:rgba(225,48,108,.25);border-color:rgba(225,48,108,.5)}
+.footer-red-btn--yt:hover{background:rgba(255,0,0,.25);border-color:rgba(255,0,0,.4)}
+.footer-red-btn--fb:hover{background:rgba(24,119,242,.25);border-color:rgba(24,119,242,.5)}
 
 #back-to-top{position:fixed;bottom:1.5rem;right:1.5rem;width:44px;height:44px;background:var(--naranja);color:var(--blanco);border:none;border-radius:50%;font-size:1.1rem;cursor:pointer;box-shadow:0 4px 16px rgba(227,101,32,.4);transition:all var(--t);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;z-index:900}
 #back-to-top.visible{opacity:1;pointer-events:all}
@@ -318,6 +362,10 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
   html{font-size:17px}
   .nav-links{display:none}
   .nav-hamburger{display:flex}
+  #portada{min-height:62vh;padding:2.5rem 0 2.5rem;align-items:center}
+  .portada-titulo{font-size:clamp(2.8rem,11vw,3.6rem);line-height:1.08}
+  .portada-subtitulo{font-size:.9rem;margin-bottom:2rem}
+  .portada-scroll{display:none}
   .apertura-grid{grid-template-columns:1fr;gap:1.5rem}
   .apertura-foto-wrap{max-width:140px;margin:0 auto}
   .numeros-grid{grid-template-columns:repeat(2,1fr)}
@@ -351,7 +399,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
       <li><a href="#historias">Historias</a></li>
       <li><a href="#lo-que-viene">Agenda</a></li>
       <li><a href="#multimedia">Redes</a></li>
-      <li><a href="#indice" class="nav-btn-indice">Índice</a></li>
+      <li><a href="#portada" class="nav-btn-indice" onclick="event.preventDefault();document.getElementById('indiceToggle').click();window.scrollTo({top:0,behavior:'smooth'})">☰ Índice</a></li>
     </ul>
     <button class="nav-hamburger" id="menuBtn" aria-label="Menú">
       <span></span><span></span><span></span>
@@ -377,28 +425,46 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
       <p class="portada-subtitulo">La revista oficial de la Asociación Metropolitana Adventista de Chile. Noticias, testimonios e inspiración para toda la comunidad.</p>
       <div class="portada-ctas">
         <a href="#apertura" class="btn btn--primario">▶ Comenzar a leer</a>
-        <a href="#indice" class="btn btn--secundario">☰ Ver índice</a>
+        <button class="btn btn--secundario portada-toggle-btn" id="indiceToggle" aria-expanded="false" aria-controls="indicePanel">
+          <span class="toggle-icon">☰</span> <span id="toggleLabel">Ver índice</span> <span class="toggle-arrow" id="toggleArrow">▾</span>
+        </button>
       </div>
+
+      <!-- Panel índice desplegable -->
+      <div class="portada-indice-panel" id="indicePanel" aria-hidden="true">
+        <div class="portada-indice-sep"></div>
+        <nav class="portada-indice-lista">
+          <a href="#apertura" class="portada-indice-item" onclick="cerrarIndice()">
+            <span class="portada-indice-num">01</span>
+            <span class="portada-indice-info"><b>Mensaje de Apertura</b>Editorial</span>
+          </a>
+          <a href="#noticias" class="portada-indice-item" onclick="cerrarIndice()">
+            <span class="portada-indice-num">02</span>
+            <span class="portada-indice-info"><b>Noticias</b>19 noticias del trimestre</span>
+          </a>
+          <a href="#historias" class="portada-indice-item" onclick="cerrarIndice()">
+            <span class="portada-indice-num">03</span>
+            <span class="portada-indice-info"><b>Historias de Vida</b>Testimonios</span>
+          </a>
+          <a href="#lo-que-viene" class="portada-indice-item" onclick="cerrarIndice()">
+            <span class="portada-indice-num">04</span>
+            <span class="portada-indice-info"><b>Agenda</b>Próximas Actividades</span>
+          </a>
+          <a href="#multimedia" class="portada-indice-item" onclick="cerrarIndice()">
+            <span class="portada-indice-num">05</span>
+            <span class="portada-indice-info"><b>Redes Sociales</b>Síguenos y comparte</span>
+          </a>
+          <a href="#cierre" class="portada-indice-item" onclick="cerrarIndice()">
+            <span class="portada-indice-num">06</span>
+            <span class="portada-indice-info"><b>Cierre Espiritual</b>Reflexión final</span>
+          </a>
+        </nav>
+      </div>
+
     </div>
   </div>
   <div class="portada-linea"></div>
   <div class="portada-scroll"><div class="portada-scroll-line"></div>scroll</div>
-</section>
-
-<!-- ÍNDICE -->
-<section id="indice">
-  <div class="container">
-    <p class="seccion-label" style="color:rgba(255,255,255,.4)">Contenido de esta edición</p>
-    <h2 class="indice-titulo">Índice</h2>
-    <p class="indice-subtitulo">Enero · Febrero · Marzo · Abril 2026</p>
-    <div class="indice-grid">
-  <a href="#apertura" class="indice-item"><div class="indice-num">01</div><div><div class="indice-seccion">Editorial</div><div class="indice-nombre">Mensaje de Apertura</div></div></a>
-  <a href="#noticias" class="indice-item"><div class="indice-num">02</div><div><div class="indice-seccion">Noticias</div><div class="indice-nombre">19 noticias del trimestre</div></div></a>
-  <a href="#historias" class="indice-item"><div class="indice-num">03</div><div><div class="indice-seccion">Testimonios</div><div class="indice-nombre">Historias de Vida</div></div></a>
-  <a href="#lo-que-viene" class="indice-item"><div class="indice-num">04</div><div><div class="indice-seccion">Agenda</div><div class="indice-nombre">Próximas Actividades</div></div></a>
-  <a href="#cierre" class="indice-item"><div class="indice-num">05</div><div><div class="indice-seccion">Reflexión</div><div class="indice-nombre">Cierre Espiritual</div></div></a>
-</div>
-  </div>
 </section>
 
 <!-- 01 APERTURA -->
@@ -462,7 +528,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 
       <!-- 01 -->
       <a href="noticias/01-bautismos-2026.html" class="noticia-card noticia-card--principal" data-cats="evangelismo">
-      <img src="assets/img/noticias/01-portada.jpg">
+      <div class="noticia-card-img"><img src="assets/img/noticias/01-portada.jpg"></div>
         <div class="noticia-card-body">
           <span class="nc-fecha">Enero de 2026</span>
           <div class="nc-tags"><span class="tag tag--evangelismo">Evangelismo</span></div>
@@ -474,7 +540,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 
       <!-- 02 -->
       <a href="noticias/02-voluntaria-argentina.html" class="noticia-card" data-cats="servicio">
-      <img src="assets/img/noticias/02-portada.jpg">
+      <div class="noticia-card-img"><img src="assets/img/noticias/02-portada.jpg"></div>
         <div class="noticia-card-body">
           <span class="nc-fecha">16 de febrero de 2026</span>
           <div class="nc-tags"><span class="tag tag--servicio">Serv. Voluntario</span></div>
@@ -486,7 +552,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 
       <!-- 03 -->
       <a href="noticias/03-asamblea-ministerial-2026.html" class="noticia-card" data-cats="administracion">
-        <img src="assets/img/noticias/03-portada.jpg">
+        <div class="noticia-card-img"><img src="assets/img/noticias/03-portada.jpg"></div>
         <div class="noticia-card-body">
           <span class="nc-fecha">17 de febrero de 2026</span>
           <div class="nc-tags"><span class="tag tag--administracion">Administración</span></div>
@@ -498,7 +564,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 
       <!-- 04 -->
       <a href="noticias/04-aventuras-desierto.html" class="noticia-card" data-cats="infantil">
-      <img src="assets/img/noticias/04-portada.jpg">
+      <div class="noticia-card-img"><img src="assets/img/noticias/04-portada.jpg"></div>
         <div class="noticia-card-body">
           <span class="nc-fecha">Febrero de 2026</span>
           <div class="nc-tags"><span class="tag tag--infantil">Ministerio Infantil</span></div>
@@ -510,7 +576,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 
       <!-- 05 -->
       <a href="noticias/05-capacitacion-secretarias.html" class="noticia-card" data-cats="secretaria">
-      <img src="assets/img/noticias/05-portada.jpg">
+      <div class="noticia-card-img"><img src="assets/img/noticias/05-portada.jpg"></div>
         <div class="noticia-card-body">
           <span class="nc-fecha">21 de febrero de 2026</span>
           <div class="nc-tags"><span class="tag tag--secretaria">Secretaría</span></div>
@@ -522,7 +588,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 
       <!-- 06 -->
       <a href="noticias/06-encuentro-publicaciones.html" class="noticia-card" data-cats="publicaciones">
-      <img src="assets/img/noticias/06-portada.jpg">
+      <div class="noticia-card-img"><img src="assets/img/noticias/06-portada.jpg"></div>
         <div class="noticia-card-body">
           <span class="nc-fecha">21 de febrero de 2026</span>
           <div class="nc-tags"><span class="tag tag--publicaciones">Publicaciones</span></div>
@@ -534,7 +600,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 
       <!-- 07 -->
       <a href="noticias/07-encuentro-afam.html" class="noticia-card" data-cats="afam">
-      <img src="assets/img/noticias/07-portada.jpg">
+      <div class="noticia-card-img"><img src="assets/img/noticias/07-portada.jpg"></div>
         <div class="noticia-card-body">
           <span class="nc-fecha">22 de febrero de 2026</span>
           <div class="nc-tags"><span class="tag tag--afam">Ministerio AFAM</span></div>
@@ -561,7 +627,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 
       <!-- 09 -->
       <a href="noticias/09-asamblea-educativa.html" class="noticia-card" data-cats="educacion">
-      <img src="assets/img/noticias/09-portada.jpg">
+      <div class="noticia-card-img"><img src="assets/img/noticias/09-portada.jpg"></div>
         <div class="noticia-card-body">
           <span class="nc-fecha">2 de marzo de 2026</span>
           <div class="nc-tags"><span class="tag tag--educacion">Educación</span></div>
@@ -585,7 +651,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 
       <!-- 11 -->
       <a href="noticias/11-colegios-excelencia.html" class="noticia-card" data-cats="educacion">
-      <img src="assets/img/noticias/11-portada-body-1.jpg">
+      <div class="noticia-card-img"><img src="assets/img/noticias/11-portada-body-1.jpg"></div>
         <div class="noticia-card-body">
           <span class="nc-fecha">12 de marzo de 2026</span>
           <div class="nc-tags"><span class="tag tag--educacion">Educación</span></div>
@@ -597,7 +663,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 
       <!-- 12 -->
       <a href="noticias/12-dia-joven-adventista.html" class="noticia-card" data-cats="jovenes">
-      <img src="assets/img/noticias/12-portada.jpg">
+      <div class="noticia-card-img"><img src="assets/img/noticias/12-portada.jpg"></div>
         <div class="noticia-card-body">
           <span class="nc-fecha">21 de marzo de 2026</span>
           <div class="nc-tags"><span class="tag tag--jovenes">Jóvenes</span></div>
@@ -609,7 +675,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 
       <!-- 13 -->
       <a href="noticias/13-ruta-evangelio-vive.html" class="noticia-card" data-cats="mujer">
-      <img src="assets/img/noticias/13-portada.jpg">
+      <div class="noticia-card-img"><img src="assets/img/noticias/13-portada.jpg"></div>
         <div class="noticia-card-body">
           <span class="nc-fecha">11 de abril de 2026</span>
           <div class="nc-tags"><span class="tag tag--mujer">Min. de la Mujer</span></div>
@@ -621,7 +687,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 
       <!-- 14 -->
       <a href="noticias/14-escuelas-mision-inicio.html" class="noticia-card" data-cats="servicio">
-      <img src="assets/img/noticias/14-portada.jpg">
+      <div class="noticia-card-img"><img src="assets/img/noticias/14-portada.jpg"></div>
         <div class="noticia-card-body">
           <span class="nc-fecha">11 de abril de 2026</span>
           <div class="nc-tags"><span class="tag tag--servicio">Serv. Voluntario</span></div>
@@ -633,7 +699,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 
       <!-- 15 -->
       <a href="noticias/15-escuelas-misioneras.html" class="noticia-card" data-cats="evangelismo">
-      <img src="assets/img/noticias/15-portada.jpg">
+      <div class="noticia-card-img"><img src="assets/img/noticias/15-portada.jpg"></div>
         <div class="noticia-card-body">
           <span class="nc-fecha">25 de abril de 2026</span>
           <div class="nc-tags"><span class="tag tag--evangelismo">Evangelismo</span></div>
@@ -645,7 +711,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 
       <!-- 16 -->
       <a href="noticias/16-asamblea-ministerial-abril.html" class="noticia-card" data-cats="administracion">
-      <img src="assets/img/noticias/16-portada.jpg">
+      <div class="noticia-card-img"><img src="assets/img/noticias/16-portada.jpg"></div>
         <div class="noticia-card-body">
           <span class="nc-fecha">7 de abril de 2026</span>
           <div class="nc-tags"><span class="tag tag--administracion">Administración</span></div>
@@ -657,7 +723,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 
       <!-- 17 -->
       <a href="noticias/17-dialogo-autoridad-regional.html" class="noticia-card" data-cats="libertad">
-      <img src="assets/img/noticias/17-portada.jpg">
+      <div class="noticia-card-img"><img src="assets/img/noticias/17-portada.jpg"></div>
         <div class="noticia-card-body">
           <span class="nc-fecha">22 de abril de 2026</span>
           <div class="nc-tags"><span class="tag tag--libertad">Libertad Religiosa</span></div>
@@ -669,7 +735,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 
       <!-- 18 -->
       <a href="noticias/18-saludo-carabineros.html" class="noticia-card" data-cats="libertad">
-      <img src="assets/img/noticias/18-portada.jpg">
+      <div class="noticia-card-img"><img src="assets/img/noticias/18-portada.jpg"></div>
         <div class="noticia-card-body">
           <span class="nc-fecha">27 de abril de 2026</span>
           <div class="nc-tags"><span class="tag tag--libertad">Libertad Religiosa</span></div>
@@ -681,7 +747,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 
       <!-- 19 -->
       <a href="noticias/19-campo-escuela-lideres.html" class="noticia-card" data-cats="jovenes">
-      <img src="assets/img/noticias/19-portada.jpg">
+      <div class="noticia-card-img"><img src="assets/img/noticias/19-portada.jpg"></div>
         <div class="noticia-card-body">
           <span class="nc-fecha">6, 7 y 8 de marzo de 2026</span>
           <div class="nc-tags"><span class="tag tag--jovenes">Jóvenes</span></div>
@@ -721,30 +787,6 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
     </div>
   </div>
 </section>
-
-<!-- REDES SOCIALES -->
-<div id="multimedia" style="background:var(--negro-suave);padding:3rem 0">
-  <div class="container">
-    <div class="redes-cta fade-in">
-      <h3>Síguenos y comparte la misión</h3>
-      <p>Únete a nuestra comunidad digital y mantente conectado con todo lo que Dios hace en la Asociación Metropolitana</p>
-      <div class="redes-btns">
-        <a href="https://www.instagram.com/iasdmetro/" target="_blank" rel="noopener" class="red-btn red-btn--ig">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          @iasdmetro
-        </a>
-        <a href="https://www.youtube.com/@IASDMetro" target="_blank" rel="noopener" class="red-btn red-btn--yt">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
-          @IASDMetro
-        </a>
-        <a href="https://www.facebook.com/adventistasmetro" target="_blank" rel="noopener" class="red-btn red-btn--fb">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-          @adventistasmetro
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- 07 AGENDA -->
 <section id="lo-que-viene" class="seccion">
@@ -974,6 +1016,30 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
   </div>
 </section>
 
+<!-- REDES SOCIALES -->
+<div id="multimedia" style="background:var(--negro-suave);padding:3rem 0">
+  <div class="container">
+    <div class="redes-cta fade-in">
+      <h3>Síguenos y comparte la misión</h3>
+      <p>Únete a nuestra comunidad digital y mantente conectado con todo lo que Dios hace en la Asociación Metropolitana</p>
+      <div class="redes-btns">
+        <a href="https://www.instagram.com/iasdmetro/" target="_blank" rel="noopener" class="red-btn red-btn--ig">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          @iasdmetro
+        </a>
+        <a href="https://www.youtube.com/@IASDMetro" target="_blank" rel="noopener" class="red-btn red-btn--yt">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+          @IASDMetro
+        </a>
+        <a href="https://www.facebook.com/adventistasmetro" target="_blank" rel="noopener" class="red-btn red-btn--fb">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          @adventistasmetro
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- 08 CIERRE -->
 <section id="cierre">
   <div class="container">
@@ -990,6 +1056,17 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 
 <footer>
   <div class="container">
+    <div class="footer-redes">
+      <a href="https://www.instagram.com/iasdmetro/" target="_blank" rel="noopener" class="footer-red-btn footer-red-btn--ig" aria-label="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@IASDMetro" target="_blank" rel="noopener" class="footer-red-btn footer-red-btn--yt" aria-label="YouTube">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+      </a>
+      <a href="https://www.facebook.com/adventistasmetro" target="_blank" rel="noopener" class="footer-red-btn footer-red-btn--fb" aria-label="Facebook">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+    </div>
     <strong>Revista AMCh</strong>
     Asociación Metropolitana Adventista de Chile · Santiago, Chile<br>
     Publicación trimestral · © 2026 · Todos los derechos reservados
@@ -999,6 +1076,47 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 <button id="back-to-top" aria-label="Volver arriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
+// Índice desplegable en hero
+function cerrarIndice(){
+  const panel = document.getElementById('indicePanel');
+  const btn   = document.getElementById('indiceToggle');
+  const label = document.getElementById('toggleLabel');
+  const arrow = document.getElementById('toggleArrow');
+  panel.classList.remove('open');
+  panel.setAttribute('aria-hidden','true');
+  btn.setAttribute('aria-expanded','false');
+  label.textContent = 'Ver índice';
+  arrow.style.transform = 'rotate(0deg)';
+}
+const indiceToggle = document.getElementById('indiceToggle');
+if(indiceToggle){
+  indiceToggle.addEventListener('click', () => {
+    const panel = document.getElementById('indicePanel');
+    const label = document.getElementById('toggleLabel');
+    const arrow = document.getElementById('toggleArrow');
+    const portada = document.getElementById('portada');
+    const isOpen = panel.classList.contains('open');
+    // Freeze scroll position relative to portada top to prevent jump
+    const scrollBefore = window.scrollY;
+    const portadaTop = portada.getBoundingClientRect().top + window.scrollY;
+    panel.classList.toggle('open', !isOpen);
+    panel.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
+    indiceToggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+    label.textContent = isOpen ? 'Ver índice' : 'Cerrar índice';
+    arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+    // If opening, scroll so the top of portada stays visible
+    if (!isOpen) {
+      requestAnimationFrame(() => {
+        const navH = 56;
+        const target = portadaTop - navH;
+        if (window.scrollY > target + 10) {
+          window.scrollTo({top: target, behavior: 'smooth'});
+        }
+      });
+    }
+  });
+}
+
 // Menú hamburguesa
 const menuBtn = document.getElementById('menuBtn');
 const navMobile = document.getElementById('navMobile');
@@ -1026,7 +1144,7 @@ const observer = new IntersectionObserver(entries => {
       }, 16);
     });
   });
-}, {threshold:0.08});
+}, {threshold:0.04, rootMargin:'0px 0px 60px 0px'});
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 // Nav activo
