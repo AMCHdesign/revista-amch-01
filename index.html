@@ -1094,25 +1094,31 @@ if(indiceToggle){
     const panel = document.getElementById('indicePanel');
     const label = document.getElementById('toggleLabel');
     const arrow = document.getElementById('toggleArrow');
-    const portada = document.getElementById('portada');
     const isOpen = panel.classList.contains('open');
-    // Freeze scroll position relative to portada top to prevent jump
-    const scrollBefore = window.scrollY;
-    const portadaTop = portada.getBoundingClientRect().top + window.scrollY;
+
     panel.classList.toggle('open', !isOpen);
     panel.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
     indiceToggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
     label.textContent = isOpen ? 'Ver índice' : 'Cerrar índice';
     arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
-    // If opening, scroll so the top of portada stays visible
+
     if (!isOpen) {
-      requestAnimationFrame(() => {
+      // Wait for the CSS transition to finish expanding, then scroll
+      // so the bottom of the panel is fully visible
+      setTimeout(() => {
+        const panelRect = panel.getBoundingClientRect();
+        const viewH = window.innerHeight;
         const navH = 56;
-        const target = portadaTop - navH;
-        if (window.scrollY > target + 10) {
-          window.scrollTo({top: target, behavior: 'smooth'});
+        const panelBottom = panelRect.bottom;
+        const panelTop = panelRect.top;
+
+        if (panelBottom > viewH - 16) {
+          // Panel overflows viewport bottom — scroll so panel bottom is visible
+          // with a small margin, but keep navbar in mind
+          const overflowAmount = panelBottom - (viewH - 16);
+          window.scrollBy({ top: overflowAmount, behavior: 'smooth' });
         }
-      });
+      }, 420); // matches the CSS transition duration (400ms) + small buffer
     }
   });
 }
