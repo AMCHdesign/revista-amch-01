@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plantar esperanza en la ciudad — Revista Metro</title>
+<meta name="description" content="35 comunas, 30 iniciativas activas y una visión clara: la Asociación Metropolitana avanza en su proyecto estratégico de plantación de iglesias en el Gran Santiago.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --azul-division: #003366;
+  --azul-denim:    #2f557f;
+  --azul-ming:     #3e8391;
+  --naranja:       #e36520;
+  --dorado:        #ffa92d;
+  --blanco:        #ffffff;
+  --gris-claro:    #f4f4f0;
+  --gris-medio:    #e0e0d8;
+  --gris-texto:    #444440;
+  --negro-suave:   #1a1a18;
+  --font-sans:     'Noto Sans', sans-serif;
+  --font-serif:    'Noto Serif', serif;
+  --radio:         4px;
+  --sombra:        0 2px 16px rgba(0,0,0,0.10);
+  --sombra-fuerte: 0 6px 32px rgba(0,0,0,0.18);
+  --t:             0.25s ease;
+  --cat-evangelismo: #c0392b;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:18px;overflow-x:hidden}
+body{font-family:var(--font-sans);color:var(--gris-texto);background:var(--gris-claro);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+p{margin-bottom:1.1em}
+.container{max-width:960px;margin:0 auto;padding:0 1.25rem}
+
+/* ── NAV ── */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--azul-division);border-bottom:3px solid var(--naranja);height:56px;display:flex;align-items:center}
+.nav-inner{width:100%;max-width:960px;margin:0 auto;padding:0 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-logo{font-weight:800;font-size:.95rem;color:var(--blanco);letter-spacing:.05em;white-space:nowrap}
+.nav-logo span{color:var(--dorado)}
+.nav-back{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:.4rem;transition:color var(--t)}
+.nav-back:hover{color:var(--dorado)}
+.nav-seccion{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--naranja);background:rgba(227,101,32,.15);border:1px solid rgba(227,101,32,.3);padding:.25em .75em;border-radius:20px}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.nav-hamburger span{display:block;width:24px;height:2px;background:var(--blanco);border-radius:2px}
+.nav-mobile{display:none;position:fixed;top:56px;left:0;right:0;background:var(--azul-division);z-index:999;padding:1rem 1.25rem;border-bottom:3px solid var(--naranja);flex-direction:column;gap:.5rem}
+.nav-mobile a{font-size:.85rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.85);padding:.65rem .5rem;border-bottom:1px solid rgba(255,255,255,.08);display:block}
+.nav-mobile.open{display:flex}
+
+/* ── HERO ILUSTRATIVO ── */
+#hero{
+  margin-top:56px;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(135deg,#0a1f40 0%,#003366 45%,#0d2d52 100%);
+  min-height:380px;
+  display:flex;align-items:center;
+}
+.hero-deco{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-deco-circle{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.05)}
+.hero-deco-circle:nth-child(1){width:500px;height:500px;top:-150px;right:-100px;background:rgba(255,169,45,.04)}
+.hero-deco-circle:nth-child(2){width:300px;height:300px;bottom:-100px;left:-50px;background:rgba(227,101,32,.04)}
+.hero-deco-circle:nth-child(3){width:200px;height:200px;top:30%;left:40%;background:rgba(255,255,255,.02)}
+/* Cuadrícula urbana decorativa */
+.hero-grid-deco{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:linear-gradient(135deg,transparent 0%,rgba(0,0,0,.4) 40%,rgba(0,0,0,.4) 60%,transparent 100%);
+}
+.hero-cat-bar{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--cat-evangelismo),#e74c3c,var(--naranja))}
+
+.hero-ilustrativo{width:100%;padding:3.5rem 0;position:relative;z-index:2}
+.hero-inner{max-width:760px;margin:0 auto;padding:0 1.25rem}
+.hero-eyebrow{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem}
+.hero-tag{display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blanco);padding:.22em .7em;border-radius:2px;background:var(--cat-evangelismo)}
+.hero-fecha{font-size:.68rem;font-weight:600;letter-spacing:.06em;color:rgba(255,255,255,.4)}
+.hero-titulo{font-family:var(--font-serif);font-size:clamp(1.7rem,4.5vw,2.8rem);font-weight:700;color:var(--blanco);line-height:1.15;margin-bottom:1rem}
+.hero-titulo em{color:var(--dorado);font-style:italic}
+.hero-bajada{font-family:var(--font-serif);font-size:1rem;font-style:italic;color:rgba(255,255,255,.7);line-height:1.65;border-left:3px solid var(--naranja);padding-left:1.25rem;max-width:600px}
+
+/* ── CIFRAS HERO ── */
+.hero-cifras{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:rgba(255,255,255,.08);
+  border-top:1px solid rgba(255,255,255,.08);
+  margin-top:2.5rem;
+}
+.hero-cifra{
+  background:rgba(0,0,0,.2);
+  padding:1.25rem 1rem;
+  text-align:center;
+  transition:background var(--t);
+}
+.hero-cifra:hover{background:rgba(255,255,255,.05)}
+.hero-cifra-num{font-family:var(--font-sans);font-size:2rem;font-weight:800;color:var(--dorado);line-height:1;display:block;margin-bottom:.25rem}
+.hero-cifra-label{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);line-height:1.3}
+
+/* ── CUERPO ── */
+.articulo-body{background:var(--blanco);padding:3rem 0 4rem}
+.body-inner{max-width:760px;margin:0 auto;padding:0 1.25rem}
+.articulo-texto p{font-size:.97rem;line-height:1.9;color:var(--gris-texto);margin-bottom:1.4em}
+
+/* ── SEPARADOR SECCIÓN ── */
+.seccion-sep{display:flex;align-items:center;gap:.75rem;margin:2.5rem 0 1.5rem}
+.seccion-sep-line{flex:1;height:1px;background:var(--gris-medio)}
+.seccion-sep-label{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--azul-ming);white-space:nowrap}
+
+/* ── DOS FRENTES — tarjetas ── */
+.frentes-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}
+.frente-card{border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra)}
+.frente-header{padding:1rem 1.25rem;background:linear-gradient(90deg,var(--azul-division),var(--azul-denim));display:flex;align-items:center;gap:.75rem}
+.frente-icono{font-size:1.3rem;flex-shrink:0}
+.frente-nombre{font-family:var(--font-serif);font-size:.9rem;font-weight:700;color:var(--blanco);line-height:1.3}
+.frente-body{background:var(--blanco);padding:1.1rem 1.25rem;border-top:3px solid var(--naranja)}
+.frente-body p{font-size:.82rem;color:var(--gris-texto);line-height:1.65;margin-bottom:.6em}
+.frente-body p:last-child{margin-bottom:0}
+.frente-meta{display:flex;align-items:center;gap:.4rem;font-size:.68rem;font-weight:700;color:var(--cat-evangelismo);margin-top:.75rem}
+
+/* ── ZONAS — acordeón visual ── */
+.zonas-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:2rem 0}
+.zona-card{border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra);background:var(--blanco)}
+.zona-header{padding:.85rem 1.1rem;display:flex;align-items:center;gap:.6rem}
+.zona-poniente .zona-header{background:linear-gradient(90deg,#1a5276,#2471a3)}
+.zona-oriente .zona-header{background:linear-gradient(90deg,#145a32,#1e8449)}
+.zona-centro .zona-header{background:linear-gradient(90deg,#7b241c,#c0392b)}
+.zona-norte .zona-header{background:linear-gradient(90deg,#6e2f8a,#8e44ad)}
+.zona-icono{font-size:1.1rem}
+.zona-nombre{font-size:.8rem;font-weight:700;color:var(--blanco);letter-spacing:.04em}
+.zona-body{padding:.9rem 1.1rem;border-top:1px solid var(--gris-medio)}
+.zona-proyectos{font-size:.72rem;color:var(--gris-texto);line-height:1.7}
+.zona-proyectos span{display:inline-block;background:var(--gris-claro);border-radius:2px;padding:.1em .5em;margin:.1em .15em;font-size:.65rem;font-weight:600;color:var(--azul-denim)}
+
+/* ── HITO DESTACADO ── */
+.hito-card{
+  display:flex;align-items:center;gap:1.25rem;
+  background:linear-gradient(135deg,rgba(192,57,43,.08),rgba(192,57,43,.03));
+  border:1px solid rgba(192,57,43,.18);
+  border-left:4px solid var(--cat-evangelismo);
+  border-radius:var(--radio);
+  padding:1.25rem 1.5rem;
+  margin:2rem 0;
+}
+.hito-icono{font-size:2rem;flex-shrink:0}
+.hito-label{font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--cat-evangelismo);margin-bottom:.2rem}
+.hito-titulo{font-family:var(--font-serif);font-size:.95rem;font-weight:700;color:var(--azul-division);line-height:1.4}
+.hito-fecha{font-size:.72rem;color:rgba(0,0,0,.4);margin-top:.15rem}
+
+/* ── PULL QUOTE ── */
+.pull-quote{margin:2.5rem 0;padding:1.75rem 2rem;background:linear-gradient(135deg,var(--azul-division),var(--azul-denim));border-radius:var(--radio);position:relative;overflow:hidden}
+.pull-quote::before{content:'"';position:absolute;top:-.5rem;left:1rem;font-family:var(--font-serif);font-size:7rem;color:rgba(255,169,45,.15);line-height:1;pointer-events:none}
+.pull-quote p{font-family:var(--font-serif);font-size:1.1rem;font-style:italic;color:var(--blanco);line-height:1.65;margin-bottom:0;position:relative;z-index:1}
+.pull-quote-line{width:32px;height:3px;background:var(--naranja);margin-bottom:.85rem}
+
+/* ── PILARES DE MOVILIZACIÓN ── */
+.pilares-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin:2rem 0}
+.pilar-item{background:var(--gris-claro);border-radius:var(--radio);padding:1rem;text-align:center;border-top:3px solid var(--azul-ming)}
+.pilar-icono{font-size:1.4rem;margin-bottom:.4rem}
+.pilar-texto{font-size:.78rem;font-weight:600;color:var(--azul-division);line-height:1.4}
+
+/* ── BLOQUE CIERRE ── */
+.bloque-cierre{margin:2.5rem 0 0;padding:1.4rem 1.75rem;background:linear-gradient(90deg,rgba(192,57,43,.07),transparent);border-left:4px solid var(--cat-evangelismo);border-radius:0 var(--radio) var(--radio) 0}
+.bloque-cierre p{font-size:.92rem;color:var(--gris-texto);line-height:1.8;margin-bottom:0}
+
+/* ── NAVEGACIÓN ── */
+#nav-notas{background:var(--negro-suave);padding:2.5rem 0;border-top:3px solid var(--naranja)}
+.nav-notas-inner{max-width:960px;margin:0 auto;padding:0 1.25rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1.5rem}
+.nav-nota-btn{display:flex;align-items:center;gap:.75rem;color:rgba(255,255,255,.6);padding:.75rem;border-radius:var(--radio);transition:color var(--t),background var(--t)}
+.nav-nota-btn:hover{color:var(--blanco);background:rgba(255,255,255,.06)}
+.nav-nota-btn--next{justify-content:flex-end;text-align:right}
+.nav-nota-arrow{font-size:1.2rem;color:var(--naranja);flex-shrink:0}
+.nav-nota-info{display:flex;flex-direction:column;gap:.2rem}
+.nav-nota-label{font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.nav-nota-titulo{font-size:.82rem;font-weight:600;color:inherit;line-height:1.3}
+.nav-notas-volver{text-align:center}
+.nav-notas-volver a{display:inline-flex;align-items:center;gap:.4rem;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.15);padding:.5rem 1.1rem;border-radius:20px;transition:all var(--t)}
+.nav-notas-volver a:hover{color:var(--blanco);border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.06)}
+
+/* ── FOOTER ── */
+footer{background:#0f1820;color:rgba(255,255,255,.4);text-align:center;padding:2rem 1.25rem;font-size:.75rem;letter-spacing:.05em;line-height:1.8}
+footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font-weight:700;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase}
+.footer-redes{display:flex;justify-content:center;gap:.6rem;margin-bottom:1.25rem}
+.footer-red-btn{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;transition:all .25s ease}
+.footer-red-btn:hover{color:#fff;transform:translateY(-2px)}
+.footer-red-btn--ig:hover{background:rgba(225,48,108,.25);border-color:rgba(225,48,108,.5)}
+.footer-red-btn--yt:hover{background:rgba(255,0,0,.25);border-color:rgba(255,0,0,.4)}
+.footer-red-btn--fb:hover{background:rgba(24,119,242,.25);border-color:rgba(24,119,242,.5)}
+
+#back-to-top{position:fixed;bottom:1.5rem;right:1.5rem;width:44px;height:44px;background:var(--naranja);color:var(--blanco);border:none;border-radius:50%;font-size:1.1rem;cursor:pointer;box-shadow:0 4px 16px rgba(227,101,32,.4);transition:all var(--t);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;z-index:900}
+#back-to-top.visible{opacity:1;pointer-events:all}
+#back-to-top:hover{background:#c45510;transform:translateY(-2px)}
+
+/* ── REVELADO ── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .75s ease,transform .75s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .75s ease,transform .75s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(32px);transition:opacity .75s ease,transform .75s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  html{font-size:17px}
+  .nav-hamburger{display:flex}
+  .nav-seccion{display:none}
+  .hero-cifras{grid-template-columns:repeat(2,1fr)}
+  .frentes-grid{grid-template-columns:1fr}
+  .zonas-grid{grid-template-columns:1fr}
+  .pilares-grid{grid-template-columns:1fr 1fr}
+  .hito-card{flex-direction:column;gap:.75rem}
+  .nav-notas-inner{grid-template-columns:1fr 1fr;grid-template-rows:auto auto}
+  .nav-nota-btn{order:1}
+  .nav-nota-btn--next{order:2;justify-content:flex-end;text-align:right}
+  .nav-notas-volver{order:3;grid-column:1/-1}
+}
+@media(max-width:480px){
+  html{font-size:16px}
+  .body-inner{padding:0 1rem}
+  .hero-cifras{grid-template-columns:repeat(2,1fr)}
+  .pilares-grid{grid-template-columns:1fr}
+  .nav-notas-inner{grid-template-columns:1fr 1fr}
+  .nav-nota-btn{order:1}
+  .nav-nota-btn--next{order:2;justify-content:flex-end;text-align:right}
+  .nav-notas-volver{order:3;grid-column:1/-1;margin-top:.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Revista <span>Metro</span></a>
+    <div style="display:flex;align-items:center;gap:1rem">
+      <a href="../index.html#noticias" class="nav-back">← Volver a Noticias</a>
+    </div>
+    <button class="nav-hamburger" id="menuBtn" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="../index.html">← Volver al inicio</a>
+  <a href="../index.html#noticias">Noticias</a>
+  <a href="../index.html#historias">Historias</a>
+  <a href="../index.html#lo-que-viene">Agenda</a>
+</div>
+
+<!-- HERO ILUSTRATIVO -->
+<section id="hero">
+  <div class="hero-deco">
+    <div class="hero-deco-circle"></div>
+    <div class="hero-deco-circle"></div>
+    <div class="hero-deco-circle"></div>
+  </div>
+  <div class="hero-grid-deco"></div>
+  <div class="hero-cat-bar"></div>
+  <div class="hero-ilustrativo">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">
+        <span class="hero-fecha">Abril de 2026</span>
+      </div>
+      <h1 class="hero-titulo">Plantar esperanza<br><em>en la ciudad</em></h1>
+      <p class="hero-bajada">El desafío misionero de la AMCh para el Gran Santiago: una estrategia territorial para acercar la presencia adventista a nuevos barrios, familias y comunidades.</p>
+    </div>
+    <!-- Cifras clave -->
+    <div class="hero-cifras">
+      <div class="hero-cifra">
+        <span class="hero-cifra-num">35</span>
+        <span class="hero-cifra-label">Comunas en el territorio AMCh</span>
+      </div>
+      <div class="hero-cifra">
+        <span class="hero-cifra-num">30</span>
+        <span class="hero-cifra-label">Iniciativas activas de plantación</span>
+      </div>
+      <div class="hero-cifra">
+        <span class="hero-cifra-num">22</span>
+        <span class="hero-cifra-label">Congregaciones proyectadas al 2029</span>
+      </div>
+      <div class="hero-cifra">
+        <span class="hero-cifra-num">11</span>
+        <span class="hero-cifra-label">Iglesias plantadas entre 2015–2025</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CUERPO -->
+<div style="background:var(--blanco)">
+<div class="articulo-body">
+  <div class="body-inner">
+
+    <!-- Intro -->
+    <div class="articulo-texto reveal">
+      <p>Santiago no es solo una capital. Es una ciudad en movimiento, una red viva de barrios, familias, culturas, historias y necesidades. Cada día, miles de personas recorren sus calles buscando trabajo, estabilidad, oportunidades, comunidad y, muchas veces sin saberlo, también esperanza.</p>
+      <p>En este escenario urbano, la Asociación Metropolitana de Chile ha asumido un desafío profundo: fortalecer la presencia adventista en la ciudad mediante un proyecto estratégico de plantación de iglesias, con una mirada misionera, organizada y cercana a las necesidades reales de las personas.</p>
+    </div>
+
+    <!-- Sep: Ciudad multicultural -->
+    <div class="seccion-sep reveal">
+      <div class="seccion-sep-line"></div>
+      <span class="seccion-sep-label">Una ciudad multicultural, una misión urgente</span>
+      <div class="seccion-sep-line"></div>
+    </div>
+
+    <div class="articulo-texto reveal">
+      <p>En las comunas que forman parte de la Asociación viven más de <strong>tres millones de personas</strong>, con una presencia significativa de población extranjera. La comuna de Santiago, por ejemplo, concentra una de las mayores cantidades de personas extranjeras del país, y esa diversidad ya se refleja en congregaciones como la Iglesia Central de Santiago.</p>
+      <p>Plantar iglesias en Santiago no significa repetir el mismo modelo en todos los lugares. Significa entender cada territorio, sus vecinos, sus dinámicas, sus necesidades y sus oportunidades. Una comuna residencial no presenta los mismos desafíos que un sector con alta densidad migrante.</p>
+    </div>
+
+    <!-- Sep: Estrategia de campo -->
+    <div class="seccion-sep reveal">
+      <div class="seccion-sep-line"></div>
+      <span class="seccion-sep-label">De proyectos aislados a una estrategia de campo</span>
+      <div class="seccion-sep-line"></div>
+    </div>
+
+    <div class="articulo-texto reveal">
+      <p>Para este cuatrienio, la AMCh proyecta levantar <strong>22 nuevas congregaciones al año 2029</strong>, como parte de una visión misionera más amplia y organizada. Actualmente existen <strong>30 iniciativas</strong> en el territorio: 21 proyectos existentes y 9 proyectos nuevos.</p>
+    </div>
+
+    <!-- Dos frentes -->
+    <div class="frentes-grid reveal">
+      <div class="frente-card">
+        <div class="frente-header">
+          <span class="frente-icono">🔍</span>
+          <span class="frente-nombre">Proyectos existentes</span>
+        </div>
+        <div class="frente-body">
+          <p>Serán visitados, evaluados y acompañados para identificar su estado actual, fortalezas y áreas de apoyo. Se establecerán planes de acción con metas y plazos.</p>
+          <div class="frente-meta">🎯 Meta: 5 proyectos organizados como iglesias</div>
+        </div>
+      </div>
+      <div class="frente-card">
+        <div class="frente-header">
+          <span class="frente-icono">🌱</span>
+          <span class="frente-nombre">Nuevos proyectos</span>
+        </div>
+        <div class="frente-body">
+          <p>Formación de núcleos misioneros, escuelas de discipulado, definición de territorio, lugares de reunión y metodologías adecuadas para cada comunidad.</p>
+          <div class="frente-meta">🎯 9 nuevos proyectos en desarrollo</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pull quote -->
+    <div class="pull-quote reveal">
+      <div class="pull-quote-line"></div>
+      <p>No se trata solo de abrir puertas. Se trata de formar comunidades con identidad, propósito y capacidad de servir.</p>
+    </div>
+
+    <!-- Sep: Proyectos por zona -->
+    <div class="seccion-sep reveal">
+      <div class="seccion-sep-line"></div>
+      <span class="seccion-sep-label">Proyectos que ya están tomando forma</span>
+      <div class="seccion-sep-line"></div>
+    </div>
+
+    <div class="articulo-texto reveal">
+      <p>El mapa de plantación muestra una presencia activa en las cuatro zonas del territorio metropolitano:</p>
+    </div>
+
+    <!-- Zonas -->
+    <div class="zonas-grid reveal">
+      <div class="zona-card zona-poniente">
+        <div class="zona-header">
+          <span class="zona-icono">🌆</span>
+          <span class="zona-nombre">Zona Poniente</span>
+        </div>
+        <div class="zona-body">
+          <div class="zona-proyectos">
+            <span>El Monte</span><span>Rinconada</span><span>Tiempo de Esperanza</span><span>Los Presidentes</span><span>Bollenar Poniente</span><span>María Pinto</span><span>Popeta</span><span>San Manuel de Codigua</span><span>Maipú Central</span><span>Maipú Oriente</span>
+          </div>
+        </div>
+      </div>
+      <div class="zona-card zona-oriente">
+        <div class="zona-header">
+          <span class="zona-icono">🏔️</span>
+          <span class="zona-nombre">Zona Oriente</span>
+        </div>
+        <div class="zona-body">
+          <div class="zona-proyectos">
+            <span>La Dehesa</span><span>San Carlos de Apoquindo</span><span>Jehová Jireh</span><span>Grupo Macul</span>
+          </div>
+        </div>
+      </div>
+      <div class="zona-card zona-centro">
+        <div class="zona-header">
+          <span class="zona-icono">🏙️</span>
+          <span class="zona-nombre">Zona Centro</span>
+        </div>
+        <div class="zona-body">
+          <div class="zona-proyectos">
+            <span>Sierra Bella</span><span>Balmaceda</span><span>Yugoslavia</span><span>Alameda</span><span>Fe y Esperanza</span><span>Quinta Normal</span><span>Pudahuel</span>
+          </div>
+        </div>
+      </div>
+      <div class="zona-card zona-norte">
+        <div class="zona-header">
+          <span class="zona-icono">🌉</span>
+          <span class="zona-nombre">Zona Norte</span>
+        </div>
+        <div class="zona-body">
+          <div class="zona-proyectos">
+            <span>Combatan</span><span>Jerusalén</span><span>Valle Verde</span><span>Shaddai</span><span>Huechuraba Poniente</span><span>Valle Grande</span><span>Centinela</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hito -->
+    <div class="hito-card reveal">
+      <span class="hito-icono">⛪</span>
+      <div>
+        <div class="hito-label">Hito reciente</div>
+        <div class="hito-titulo">Organización del proyecto Huechuraba Poniente / La Paz</div>
+        <div class="hito-fecha">Sábado 25 de abril de 2026 · En proyección: Valle Verde, Combatan, Jerusalén, Shaddai, Central y Centinela</div>
+      </div>
+    </div>
+
+    <!-- Sep: Movilización -->
+    <div class="seccion-sep reveal">
+      <div class="seccion-sep-line"></div>
+      <span class="seccion-sep-label">La plantación comienza con miembros preparados</span>
+      <div class="seccion-sep-line"></div>
+    </div>
+
+    <div class="articulo-texto reveal">
+      <p>Una iglesia no nace solo con un lugar físico. Nace cuando hay personas dispuestas a servir, aprender, discipular y sostener una misión en el tiempo. Por eso, uno de los pilares del proyecto es la <strong>movilización misionera</strong>:</p>
+    </div>
+
+    <!-- Pilares -->
+    <div class="pilares-grid reveal">
+      <div class="pilar-item">
+        <div class="pilar-icono">📖</div>
+        <div class="pilar-texto">Escuelas misioneras permanentes</div>
+      </div>
+      <div class="pilar-item">
+        <div class="pilar-icono">🎤</div>
+        <div class="pilar-texto">Instrucción bíblica</div>
+      </div>
+      <div class="pilar-item">
+        <div class="pilar-icono">🏘️</div>
+        <div class="pilar-texto">Talleres abiertos a la comunidad</div>
+      </div>
+      <div class="pilar-item">
+        <div class="pilar-icono">🤝</div>
+        <div class="pilar-texto">Servicios comunitarios</div>
+      </div>
+      <div class="pilar-item">
+        <div class="pilar-icono">⚜️</div>
+        <div class="pilar-texto">Clubes de Conquistadores</div>
+      </div>
+      <div class="pilar-item">
+        <div class="pilar-icono">🌟</div>
+        <div class="pilar-texto">Clubes de Aventureros</div>
+      </div>
+    </div>
+
+    <!-- Cierre -->
+    <div class="articulo-texto reveal">
+      <p>La misión urbana requiere método, pero también sensibilidad. Requiere planificación, pero también cercanía. Requiere mirar los números, pero sin olvidar que detrás de cada número hay una persona.</p>
+    </div>
+
+    <div class="bloque-cierre reveal-left">
+      <p>Santiago sigue creciendo. La misión también debe crecer. En ese crecimiento, la Asociación Metropolitana de Chile asume el llamado de avanzar con fe, planificación y compromiso, plantando iglesias que no solo ocupen un espacio en la ciudad, sino que se conviertan en comunidades vivas de esperanza.</p>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- NAVEGACIÓN -->
+<nav id="nav-notas">
+  <div class="nav-notas-inner">
+    <a href="19-campo-escuela-lideres.html" class="nav-nota-btn">
+      <span class="nav-nota-arrow">←</span>
+      <div class="nav-nota-info">
+        <span class="nav-nota-label">Nota anterior</span>
+        <span class="nav-nota-titulo">Campo Escuela de Líderes reúne a la juventud en torno a la misión</span>
+      </div>
+    </a>
+    <div class="nav-notas-volver">
+      <a href="../index.html#noticias">↑ Ver todas las noticias</a>
+    </div>
+    <div></div>
+  </div>
+</nav>
+
+<footer>
+  <div class="container">
+    <div class="footer-redes">
+      <a href="https://www.instagram.com/iasdmetro/" target="_blank" rel="noopener" class="footer-red-btn footer-red-btn--ig" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="https://www.youtube.com/@IASDMetro" target="_blank" rel="noopener" class="footer-red-btn footer-red-btn--yt" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+      <a href="https://www.facebook.com/adventistasmetro" target="_blank" rel="noopener" class="footer-red-btn footer-red-btn--fb" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+    </div>
+    <strong>Revista Metro</strong>
+    Asociación Metropolitana Adventista de Chile · Santiago, Chile<br>
+    Publicación trimestral · © 2026 · Todos los derechos reservados
+  </div>
+</footer>
+
+<button id="back-to-top" aria-label="Volver arriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const backBtn = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => backBtn.classList.toggle('visible', window.scrollY > 400), {passive:true});
+
+const menuBtn = document.getElementById('menuBtn');
+const navMobile = document.getElementById('navMobile');
+menuBtn?.addEventListener('click', () => navMobile.classList.toggle('open'));
+document.querySelectorAll('.nav-mobile a').forEach(l => l.addEventListener('click', () => navMobile.classList.remove('open')));
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, {threshold:0.08, rootMargin:'0px 0px 60px 0px'});
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObserver.observe(el));
+</script>
+</body>
+</html>
