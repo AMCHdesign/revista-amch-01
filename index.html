@@ -305,6 +305,31 @@ p{margin-bottom:1em}
 .red-btn--yt:hover{background:rgba(255,0,0,.2);border-color:rgba(255,0,0,.4)}
 .red-btn--fb:hover{background:rgba(24,119,242,.2);border-color:rgba(24,119,242,.5)}
 
+
+/* TEMA CENTRAL — Columna Pastoral */
+#tema-central{background:var(--azul-division);padding:4.5rem 0}
+.tema-central-inner{display:grid;grid-template-columns:1fr 340px;gap:3.5rem;align-items:start}
+.tema-central-texto{}
+.tema-central-texto .seccion-label{color:var(--dorado);opacity:.8}
+.tema-central-texto h2{font-family:var(--font-serif);font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:700;color:var(--blanco);line-height:1.2;margin-bottom:1.25rem}
+.tema-central-texto h2 em{color:var(--dorado);font-style:italic}
+.tema-central-bajada{font-family:var(--font-serif);font-size:1rem;font-style:italic;color:rgba(255,255,255,.75);line-height:1.75;border-left:3px solid var(--naranja);padding-left:1.25rem;margin-bottom:1.5rem}
+.tema-central-cuerpo p{font-size:.92rem;color:rgba(255,255,255,.75);line-height:1.9;margin-bottom:1.1em}
+.tema-central-versiculo{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:var(--radio);padding:1rem 1.25rem;font-family:var(--font-serif);font-style:italic;font-size:.95rem;color:rgba(255,255,255,.9);line-height:1.6;margin:1.5rem 0}
+.tema-central-versiculo span{display:block;font-style:normal;font-family:var(--font-sans);font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dorado);margin-top:.4rem}
+.tema-central-firma{margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.12)}
+.tema-central-firma-nombre{font-weight:700;color:var(--blanco);font-size:.95rem}
+.tema-central-firma-cargo{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.2rem}
+.tema-central-lateral{position:sticky;top:80px}
+.tema-lateral-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radio);padding:1.75rem;margin-bottom:1rem}
+.tema-lateral-label{font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--naranja);margin-bottom:.75rem;display:block}
+.tema-lateral-titulo{font-family:var(--font-serif);font-size:1rem;font-weight:700;color:var(--blanco);line-height:1.35;margin-bottom:.6rem}
+.tema-lateral-texto{font-size:.78rem;color:rgba(255,255,255,.55);line-height:1.65}
+.tema-lateral-divider{width:100%;height:1px;background:rgba(255,255,255,.1);margin:1rem 0}
+
+/* Noticia 20 — tag evangelismo para plantacion */
+.tag--evangelismo{background:var(--cat-evangelismo)}
+
 /* 07 AGENDA */
 #lo-que-viene{background:var(--blanco)}
 .agenda-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
@@ -360,6 +385,9 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 @media(max-width:900px){.noticias-grid{grid-template-columns:1fr}.noticia-card--principal{grid-column:auto}.noticia-card--principal .noticia-card-img{aspect-ratio:16/9}.noticia-card--principal .noticia-card-body{padding:1.35rem 1.4rem 1.5rem}.noticia-card--principal .noticia-card-body h3{font-size:1.1rem}}
 @media(max-width:768px){
   html{font-size:17px}
+  .tema-central-inner{grid-template-columns:1fr}
+  .tema-central-lateral{position:static;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .tema-lateral-divider{display:none}
   .nav-links{display:none}
   .nav-hamburger{display:flex}
   #portada{min-height:62vh;padding:2.5rem 0 2.5rem;align-items:center}
@@ -379,6 +407,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 }
 @media(max-width:480px){
   html{font-size:16px}
+  .tema-central-lateral{grid-template-columns:1fr}
   .indice-grid{grid-template-columns:1fr}
   .portada-ctas{flex-direction:column}
   .btn{width:100%;justify-content:center}
@@ -392,7 +421,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 <!-- NAVBAR -->
 <nav id="navbar">
   <div class="nav-inner">
-    <div class="nav-logo">Revista <span>AMCh</span></div>
+    <div class="nav-logo">Revista <span>Metro</span></div>
     <ul class="nav-links">
       <li><a href="#apertura">Apertura</a></li>
       <li><a href="#noticias">Noticias</a></li>
@@ -410,9 +439,10 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
   <a href="#apertura" class="nav-ml">01 · Mensaje de Apertura</a>
   <a href="#noticias" class="nav-ml">02 · Noticias</a>
   <a href="#historias" class="nav-ml">03 · Historias de Vida</a>
-  <a href="#lo-que-viene" class="nav-ml">04 · Agenda</a>
-  <a href="#multimedia" class="nav-ml">05 · Redes Sociales</a>
-  <a href="#cierre" class="nav-ml">06 · Cierre Espiritual</a>
+  <a href="#tema-central" class="nav-ml">04 · Tema Central</a>
+  <a href="#lo-que-viene" class="nav-ml">05 · Agenda</a>
+  <a href="#multimedia" class="nav-ml">06 · Redes Sociales</a>
+  <a href="#cierre" class="nav-ml">07 · Cierre Espiritual</a>
 </div>
 
 <!-- PORTADA -->
@@ -440,22 +470,26 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
           </a>
           <a href="#noticias" class="portada-indice-item" onclick="cerrarIndice()">
             <span class="portada-indice-num">02</span>
-            <span class="portada-indice-info"><b>Noticias</b>19 noticias del trimestre</span>
+            <span class="portada-indice-info"><b>Noticias</b>20 noticias del trimestre</span>
           </a>
           <a href="#historias" class="portada-indice-item" onclick="cerrarIndice()">
             <span class="portada-indice-num">03</span>
             <span class="portada-indice-info"><b>Historias de Vida</b>Testimonios</span>
           </a>
-          <a href="#lo-que-viene" class="portada-indice-item" onclick="cerrarIndice()">
+          <a href="#tema-central" class="portada-indice-item" onclick="cerrarIndice()">
             <span class="portada-indice-num">04</span>
+            <span class="portada-indice-info"><b>Tema Central</b>Columna pastoral</span>
+          </a>
+          <a href="#lo-que-viene" class="portada-indice-item" onclick="cerrarIndice()">
+            <span class="portada-indice-num">05</span>
             <span class="portada-indice-info"><b>Agenda</b>Próximas Actividades</span>
           </a>
           <a href="#multimedia" class="portada-indice-item" onclick="cerrarIndice()">
-            <span class="portada-indice-num">05</span>
+            <span class="portada-indice-num">06</span>
             <span class="portada-indice-info"><b>Redes Sociales</b>Síguenos y comparte</span>
           </a>
           <a href="#cierre" class="portada-indice-item" onclick="cerrarIndice()">
-            <span class="portada-indice-num">06</span>
+            <span class="portada-indice-num">07</span>
             <span class="portada-indice-info"><b>Cierre Espiritual</b>Reflexión final</span>
           </a>
         </nav>
@@ -509,7 +543,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 
     <!-- Filtros -->
     <div class="noticias-filtros fade-in">
-      <button class="filtro-btn activo" data-filtro="todos">Todas (19)</button>
+      <button class="filtro-btn activo" data-filtro="todos">Todas (20)</button>
       <button class="filtro-btn" data-filtro="evangelismo">Evangelismo</button>
       <button class="filtro-btn" data-filtro="administracion">Administración</button>
       <button class="filtro-btn" data-filtro="educacion">Educación</button>
@@ -757,6 +791,19 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
         </div>
       </a> 
 
+
+      <!-- 20 -->
+      <a href="noticias/20-plantacion-iglesias.html" class="noticia-card" data-cats="todos">
+        <div class="noticia-card-img"><img src="assets/img/noticias/20-portada.jpg" alt="Plantar esperanza en la ciudad"></div>
+        <div class="noticia-card-body">
+          <span class="nc-fecha">Abril de 2026</span>
+          <div class="nc-tags"></div>
+          <h3>Plantar esperanza en la ciudad: el desafío misionero de la AMCh para el Gran Santiago</h3>
+          <p>35 comunas, 30 iniciativas activas y una visión clara: la Asociación Metropolitana avanza en su proyecto estratégico de plantación de iglesias en el Gran Santiago.</p>
+          <span class="leer-nota">Leer nota completa →</span>
+        </div>
+      </a>
+
     </div><!-- /noticias-grid -->
   </div>
 </section>
@@ -775,7 +822,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
        alt="Testimonio Jesús Alberto Montilla"
        style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease">
   <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55),transparent 55%);display:flex;align-items:center;justify-content:center">
-    <div style="width:56px;height:56px;border-radius:50%;border:2px solid rgba(255,255,255,.6);background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:white;transition:all .25s ease">▶</div>
+    <div style="width:56px;height:56px;border-radius:50%;border:2px solid rgba(255,255,255,.6);background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;transition:all .25s ease"><svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><polygon points="6,3 20,12 6,21"/></svg></div>
   </div>
 </a>
       <div class="historia-body">
@@ -788,11 +835,86 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
   </div>
 </section>
 
+
+<!-- 04 TEMA CENTRAL — Columna Pastoral -->
+<section id="tema-central" class="seccion" style="scroll-margin-top:64px">
+  <div class="container">
+    <div class="tema-central-inner fade-in">
+
+      <!-- TEXTO PRINCIPAL -->
+      <div class="tema-central-texto">
+        <p class="seccion-label">04 · Tema Central</p>
+        <div class="divider divider--blanco"></div>
+        <!-- Foto del pastor -->
+        <div style="display:flex;align-items:flex-start;gap:1.5rem;margin-bottom:1.75rem">
+          <div style="position:relative;flex-shrink:0">
+            <img src="assets/img/pr-damian-cabezas.jpg"
+                 alt="Pr. Damián Cabezas"
+                 style="width:180px;aspect-ratio:3/4;object-fit:cover;object-position:center top;border-radius:var(--radio);display:block;filter:grayscale(15%)">
+            <div style="position:absolute;top:-8px;left:-8px;width:100%;height:100%;border:2px solid rgba(255,169,45,.4);border-radius:var(--radio);pointer-events:none"></div>
+          </div>
+          <div style="padding-top:.5rem">
+            <div style="font-size:.95rem;font-weight:700;color:var(--blanco);margin-bottom:.3rem">Pr. Damián Cabezas</div>
+            <div style="font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.15rem">Departamental de Evangelismo</div>
+            <div style="font-size:.65rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.35)">Asociación Metropolitana de Chile</div>
+          </div>
+        </div>
+        <h2><em>Es tiempo de ir</em></h2>
+        <p class="tema-central-bajada">En una ciudad tan amplia, intensa y diversa como el Gran Santiago, cada día se cruzan miles de historias. El llamado de Jesús sigue vigente y necesario: recorrer, enseñar, acompañar y anunciar las buenas nuevas del Reino.</p>
+
+        <div class="tema-central-cuerpo">
+          <p>Mateo 9:35 nos muestra a Cristo caminando entre la gente, entrando en sus ciudades y aldeas, enseñando, predicando y sanando. Su misión no ocurrió a distancia. Jesús se acercó a las personas, vio sus necesidades y respondió con compasión. Ese mismo espíritu es el que hoy debe mover a la iglesia en el Gran Santiago.</p>
+
+          <p>La misión no es una tarea reservada solo para pastores, evangelistas o líderes de iglesia. Es un llamado que involucra a cada creyente. Allí donde hay una familia que necesita consuelo, un joven que busca dirección, un vecino que enfrenta una carga difícil o una persona que no conoce a Cristo, también hay una oportunidad para servir, escuchar y compartir esperanza.</p>
+
+          <div class="tema-central-versiculo">
+            "Recorrió Jesús todas las ciudades y aldeas, enseñando en las sinagogas de ellos, y predicando el evangelio del reino."
+            <span>Mateo 9:35</span>
+          </div>
+
+          <p>Hoy somos desafiados a mirar la ciudad con los ojos de Jesús. No basta con observar sus problemas desde lejos ni limitar nuestra fe a las paredes del templo. La iglesia existe para adorar, pero también para salir. Existe para crecer en comunidad, pero también para extender sus brazos hacia quienes aún no han escuchado el mensaje de salvación.</p>
+
+          <p>Ser luz no es solo hablar de Cristo; es reflejar su carácter. Es amar con intención, servir con humildad y estar disponibles para que Dios use nuestra vida como un puente hacia otros. La misión comienza cuando dejamos de mirar la ciudad como un lugar difícil y empezamos a verla como un campo lleno de oportunidades.</p>
+
+          <p>El Gran Santiago no es solo un mapa con comunas y avenidas. Es un territorio lleno de personas por quienes Cristo dio su vida.</p>
+
+          <p>Por eso, el llamado sigue siendo claro: salir, buscar, amar y servir. Porque en cada rincón de nuestra ciudad hay una oportunidad para que la luz de Cristo brille.</p>
+
+          <p><strong style="color:var(--blanco)">Es tiempo de ir.</strong></p>
+        </div>
+
+      </div>
+
+      <!-- LATERAL -->
+      <div class="tema-central-lateral">
+        <div class="tema-lateral-card">
+          <span class="tema-lateral-label">Pasaje central</span>
+          <div class="tema-lateral-titulo">"Recorrió Jesús todas las ciudades y aldeas..."</div>
+          <div class="tema-lateral-texto">Mateo 9:35 — La misión de Jesús fue activa, cercana y compasiva. Ese es el modelo para la iglesia hoy.</div>
+        </div>
+        <div class="tema-lateral-divider"></div>
+        <div class="tema-lateral-card">
+          <span class="tema-lateral-label">El llamado</span>
+          <div class="tema-lateral-titulo">Salir, buscar, amar y servir</div>
+          <div class="tema-lateral-texto">Cada miembro tiene un lugar en esta tarea. La misión no depende del cargo, sino de la disponibilidad.</div>
+        </div>
+        <div class="tema-lateral-divider"></div>
+        <div class="tema-lateral-card">
+          <span class="tema-lateral-label">Nuestra ciudad</span>
+          <div class="tema-lateral-titulo">El Gran Santiago como campo misionero</div>
+          <div class="tema-lateral-texto">Millones de personas buscan propósito, comunidad y esperanza. La iglesia está llamada a salir a su encuentro.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- 07 AGENDA -->
 <section id="lo-que-viene" class="seccion">
   <div class="container">
     <div class="seccion-header fade-in">
-      <p class="seccion-label">07 · Agenda</p>
+      <p class="seccion-label">05 · Agenda</p>
       <div class="divider"></div>
       <h2>Calendario AMCh — Mayo a Diciembre 2026</h2>
     </div>
@@ -1049,7 +1171,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
       <p class="cierre-ref">Filipenses 4:13</p>
       <p class="cierre-texto">Cerramos esta edición con la certeza de que cada historia, cada número, cada actividad registrada aquí es evidencia del obrar de Dios en nuestra comunidad. No somos perfectos, pero somos suyos. Y en su mano, somos capaces de cosas grandes.</p>
       <p class="cierre-texto">Que cada miembro de la Asociación Metropolitana encuentre en estas páginas motivación para seguir, fuerza para persistir, y la seguridad de que no camina solo. Nos vemos en la siguiente edición.</p>
-      <div class="cierre-firma">Revista AMCh · Edición N°1 · Enero–Abril 2026<br>Asociación Metropolitana Adventista de Chile</div>
+      <div class="cierre-firma">Revista Metro · Edición N°1 · Enero–Abril 2026<br>Asociación Metropolitana Adventista de Chile</div>
     </div>
   </div>
 </section>
@@ -1067,7 +1189,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
       </a>
     </div>
-    <strong>Revista AMCh</strong>
+    <strong>Revista Metro</strong>
     Asociación Metropolitana Adventista de Chile · Santiago, Chile<br>
     Publicación trimestral · © 2026 · Todos los derechos reservados
   </div>
@@ -1150,7 +1272,7 @@ const observer = new IntersectionObserver(entries => {
       }, 16);
     });
   });
-}, {threshold:0.04, rootMargin:'0px 0px 300px 0px'});
+}, {threshold:0.04, rootMargin:'0px 0px 60px 0px'});
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 // Nav activo
