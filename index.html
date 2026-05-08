@@ -163,7 +163,7 @@ p{margin-bottom:1em}
 .indice-seccion{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.2rem}
 .indice-nombre{font-size:.88rem;font-weight:600;color:var(--blanco);line-height:1.3}
 
-.seccion{padding:4rem 0}
+.seccion{padding:4rem 0;scroll-margin-top:64px}
 .seccion-header{margin-bottom:2.5rem}
 .seccion-header h2{font-family:var(--font-serif);font-size:clamp(1.5rem,4vw,2.1rem);font-weight:700;color:var(--azul-division);line-height:1.25}
 
@@ -465,31 +465,31 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
       <div class="portada-indice-panel" id="indicePanel" aria-hidden="true">
         <div class="portada-indice-sep"></div>
         <nav class="portada-indice-lista">
-          <a href="#apertura" class="portada-indice-item" onclick="cerrarIndice()">
+          <a href="#apertura" class="portada-indice-item" onclick="event.preventDefault();cerrarIndice('apertura')">
             <span class="portada-indice-num">01</span>
             <span class="portada-indice-info"><b>Mensaje de Apertura</b>Editorial</span>
           </a>
-          <a href="#noticias" class="portada-indice-item" onclick="cerrarIndice()">
+          <a href="#noticias" class="portada-indice-item" onclick="event.preventDefault();cerrarIndice('noticias')">
             <span class="portada-indice-num">02</span>
             <span class="portada-indice-info"><b>Noticias</b>20 noticias del trimestre</span>
           </a>
-          <a href="#historias" class="portada-indice-item" onclick="cerrarIndice()">
+          <a href="#historias" class="portada-indice-item" onclick="event.preventDefault();cerrarIndice('historias')">
             <span class="portada-indice-num">03</span>
             <span class="portada-indice-info"><b>Historias de Vida</b>Testimonios</span>
           </a>
-          <a href="#tema-central" class="portada-indice-item" onclick="cerrarIndice()">
+          <a href="#tema-central" class="portada-indice-item" onclick="event.preventDefault();cerrarIndice('tema-central')">
             <span class="portada-indice-num">04</span>
             <span class="portada-indice-info"><b>Tema Central</b>Columna pastoral</span>
           </a>
-          <a href="#lo-que-viene" class="portada-indice-item" onclick="cerrarIndice()">
+          <a href="#lo-que-viene" class="portada-indice-item" onclick="event.preventDefault();cerrarIndice('lo-que-viene')">
             <span class="portada-indice-num">05</span>
             <span class="portada-indice-info"><b>Agenda</b>Próximas Actividades</span>
           </a>
-          <a href="#multimedia" class="portada-indice-item" onclick="cerrarIndice()">
+          <a href="#multimedia" class="portada-indice-item" onclick="event.preventDefault();cerrarIndice('multimedia')">
             <span class="portada-indice-num">06</span>
             <span class="portada-indice-info"><b>Redes Sociales</b>Síguenos y comparte</span>
           </a>
-          <a href="#cierre" class="portada-indice-item" onclick="cerrarIndice()">
+          <a href="#cierre" class="portada-indice-item" onclick="event.preventDefault();cerrarIndice('cierre')">
             <span class="portada-indice-num">07</span>
             <span class="portada-indice-info"><b>Cierre Espiritual</b>Reflexión final</span>
           </a>
@@ -1140,7 +1140,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 </section>
 
 <!-- REDES SOCIALES -->
-<div id="multimedia" style="background:var(--negro-suave);padding:3rem 0">
+<div id="multimedia" style="background:var(--negro-suave);padding:3rem 0;scroll-margin-top:64px">
   <div class="container">
     <div class="redes-cta fade-in">
       <h3>Síguenos y comparte la misión</h3>
@@ -1200,7 +1200,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
 
 <script>
 // Índice desplegable en hero
-function cerrarIndice(){
+function cerrarIndice(targetId){
   const panel = document.getElementById('indicePanel');
   const btn   = document.getElementById('indiceToggle');
   const label = document.getElementById('toggleLabel');
@@ -1210,6 +1210,16 @@ function cerrarIndice(){
   btn.setAttribute('aria-expanded','false');
   label.textContent = 'Ver índice';
   arrow.style.transform = 'rotate(0deg)';
+  if(targetId){
+    setTimeout(() => {
+      const target = document.getElementById(targetId);
+      if(target){
+        const top = target.getBoundingClientRect().top + window.scrollY - 64;
+        window.scrollTo({top, behavior:'smooth'});
+      }
+    }, 420);
+    return false;
+  }
 }
 const indiceToggle = document.getElementById('indiceToggle');
 if(indiceToggle){
@@ -1277,11 +1287,11 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 // Nav activo
-const sections = document.querySelectorAll('section[id]');
+const sections = document.querySelectorAll('section[id], div[id="multimedia"]');
 const navLinks = document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll', () => {
   let cur = '';
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 57) cur = s.id; });
   navLinks.forEach(l => { l.style.color = l.getAttribute('href') === '#'+cur ? 'var(--dorado)' : ''; });
 }, {passive:true});
 
