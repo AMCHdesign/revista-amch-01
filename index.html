@@ -344,20 +344,177 @@ p{margin-bottom:1em}
 /* Noticia 20 — tag evangelismo para plantacion */
 .tag--evangelismo{background:var(--cat-evangelismo)}
 
+/* CARD STAGGER — entrada escalonada tarjetas */
+.noticia-card{
+  opacity:0;
+  transform:translateY(22px);
+  transition:opacity .65s cubic-bezier(.22,1,.36,1),
+             transform .65s cubic-bezier(.22,1,.36,1),
+             box-shadow var(--t);
+}
+.noticia-card.card-visible{
+  opacity:1;
+  transform:translateY(0);
+}
+/* Las primeras 2 tarjetas arrancan sin delay para no generar espacio en blanco */
+.noticia-card:nth-child(1){ transition-delay:0ms }
+.noticia-card:nth-child(2){ transition-delay:0ms }
+.noticia-card:nth-child(3){ transition-delay:60ms }
+.noticia-card:nth-child(4){ transition-delay:60ms }
+.noticia-card:nth-child(5){ transition-delay:120ms }
+.noticia-card:nth-child(6){ transition-delay:120ms }
+.noticia-card:nth-child(7){ transition-delay:180ms }
+.noticia-card:nth-child(8){ transition-delay:180ms }
+/* Del 9 en adelante sin delay — ya están lejos en el scroll */
+.noticia-card:nth-child(n+9){ transition-delay:0ms }
+
+/* EVENTO ITEM — entrada flotante en scroll */
+.evento-item{
+  opacity:0;
+  transform:translateY(10px) scale(0.96);
+  transform-origin:center bottom;
+  transition: opacity .65s cubic-bezier(.22,1,.36,1),
+              transform .65s cubic-bezier(.22,1,.36,1),
+              background var(--t);
+}
+.evento-item.ev-visible{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+/* hover desktop — profundidad + acento naranja */
+@media(hover:hover){
+  .evento-item{
+    border-left:3px solid transparent;
+    transition: opacity .65s cubic-bezier(.22,1,.36,1),
+                transform .65s cubic-bezier(.22,1,.36,1),
+                background .2s ease,
+                border-color .2s ease,
+                box-shadow .2s ease;
+  }
+  .evento-item.ev-visible:hover{
+    background:var(--gris-claro);
+    border-left-color:var(--naranja);
+    box-shadow:0 4px 18px rgba(0,0,0,.08);
+    transform:translateY(-2px) scale(1.018);
+  }
+  .evento-item.ev-visible:hover .evento-fecha{
+    transform:scale(1.06);
+    transition:transform .2s cubic-bezier(.22,1,.36,1);
+  }
+  .evento-item.ev-visible:hover .evento-info h4{
+    color:var(--naranja);
+    transition:color .2s ease;
+  }
+}
+
+
+/* CALENDARIO — botón guardar */
+.cal-add-btn{
+  position:relative;
+  flex-shrink:0;
+  z-index:1;
+}
+.cal-add-btn.active{
+  z-index:600;
+}
+.evento-item.cal-open{
+  position:relative;
+  z-index:550;
+}
+.cal-add-trigger{
+  display:flex;align-items:center;gap:.3rem;
+  font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--azul-ming);
+  background:none;border:1px solid var(--gris-medio);
+  border-radius:20px;padding:.28em .7em;
+  cursor:pointer;transition:all var(--t);
+  white-space:nowrap;
+}
+.cal-add-trigger:hover{border-color:var(--azul-ming);background:rgba(62,131,145,.07)}
+.cal-add-trigger svg{flex-shrink:0}
+.cal-dropdown{
+  position:absolute;right:0;top:calc(100% + 6px);
+  background:var(--blanco);
+  border:1px solid var(--gris-medio);
+  border-radius:var(--radio);
+  box-shadow:0 8px 24px rgba(0,0,0,.18);
+  min-width:210px;
+  z-index:500;
+  overflow:hidden;
+  opacity:0;pointer-events:none;
+  transform:translateY(-6px) scale(0.97);
+  transform-origin:top right;
+  transition:opacity .18s ease, transform .18s ease;
+}
+.cal-dropdown.open{
+  opacity:1;pointer-events:all;
+  transform:translateY(0) scale(1);
+}
+.cal-dropdown a{
+  display:flex;align-items:center;gap:.65rem;
+  padding:.75rem 1rem;
+  font-size:.78rem;font-weight:600;color:var(--gris-texto);
+  text-decoration:none;
+  transition:background var(--t);
+  border-bottom:1px solid var(--gris-medio);
+}
+.cal-dropdown a:last-child{border-bottom:none}
+.cal-dropdown a:hover{background:var(--gris-claro)}
+.cal-dropdown-icon{width:28px;height:28px;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cal-dropdown-icon--native{background:#e8f4fd}
+.cal-dropdown-icon--google{background:#fce8e6}
+.cal-dropdown-text small{display:block;font-size:.62rem;font-weight:400;color:rgba(0,0,0,.4);margin-top:.1rem}
+/* En móvil ocultamos el badge y mostramos solo el botón de calendario */
+@media(max-width:768px){
+  .cal-add-trigger{
+    padding:.45em .65em;
+    font-size:.65rem;
+    border-radius:20px;
+    gap:.3rem;
+  }
+  .cal-add-trigger span{display:inline}
+}
+/* reduced motion — respeta preferencias del SO */
+@media(prefers-reduced-motion:reduce){
+  .noticia-card, .evento-item{
+    opacity:1 !important;
+    transform:none !important;
+    transition:none !important;
+  }
+}
+
 /* 07 AGENDA */
 #lo-que-viene{background:var(--blanco)}
 .agenda-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
 .agenda-titulo-mes{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--azul-ming);margin-bottom:.75rem;margin-top:1.5rem}
 .agenda-titulo-mes:first-child{margin-top:0}
-.eventos-lista{display:flex;flex-direction:column;gap:1px;background:var(--gris-medio);border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra)}
-.evento-item{background:var(--blanco);padding:1rem 1.25rem;display:grid;grid-template-columns:56px 1fr auto;align-items:center;gap:1rem;transition:background var(--t)}
+.eventos-lista{display:flex;flex-direction:column;gap:1px;background:var(--gris-medio);border-radius:var(--radio);overflow:visible;box-shadow:var(--sombra)}
+.eventos-lista .evento-item:first-child{border-radius:var(--radio) var(--radio) 0 0}
+.eventos-lista .evento-item:last-child{border-radius:0 0 var(--radio) var(--radio)}
+.eventos-lista .evento-item:only-child{border-radius:var(--radio)}
+.evento-item{background:var(--blanco);padding:1rem 1.25rem;display:grid;grid-template-columns:56px 1fr auto;align-items:center;gap:.75rem;transition:background var(--t)}
 .evento-item:hover{background:var(--gris-claro)}
 .evento-fecha{text-align:center;background:var(--azul-division);border-radius:var(--radio);padding:.45rem .35rem;color:var(--blanco)}
 .evento-fecha-mes{font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dorado);line-height:1}
 .evento-fecha-dia{font-family:var(--font-serif);font-size:1.4rem;font-weight:700;line-height:1.1}
 .evento-info h4{font-size:.88rem;font-weight:700;color:var(--azul-division);margin-bottom:.1rem;line-height:1.3}
 .evento-info p{font-size:.72rem;color:var(--gris-texto);opacity:.7;margin-bottom:0;line-height:1.4}
-.evento-badge{font-size:.58rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.22em .6em;border-radius:2px;white-space:nowrap;background:var(--gris-claro);color:var(--azul-division);border:1px solid var(--gris-medio)}
+.evento-info{display:flex;flex-direction:column;gap:.2rem}
+.evento-badge{display:inline-block;font-size:.55rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:.18em .55em;border-radius:2px;white-space:nowrap;margin-bottom:.15rem;width:fit-content}
+/* colores por categoría */
+.evento-badge--jovenes{background:rgba(142,68,173,.12);color:#7d3c98;border:1px solid rgba(142,68,173,.25)}
+.evento-badge--infantil{background:rgba(230,126,34,.12);color:#ca6f1e;border:1px solid rgba(230,126,34,.25)}
+.evento-badge--espiritual{background:rgba(0,51,102,.1);color:var(--azul-division);border:1px solid rgba(0,51,102,.2)}
+.evento-badge--ministerio{background:rgba(183,51,138,.12);color:#a93226;border:1px solid rgba(183,51,138,.25)}
+.evento-badge--comunidad{background:rgba(39,174,96,.12);color:#1e8449;border:1px solid rgba(39,174,96,.25)}
+.evento-badge--pastoral{background:rgba(47,85,127,.12);color:var(--azul-denim);border:1px solid rgba(47,85,127,.25)}
+.evento-badge--mision{background:rgba(192,57,43,.12);color:#c0392b;border:1px solid rgba(192,57,43,.25)}
+.evento-badge--publicaciones{background:rgba(22,160,133,.12);color:#148f77;border:1px solid rgba(22,160,133,.25)}
+.evento-badge--evangelismo{background:rgba(192,57,43,.12);color:#c0392b;border:1px solid rgba(192,57,43,.25)}
+.evento-badge--capacitacion{background:rgba(62,131,145,.12);color:var(--azul-ming);border:1px solid rgba(62,131,145,.25)}
+.evento-badge--social{background:rgba(52,152,219,.12);color:#2980b9;border:1px solid rgba(52,152,219,.25)}
+.evento-badge--administracion{background:rgba(0,51,102,.1);color:var(--azul-division);border:1px solid rgba(0,51,102,.2)}
+.evento-badge--general{background:var(--gris-claro);color:var(--gris-texto);border:1px solid var(--gris-medio)}
 .agenda-calendario{background:var(--gris-claro);border-radius:var(--radio);padding:1.4rem;box-shadow:var(--sombra);margin-bottom:1rem}
 .cal-mes-header{font-family:var(--font-serif);font-size:1rem;font-weight:700;color:var(--azul-division);margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:2px solid var(--naranja)}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;font-size:.63rem}
@@ -413,8 +570,8 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
   .numeros-grid{grid-template-columns:repeat(2,1fr)}
   .multimedia-grid{grid-template-columns:1fr}
   .agenda-wrap{grid-template-columns:1fr}
-  .evento-item{grid-template-columns:52px 1fr}
-  .evento-badge{display:none}
+  .evento-item{grid-template-columns:52px 1fr auto;gap:.6rem}
+  .evento-badge{display:inline-block}
   .indice-grid{grid-template-columns:1fr 1fr}
   .tema-hero{padding:2rem 1.5rem}
   .historia-body{padding:1.5rem 1.25rem}
@@ -573,7 +730,7 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
     </div>
 
     <!-- 19 tarjetas en orden del documento -->
-    <div class="noticias-grid fade-in" id="noticias-grid">
+    <div class="noticias-grid" id="noticias-grid">
 
       <!-- 01 -->
       <a href="noticias/01-bautismos-2026.html" class="noticia-card noticia-card--principal" data-cats="evangelismo">
@@ -944,18 +1101,78 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
         <div class="eventos-lista">
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">MAY</div><div class="evento-fecha-dia">02</div></div>
-            <div class="evento-info"><h4>Lanzamiento Pulso Joven</h4><p>Actividades AMCh</p></div>
-            <span class="evento-badge">Jóvenes</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--jovenes">Jóvenes</span>
+                <h4>Lanzamiento Pulso Joven</h4><p>Actividades AMCh</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Lanzamiento%20Pulso%20Joven&dates=20260502/20260502&details=Actividades%20AMCh%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MDUwMi1sYW56YW1pZW50by1wdWxzby1qb0ByZXZpc3RhLW1ldHJvDQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNjA1MDINCkRURU5EO1ZBTFVFPURBVEU6MjAyNjA1MDINClNVTU1BUlk6TGFuemFtaWVudG8gUHVsc28gSm92ZW4NCkRFU0NSSVBUSU9OOkFjdGl2aWRhZGVzIEFNQ2ggLSBBc29jaWFjaW9uIE1ldHJvcG9saXRhbmEgQWR2ZW50aXN0YSBkZSBDaGlsZQ0KTE9DQVRJT046U2FudGlhZ29cLCBDaGlsZQ0KRU5EOlZFVkVOVA0KRU5EOlZDQUxFTkRBUg0K" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">MAY</div><div class="evento-fecha-dia">16</div></div>
-            <div class="evento-info"><h4>Sábado del Niño · Día Mundial del Aventurero</h4><p>Iglesia local</p></div>
-            <span class="evento-badge">Infantil</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--infantil">Infantil</span>
+                <h4>Sábado del Niño · Día Mundial del Aventurero</h4><p>Iglesia local</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=S%C3%A1bado%20del%20Ni%C3%B1o%20%C2%B7%20D%C3%ADa%20Mundial%20del%20Aventurero&dates=20260516/20260516&details=Iglesia%20local%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MDUxNi1zw6FiYWRvLWRlbC1uacOxby3Cty1kw61AcmV2aXN0YS1tZXRybw0KRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjYwNTE2DQpEVEVORDtWQUxVRT1EQVRFOjIwMjYwNTE2DQpTVU1NQVJZOlPDoWJhZG8gZGVsIE5pw7FvIMK3IETDrWEgTXVuZGlhbCBkZWwgQXZlbnR1cmVybw0KREVTQ1JJUFRJT046SWdsZXNpYSBsb2NhbCAtIEFzb2NpYWNpb24gTWV0cm9wb2xpdGFuYSBBZHZlbnRpc3RhIGRlIENoaWxlDQpMT0NBVElPTjpTYW50aWFnb1wsIENoaWxlDQpFTkQ6VkVWRU5UDQpFTkQ6VkNBTEVOREFSDQo=" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">MAY</div><div class="evento-fecha-dia">23</div></div>
-            <div class="evento-info"><h4>Semana de Mayordomía</h4><p>Actividades AMCh · 23 al 30 de mayo</p></div>
-            <span class="evento-badge">Espiritual</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--espiritual">Espiritual</span>
+                <h4>Semana de Mayordomía</h4><p>Actividades AMCh · 23 al 30 de mayo</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Semana%20de%20Mayordom%C3%ADa&dates=20260523/20260523&details=Actividades%20AMCh%20%C2%B7%2023%20al%2030%20de%20mayo%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MDUyMy1zZW1hbmEtZGUtbWF5b3Jkb23DrWFAcmV2aXN0YS1tZXRybw0KRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjYwNTIzDQpEVEVORDtWQUxVRT1EQVRFOjIwMjYwNTIzDQpTVU1NQVJZOlNlbWFuYSBkZSBNYXlvcmRvbcOtYQ0KREVTQ1JJUFRJT046QWN0aXZpZGFkZXMgQU1DaCDCtyAyMyBhbCAzMCBkZSBtYXlvIC0gQXNvY2lhY2lvbiBNZXRyb3BvbGl0YW5hIEFkdmVudGlzdGEgZGUgQ2hpbGUNCkxPQ0FUSU9OOlNhbnRpYWdvXCwgQ2hpbGUNCkVORDpWRVZFTlQNCkVORDpWQ0FMRU5EQVINCg==" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -964,28 +1181,128 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
         <div class="eventos-lista">
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">JUN</div><div class="evento-fecha-dia">06</div></div>
-            <div class="evento-info"><h4>Sábado Misionero de la Mujer Adventista Zonal</h4><p>Iglesia local</p></div>
-            <span class="evento-badge">Ministerio</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--ministerio">Ministerio</span>
+                <h4>Sábado Misionero de la Mujer Adventista Zonal</h4><p>Iglesia local</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=S%C3%A1bado%20Misionero%20de%20la%20Mujer%20Adventista%20Zonal&dates=20260606/20260606&details=Iglesia%20local%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MDYwNi1zw6FiYWRvLW1pc2lvbmVyby1kZS1AcmV2aXN0YS1tZXRybw0KRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjYwNjA2DQpEVEVORDtWQUxVRT1EQVRFOjIwMjYwNjA2DQpTVU1NQVJZOlPDoWJhZG8gTWlzaW9uZXJvIGRlIGxhIE11amVyIEFkdmVudGlzdGEgWm9uYWwNCkRFU0NSSVBUSU9OOklnbGVzaWEgbG9jYWwgLSBBc29jaWFjaW9uIE1ldHJvcG9saXRhbmEgQWR2ZW50aXN0YSBkZSBDaGlsZQ0KTE9DQVRJT046U2FudGlhZ29cLCBDaGlsZQ0KRU5EOlZFVkVOVA0KRU5EOlZDQUxFTkRBUg0K" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">JUN</div><div class="evento-fecha-dia">13</div></div>
-            <div class="evento-info"><h4>Reencuentro Comunidad Venezolana</h4><p>Actividades AMCh</p></div>
-            <span class="evento-badge">Comunidad</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--comunidad">Comunidad</span>
+                <h4>Reencuentro Comunidad Venezolana</h4><p>Actividades AMCh</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Reencuentro%20Comunidad%20Venezolana&dates=20260613/20260613&details=Actividades%20AMCh%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MDYxMy1yZWVuY3VlbnRyby1jb211bmlkYUByZXZpc3RhLW1ldHJvDQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNjA2MTMNCkRURU5EO1ZBTFVFPURBVEU6MjAyNjA2MTMNClNVTU1BUlk6UmVlbmN1ZW50cm8gQ29tdW5pZGFkIFZlbmV6b2xhbmENCkRFU0NSSVBUSU9OOkFjdGl2aWRhZGVzIEFNQ2ggLSBBc29jaWFjaW9uIE1ldHJvcG9saXRhbmEgQWR2ZW50aXN0YSBkZSBDaGlsZQ0KTE9DQVRJT046U2FudGlhZ29cLCBDaGlsZQ0KRU5EOlZFVkVOVA0KRU5EOlZDQUxFTkRBUg0K" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">JUN</div><div class="evento-fecha-dia">20</div></div>
-            <div class="evento-info"><h4>Encuentro Ancianato y Esposas Distrital</h4><p>Actividades AMCh</p></div>
-            <span class="evento-badge">Pastoral</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--pastoral">Pastoral</span>
+                <h4>Encuentro Ancianato y Esposas Distrital</h4><p>Actividades AMCh</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Encuentro%20Ancianato%20y%20Esposas%20Distrital&dates=20260620/20260620&details=Actividades%20AMCh%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MDYyMC1lbmN1ZW50cm8tYW5jaWFuYXRvLUByZXZpc3RhLW1ldHJvDQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNjA2MjANCkRURU5EO1ZBTFVFPURBVEU6MjAyNjA2MjANClNVTU1BUlk6RW5jdWVudHJvIEFuY2lhbmF0byB5IEVzcG9zYXMgRGlzdHJpdGFsDQpERVNDUklQVElPTjpBY3RpdmlkYWRlcyBBTUNoIC0gQXNvY2lhY2lvbiBNZXRyb3BvbGl0YW5hIEFkdmVudGlzdGEgZGUgQ2hpbGUNCkxPQ0FUSU9OOlNhbnRpYWdvXCwgQ2hpbGUNCkVORDpWRVZFTlQNCkVORDpWQ0FMRU5EQVINCg==" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">JUN</div><div class="evento-fecha-dia">27</div></div>
-            <div class="evento-info"><h4>Día del Anciano · Encuentro Universitarios Adventistas</h4><p>Iglesia local · Actividades AMCh</p></div>
-            <span class="evento-badge">Comunidad</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--comunidad">Comunidad</span>
+                <h4>Día del Anciano · Encuentro Universitarios Adventistas</h4><p>Iglesia local · Actividades AMCh</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=D%C3%ADa%20del%20Anciano%20%C2%B7%20Encuentro%20Universitarios%20Adventistas&dates=20260627/20260627&details=Iglesia%20local%20%C2%B7%20Actividades%20AMCh%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MDYyNy1kw61hLWRlbC1hbmNpYW5vLcK3LWVuQHJldmlzdGEtbWV0cm8NCkRUU1RBUlQ7VkFMVUU9REFURToyMDI2MDYyNw0KRFRFTkQ7VkFMVUU9REFURToyMDI2MDYyNw0KU1VNTUFSWTpEw61hIGRlbCBBbmNpYW5vIMK3IEVuY3VlbnRybyBVbml2ZXJzaXRhcmlvcyBBZHZlbnRpc3Rhcw0KREVTQ1JJUFRJT046SWdsZXNpYSBsb2NhbCDCtyBBY3RpdmlkYWRlcyBBTUNoIC0gQXNvY2lhY2lvbiBNZXRyb3BvbGl0YW5hIEFkdmVudGlzdGEgZGUgQ2hpbGUNCkxPQ0FUSU9OOlNhbnRpYWdvXCwgQ2hpbGUNCkVORDpWRVZFTlQNCkVORDpWQ0FMRU5EQVINCg==" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">JUN</div><div class="evento-fecha-dia">28</div></div>
-            <div class="evento-info"><h4>Pre Trimestrales Distritales</h4><p>Actividades AMCh</p></div>
-            <span class="evento-badge">Administración</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--administracion">Administración</span>
+                <h4>Pre Trimestrales Distritales</h4><p>Actividades AMCh</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pre%20Trimestrales%20Distritales&dates=20260628/20260628&details=Actividades%20AMCh%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MDYyOC1wcmUtdHJpbWVzdHJhbGVzLWRpc0ByZXZpc3RhLW1ldHJvDQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNjA2MjgNCkRURU5EO1ZBTFVFPURBVEU6MjAyNjA2MjgNClNVTU1BUlk6UHJlIFRyaW1lc3RyYWxlcyBEaXN0cml0YWxlcw0KREVTQ1JJUFRJT046QWN0aXZpZGFkZXMgQU1DaCAtIEFzb2NpYWNpb24gTWV0cm9wb2xpdGFuYSBBZHZlbnRpc3RhIGRlIENoaWxlDQpMT0NBVElPTjpTYW50aWFnb1wsIENoaWxlDQpFTkQ6VkVWRU5UDQpFTkQ6VkNBTEVOREFSDQo=" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -994,18 +1311,78 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
         <div class="eventos-lista">
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">JUL</div><div class="evento-fecha-dia">04</div></div>
-            <div class="evento-info"><h4>Encuentro Coordinadores NT y Centros de Influencia</h4><p>Actividades AMCh</p></div>
-            <span class="evento-badge">Misión</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--mision">Misión</span>
+                <h4>Encuentro Coordinadores NT y Centros de Influencia</h4><p>Actividades AMCh</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Encuentro%20Coordinadores%20NT%20y%20Centros%20de%20Influencia&dates=20260704/20260704&details=Actividades%20AMCh%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MDcwNC1lbmN1ZW50cm8tY29vcmRpbmFkb0ByZXZpc3RhLW1ldHJvDQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNjA3MDQNCkRURU5EO1ZBTFVFPURBVEU6MjAyNjA3MDQNClNVTU1BUlk6RW5jdWVudHJvIENvb3JkaW5hZG9yZXMgTlQgeSBDZW50cm9zIGRlIEluZmx1ZW5jaWENCkRFU0NSSVBUSU9OOkFjdGl2aWRhZGVzIEFNQ2ggLSBBc29jaWFjaW9uIE1ldHJvcG9saXRhbmEgQWR2ZW50aXN0YSBkZSBDaGlsZQ0KTE9DQVRJT046U2FudGlhZ29cLCBDaGlsZQ0KRU5EOlZFVkVOVA0KRU5EOlZDQUxFTkRBUg0K" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">JUL</div><div class="evento-fecha-dia">11</div></div>
-            <div class="evento-info"><h4>Día del Colportor · Sermón de Colportaje</h4><p>Iglesia local · Actividades AMCh</p></div>
-            <span class="evento-badge">Publicaciones</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--publicaciones">Publicaciones</span>
+                <h4>Día del Colportor · Sermón de Colportaje</h4><p>Iglesia local · Actividades AMCh</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=D%C3%ADa%20del%20Colportor%20%C2%B7%20Serm%C3%B3n%20de%20Colportaje&dates=20260711/20260711&details=Iglesia%20local%20%C2%B7%20Actividades%20AMCh%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MDcxMS1kw61hLWRlbC1jb2xwb3J0b3ItwrctQHJldmlzdGEtbWV0cm8NCkRUU1RBUlQ7VkFMVUU9REFURToyMDI2MDcxMQ0KRFRFTkQ7VkFMVUU9REFURToyMDI2MDcxMQ0KU1VNTUFSWTpEw61hIGRlbCBDb2xwb3J0b3IgwrcgU2VybcOzbiBkZSBDb2xwb3J0YWplDQpERVNDUklQVElPTjpJZ2xlc2lhIGxvY2FsIMK3IEFjdGl2aWRhZGVzIEFNQ2ggLSBBc29jaWFjaW9uIE1ldHJvcG9saXRhbmEgQWR2ZW50aXN0YSBkZSBDaGlsZQ0KTE9DQVRJT046U2FudGlhZ29cLCBDaGlsZQ0KRU5EOlZFVkVOVA0KRU5EOlZDQUxFTkRBUg0K" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">JUL</div><div class="evento-fecha-dia">18</div></div>
-            <div class="evento-info"><h4>Semana Evangelismo Joven · Campaña de Invierno</h4><p>Actividades AMCh · 18 al 25 de julio</p></div>
-            <span class="evento-badge">Evangelismo</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--evangelismo">Evangelismo</span>
+                <h4>Semana Evangelismo Joven · Campaña de Invierno</h4><p>Actividades AMCh · 18 al 25 de julio</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Semana%20Evangelismo%20Joven%20%C2%B7%20Campa%C3%B1a%20de%20Invierno&dates=20260718/20260718&details=Actividades%20AMCh%20%C2%B7%2018%20al%2025%20de%20julio%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MDcxOC1zZW1hbmEtZXZhbmdlbGlzbW8takByZXZpc3RhLW1ldHJvDQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNjA3MTgNCkRURU5EO1ZBTFVFPURBVEU6MjAyNjA3MTgNClNVTU1BUlk6U2VtYW5hIEV2YW5nZWxpc21vIEpvdmVuIMK3IENhbXBhw7FhIGRlIEludmllcm5vDQpERVNDUklQVElPTjpBY3RpdmlkYWRlcyBBTUNoIMK3IDE4IGFsIDI1IGRlIGp1bGlvIC0gQXNvY2lhY2lvbiBNZXRyb3BvbGl0YW5hIEFkdmVudGlzdGEgZGUgQ2hpbGUNCkxPQ0FUSU9OOlNhbnRpYWdvXCwgQ2hpbGUNCkVORDpWRVZFTlQNCkVORDpWQ0FMRU5EQVINCg==" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1014,23 +1391,103 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
         <div class="eventos-lista">
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">AGO</div><div class="evento-fecha-dia">08</div></div>
-            <div class="evento-info"><h4>MRNT Workshops</h4><p>Actividades AMCh</p></div>
-            <span class="evento-badge">Capacitación</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--capacitacion">Capacitación</span>
+                <h4>MRNT Workshops</h4><p>Actividades AMCh</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=MRNT%20Workshops&dates=20260808/20260808&details=Actividades%20AMCh%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MDgwOC1tcm50LXdvcmtzaG9wc0ByZXZpc3RhLW1ldHJvDQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNjA4MDgNCkRURU5EO1ZBTFVFPURBVEU6MjAyNjA4MDgNClNVTU1BUlk6TVJOVCBXb3Jrc2hvcHMNCkRFU0NSSVBUSU9OOkFjdGl2aWRhZGVzIEFNQ2ggLSBBc29jaWFjaW9uIE1ldHJvcG9saXRhbmEgQWR2ZW50aXN0YSBkZSBDaGlsZQ0KTE9DQVRJT046U2FudGlhZ29cLCBDaGlsZQ0KRU5EOlZFVkVOVA0KRU5EOlZDQUxFTkRBUg0K" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">AGO</div><div class="evento-fecha-dia">15</div></div>
-            <div class="evento-info"><h4>Encuentro de Coordinadores de Publicaciones</h4><p>Actividades AMCh</p></div>
-            <span class="evento-badge">Publicaciones</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--publicaciones">Publicaciones</span>
+                <h4>Encuentro de Coordinadores de Publicaciones</h4><p>Actividades AMCh</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Encuentro%20de%20Coordinadores%20de%20Publicaciones&dates=20260815/20260815&details=Actividades%20AMCh%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MDgxNS1lbmN1ZW50cm8tZGUtY29vcmRpbkByZXZpc3RhLW1ldHJvDQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNjA4MTUNCkRURU5EO1ZBTFVFPURBVEU6MjAyNjA4MTUNClNVTU1BUlk6RW5jdWVudHJvIGRlIENvb3JkaW5hZG9yZXMgZGUgUHVibGljYWNpb25lcw0KREVTQ1JJUFRJT046QWN0aXZpZGFkZXMgQU1DaCAtIEFzb2NpYWNpb24gTWV0cm9wb2xpdGFuYSBBZHZlbnRpc3RhIGRlIENoaWxlDQpMT0NBVElPTjpTYW50aWFnb1wsIENoaWxlDQpFTkQ6VkVWRU5UDQpFTkQ6VkNBTEVOREFSDQo=" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">AGO</div><div class="evento-fecha-dia">21</div></div>
-            <div class="evento-info"><h4>Evangelismo Radio Mundial Adventista</h4><p>Actividades AMCh · 21 al 29 de agosto</p></div>
-            <span class="evento-badge">Evangelismo</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--evangelismo">Evangelismo</span>
+                <h4>Evangelismo Radio Mundial Adventista</h4><p>Actividades AMCh · 21 al 29 de agosto</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Evangelismo%20Radio%20Mundial%20Adventista&dates=20260821/20260821&details=Actividades%20AMCh%20%C2%B7%2021%20al%2029%20de%20agosto%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MDgyMS1ldmFuZ2VsaXNtby1yYWRpby1tdUByZXZpc3RhLW1ldHJvDQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNjA4MjENCkRURU5EO1ZBTFVFPURBVEU6MjAyNjA4MjENClNVTU1BUlk6RXZhbmdlbGlzbW8gUmFkaW8gTXVuZGlhbCBBZHZlbnRpc3RhDQpERVNDUklQVElPTjpBY3RpdmlkYWRlcyBBTUNoIMK3IDIxIGFsIDI5IGRlIGFnb3N0byAtIEFzb2NpYWNpb24gTWV0cm9wb2xpdGFuYSBBZHZlbnRpc3RhIGRlIENoaWxlDQpMT0NBVElPTjpTYW50aWFnb1wsIENoaWxlDQpFTkQ6VkVWRU5UDQpFTkQ6VkNBTEVOREFSDQo=" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">AGO</div><div class="evento-fecha-dia">22</div></div>
-            <div class="evento-info"><h4>Proyecto "Basta de Silencio"</h4><p>Iglesia local</p></div>
-            <span class="evento-badge">Social</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--social">Social</span>
+                <h4>Proyecto "Basta de Silencio"</h4><p>Iglesia local</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Proyecto%20%22Basta%20de%20Silencio%22&dates=20260822/20260822&details=Iglesia%20local%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MDgyMi1wcm95ZWN0by0iYmFzdGEtZGUtc0ByZXZpc3RhLW1ldHJvDQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNjA4MjINCkRURU5EO1ZBTFVFPURBVEU6MjAyNjA4MjINClNVTU1BUlk6UHJveWVjdG8gIkJhc3RhIGRlIFNpbGVuY2lvIg0KREVTQ1JJUFRJT046SWdsZXNpYSBsb2NhbCAtIEFzb2NpYWNpb24gTWV0cm9wb2xpdGFuYSBBZHZlbnRpc3RhIGRlIENoaWxlDQpMT0NBVElPTjpTYW50aWFnb1wsIENoaWxlDQpFTkQ6VkVWRU5UDQpFTkQ6VkNBTEVOREFSDQo=" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1044,28 +1501,128 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
         <div class="eventos-lista">
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">SEP</div><div class="evento-fecha-dia">05</div></div>
-            <div class="evento-info"><h4>Semana del Pañolín</h4><p>Actividades AMCh · 5 al 12 de septiembre</p></div>
-            <span class="evento-badge">Infantil</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--infantil">Infantil</span>
+                <h4>Semana del Pañolín</h4><p>Actividades AMCh · 5 al 12 de septiembre</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Semana%20del%20Pa%C3%B1ol%C3%ADn&dates=20260905/20260905&details=Actividades%20AMCh%20%C2%B7%205%20al%2012%20de%20septiembre%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MDkwNS1zZW1hbmEtZGVsLXBhw7FvbMOtbkByZXZpc3RhLW1ldHJvDQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNjA5MDUNCkRURU5EO1ZBTFVFPURBVEU6MjAyNjA5MDUNClNVTU1BUlk6U2VtYW5hIGRlbCBQYcOxb2zDrW4NCkRFU0NSSVBUSU9OOkFjdGl2aWRhZGVzIEFNQ2ggwrcgNSBhbCAxMiBkZSBzZXB0aWVtYnJlIC0gQXNvY2lhY2lvbiBNZXRyb3BvbGl0YW5hIEFkdmVudGlzdGEgZGUgQ2hpbGUNCkxPQ0FUSU9OOlNhbnRpYWdvXCwgQ2hpbGUNCkVORDpWRVZFTlQNCkVORDpWQ0FMRU5EQVINCg==" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">SEP</div><div class="evento-fecha-dia">12</div></div>
-            <div class="evento-info"><h4>Día Mundial del Conquistador</h4><p>Iglesia local</p></div>
-            <span class="evento-badge">Infantil</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--infantil">Infantil</span>
+                <h4>Día Mundial del Conquistador</h4><p>Iglesia local</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=D%C3%ADa%20Mundial%20del%20Conquistador&dates=20260912/20260912&details=Iglesia%20local%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MDkxMi1kw61hLW11bmRpYWwtZGVsLWNvbnFAcmV2aXN0YS1tZXRybw0KRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjYwOTEyDQpEVEVORDtWQUxVRT1EQVRFOjIwMjYwOTEyDQpTVU1NQVJZOkTDrWEgTXVuZGlhbCBkZWwgQ29ucXVpc3RhZG9yDQpERVNDUklQVElPTjpJZ2xlc2lhIGxvY2FsIC0gQXNvY2lhY2lvbiBNZXRyb3BvbGl0YW5hIEFkdmVudGlzdGEgZGUgQ2hpbGUNCkxPQ0FUSU9OOlNhbnRpYWdvXCwgQ2hpbGUNCkVORDpWRVZFTlQNCkVORDpWQ0FMRU5EQVINCg==" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">SEP</div><div class="evento-fecha-dia">17</div></div>
-            <div class="evento-info"><h4>Congreso JA</h4><p>Actividades AMCh · 17 al 20 de septiembre</p></div>
-            <span class="evento-badge">Jóvenes</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--jovenes">Jóvenes</span>
+                <h4>Congreso JA</h4><p>Actividades AMCh · 17 al 20 de septiembre</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Congreso%20JA&dates=20260917/20260917&details=Actividades%20AMCh%20%C2%B7%2017%20al%2020%20de%20septiembre%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MDkxNy1jb25ncmVzby1qYUByZXZpc3RhLW1ldHJvDQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNjA5MTcNCkRURU5EO1ZBTFVFPURBVEU6MjAyNjA5MTcNClNVTU1BUlk6Q29uZ3Jlc28gSkENCkRFU0NSSVBUSU9OOkFjdGl2aWRhZGVzIEFNQ2ggwrcgMTcgYWwgMjAgZGUgc2VwdGllbWJyZSAtIEFzb2NpYWNpb24gTWV0cm9wb2xpdGFuYSBBZHZlbnRpc3RhIGRlIENoaWxlDQpMT0NBVElPTjpTYW50aWFnb1wsIENoaWxlDQpFTkQ6VkVWRU5UDQpFTkQ6VkNBTEVOREFSDQo=" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">SEP</div><div class="evento-fecha-dia">19</div></div>
-            <div class="evento-info"><h4>Semana de la Esperanza</h4><p>Iglesia local · 19 al 26 de septiembre</p></div>
-            <span class="evento-badge">Espiritual</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--espiritual">Espiritual</span>
+                <h4>Semana de la Esperanza</h4><p>Iglesia local · 19 al 26 de septiembre</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Semana%20de%20la%20Esperanza&dates=20260919/20260919&details=Iglesia%20local%20%C2%B7%2019%20al%2026%20de%20septiembre%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MDkxOS1zZW1hbmEtZGUtbGEtZXNwZXJhbkByZXZpc3RhLW1ldHJvDQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNjA5MTkNCkRURU5EO1ZBTFVFPURBVEU6MjAyNjA5MTkNClNVTU1BUlk6U2VtYW5hIGRlIGxhIEVzcGVyYW56YQ0KREVTQ1JJUFRJT046SWdsZXNpYSBsb2NhbCDCtyAxOSBhbCAyNiBkZSBzZXB0aWVtYnJlIC0gQXNvY2lhY2lvbiBNZXRyb3BvbGl0YW5hIEFkdmVudGlzdGEgZGUgQ2hpbGUNCkxPQ0FUSU9OOlNhbnRpYWdvXCwgQ2hpbGUNCkVORDpWRVZFTlQNCkVORDpWQ0FMRU5EQVINCg==" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">SEP</div><div class="evento-fecha-dia">26</div></div>
-            <div class="evento-info"><h4>Bautismo de Primavera</h4><p>Iglesia local</p></div>
-            <span class="evento-badge">Evangelismo</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--evangelismo">Evangelismo</span>
+                <h4>Bautismo de Primavera</h4><p>Iglesia local</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Bautismo%20de%20Primavera&dates=20260926/20260926&details=Iglesia%20local%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MDkyNi1iYXV0aXNtby1kZS1wcmltYXZlckByZXZpc3RhLW1ldHJvDQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNjA5MjYNCkRURU5EO1ZBTFVFPURBVEU6MjAyNjA5MjYNClNVTU1BUlk6QmF1dGlzbW8gZGUgUHJpbWF2ZXJhDQpERVNDUklQVElPTjpJZ2xlc2lhIGxvY2FsIC0gQXNvY2lhY2lvbiBNZXRyb3BvbGl0YW5hIEFkdmVudGlzdGEgZGUgQ2hpbGUNCkxPQ0FUSU9OOlNhbnRpYWdvXCwgQ2hpbGUNCkVORDpWRVZFTlQNCkVORDpWQ0FMRU5EQVINCg==" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1074,23 +1631,103 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
         <div class="eventos-lista">
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">OCT</div><div class="evento-fecha-dia">03</div></div>
-            <div class="evento-info"><h4>Sábado de la Educación Adventista</h4><p>Iglesia local</p></div>
-            <span class="evento-badge">Educación</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--general">Educación</span>
+                <h4>Sábado de la Educación Adventista</h4><p>Iglesia local</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=S%C3%A1bado%20de%20la%20Educaci%C3%B3n%20Adventista&dates=20261003/20261003&details=Iglesia%20local%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MTAwMy1zw6FiYWRvLWRlLWxhLWVkdWNhY2lAcmV2aXN0YS1tZXRybw0KRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjYxMDAzDQpEVEVORDtWQUxVRT1EQVRFOjIwMjYxMDAzDQpTVU1NQVJZOlPDoWJhZG8gZGUgbGEgRWR1Y2FjacOzbiBBZHZlbnRpc3RhDQpERVNDUklQVElPTjpJZ2xlc2lhIGxvY2FsIC0gQXNvY2lhY2lvbiBNZXRyb3BvbGl0YW5hIEFkdmVudGlzdGEgZGUgQ2hpbGUNCkxPQ0FUSU9OOlNhbnRpYWdvXCwgQ2hpbGUNCkVORDpWRVZFTlQNCkVORDpWQ0FMRU5EQVINCg==" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">OCT</div><div class="evento-fecha-dia">09</div></div>
-            <div class="evento-info"><h4>Aventuri AMCh</h4><p>Actividades AMCh · 9 al 12 de octubre</p></div>
-            <span class="evento-badge">Infantil</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--infantil">Infantil</span>
+                <h4>Aventuri AMCh</h4><p>Actividades AMCh · 9 al 12 de octubre</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Aventuri%20AMCh&dates=20261009/20261009&details=Actividades%20AMCh%20%C2%B7%209%20al%2012%20de%20octubre%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MTAwOS1hdmVudHVyaS1hbWNoQHJldmlzdGEtbWV0cm8NCkRUU1RBUlQ7VkFMVUU9REFURToyMDI2MTAwOQ0KRFRFTkQ7VkFMVUU9REFURToyMDI2MTAwOQ0KU1VNTUFSWTpBdmVudHVyaSBBTUNoDQpERVNDUklQVElPTjpBY3RpdmlkYWRlcyBBTUNoIMK3IDkgYWwgMTIgZGUgb2N0dWJyZSAtIEFzb2NpYWNpb24gTWV0cm9wb2xpdGFuYSBBZHZlbnRpc3RhIGRlIENoaWxlDQpMT0NBVElPTjpTYW50aWFnb1wsIENoaWxlDQpFTkQ6VkVWRU5UDQpFTkQ6VkNBTEVOREFSDQo=" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">OCT</div><div class="evento-fecha-dia">17</div></div>
-            <div class="evento-info"><h4>Impacto Esperanza · Semana de Evangelismo</h4><p>Iglesia local · Actividades AMCh · 17 al 24</p></div>
-            <span class="evento-badge">Evangelismo</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--evangelismo">Evangelismo</span>
+                <h4>Impacto Esperanza · Semana de Evangelismo</h4><p>Iglesia local · Actividades AMCh · 17 al 24</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Impacto%20Esperanza%20%C2%B7%20Semana%20de%20Evangelismo&dates=20261017/20261017&details=Iglesia%20local%20%C2%B7%20Actividades%20AMCh%20%C2%B7%2017%20al%2024%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MTAxNy1pbXBhY3RvLWVzcGVyYW56YS3Cty1AcmV2aXN0YS1tZXRybw0KRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjYxMDE3DQpEVEVORDtWQUxVRT1EQVRFOjIwMjYxMDE3DQpTVU1NQVJZOkltcGFjdG8gRXNwZXJhbnphIMK3IFNlbWFuYSBkZSBFdmFuZ2VsaXNtbw0KREVTQ1JJUFRJT046SWdsZXNpYSBsb2NhbCDCtyBBY3RpdmlkYWRlcyBBTUNoIMK3IDE3IGFsIDI0IC0gQXNvY2lhY2lvbiBNZXRyb3BvbGl0YW5hIEFkdmVudGlzdGEgZGUgQ2hpbGUNCkxPQ0FUSU9OOlNhbnRpYWdvXCwgQ2hpbGUNCkVORDpWRVZFTlQNCkVORDpWQ0FMRU5EQVINCg==" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">OCT</div><div class="evento-fecha-dia">24</div></div>
-            <div class="evento-info"><h4>Sábado de la Creación</h4><p>Iglesia local</p></div>
-            <span class="evento-badge">Espiritual</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--espiritual">Espiritual</span>
+                <h4>Sábado de la Creación</h4><p>Iglesia local</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=S%C3%A1bado%20de%20la%20Creaci%C3%B3n&dates=20261024/20261024&details=Iglesia%20local%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MTAyNC1zw6FiYWRvLWRlLWxhLWNyZWFjacOzQHJldmlzdGEtbWV0cm8NCkRUU1RBUlQ7VkFMVUU9REFURToyMDI2MTAyNA0KRFRFTkQ7VkFMVUU9REFURToyMDI2MTAyNA0KU1VNTUFSWTpTw6FiYWRvIGRlIGxhIENyZWFjacOzbg0KREVTQ1JJUFRJT046SWdsZXNpYSBsb2NhbCAtIEFzb2NpYWNpb24gTWV0cm9wb2xpdGFuYSBBZHZlbnRpc3RhIGRlIENoaWxlDQpMT0NBVElPTjpTYW50aWFnb1wsIENoaWxlDQpFTkQ6VkVWRU5UDQpFTkQ6VkNBTEVOREFSDQo=" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1099,23 +1736,103 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
         <div class="eventos-lista">
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">NOV</div><div class="evento-fecha-dia">04</div></div>
-            <div class="evento-info"><h4>Campaña Evangelística Comunidad Venezolana</h4><p>Actividades AMCh · 4 al 7 de noviembre</p></div>
-            <span class="evento-badge">Evangelismo</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--evangelismo">Evangelismo</span>
+                <h4>Campaña Evangelística Comunidad Venezolana</h4><p>Actividades AMCh · 4 al 7 de noviembre</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Campa%C3%B1a%20Evangel%C3%ADstica%20Comunidad%20Venezolana&dates=20261104/20261104&details=Actividades%20AMCh%20%C2%B7%204%20al%207%20de%20noviembre%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MTEwNC1jYW1wYcOxYS1ldmFuZ2Vsw61zdGljQHJldmlzdGEtbWV0cm8NCkRUU1RBUlQ7VkFMVUU9REFURToyMDI2MTEwNA0KRFRFTkQ7VkFMVUU9REFURToyMDI2MTEwNA0KU1VNTUFSWTpDYW1wYcOxYSBFdmFuZ2Vsw61zdGljYSBDb211bmlkYWQgVmVuZXpvbGFuYQ0KREVTQ1JJUFRJT046QWN0aXZpZGFkZXMgQU1DaCDCtyA0IGFsIDcgZGUgbm92aWVtYnJlIC0gQXNvY2lhY2lvbiBNZXRyb3BvbGl0YW5hIEFkdmVudGlzdGEgZGUgQ2hpbGUNCkxPQ0FUSU9OOlNhbnRpYWdvXCwgQ2hpbGUNCkVORDpWRVZFTlQNCkVORDpWQ0FMRU5EQVINCg==" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">NOV</div><div class="evento-fecha-dia">06</div></div>
-            <div class="evento-info"><h4>Día del Espíritu de Profecía</h4><p>Iglesia local · Actividades AMCh</p></div>
-            <span class="evento-badge">Espiritual</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--espiritual">Espiritual</span>
+                <h4>Día del Espíritu de Profecía</h4><p>Iglesia local · Actividades AMCh</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=D%C3%ADa%20del%20Esp%C3%ADritu%20de%20Profec%C3%ADa&dates=20261106/20261106&details=Iglesia%20local%20%C2%B7%20Actividades%20AMCh%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MTEwNi1kw61hLWRlbC1lc3DDrXJpdHUtZGUtQHJldmlzdGEtbWV0cm8NCkRUU1RBUlQ7VkFMVUU9REFURToyMDI2MTEwNg0KRFRFTkQ7VkFMVUU9REFURToyMDI2MTEwNg0KU1VNTUFSWTpEw61hIGRlbCBFc3DDrXJpdHUgZGUgUHJvZmVjw61hDQpERVNDUklQVElPTjpJZ2xlc2lhIGxvY2FsIMK3IEFjdGl2aWRhZGVzIEFNQ2ggLSBBc29jaWFjaW9uIE1ldHJvcG9saXRhbmEgQWR2ZW50aXN0YSBkZSBDaGlsZQ0KTE9DQVRJT046U2FudGlhZ29cLCBDaGlsZQ0KRU5EOlZFVkVOVA0KRU5EOlZDQUxFTkRBUg0K" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">NOV</div><div class="evento-fecha-dia">20</div></div>
-            <div class="evento-info"><h4>Celebrateen AMCh</h4><p>Actividades AMCh · 20 al 22 de noviembre</p></div>
-            <span class="evento-badge">Jóvenes</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--jovenes">Jóvenes</span>
+                <h4>Celebrateen AMCh</h4><p>Actividades AMCh · 20 al 22 de noviembre</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Celebrateen%20AMCh&dates=20261120/20261120&details=Actividades%20AMCh%20%C2%B7%2020%20al%2022%20de%20noviembre%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MTEyMC1jZWxlYnJhdGVlbi1hbWNoQHJldmlzdGEtbWV0cm8NCkRUU1RBUlQ7VkFMVUU9REFURToyMDI2MTEyMA0KRFRFTkQ7VkFMVUU9REFURToyMDI2MTEyMA0KU1VNTUFSWTpDZWxlYnJhdGVlbiBBTUNoDQpERVNDUklQVElPTjpBY3RpdmlkYWRlcyBBTUNoIMK3IDIwIGFsIDIyIGRlIG5vdmllbWJyZSAtIEFzb2NpYWNpb24gTWV0cm9wb2xpdGFuYSBBZHZlbnRpc3RhIGRlIENoaWxlDQpMT0NBVElPTjpTYW50aWFnb1wsIENoaWxlDQpFTkQ6VkVWRU5UDQpFTkQ6VkNBTEVOREFSDQo=" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">NOV</div><div class="evento-fecha-dia">28</div></div>
-            <div class="evento-info"><h4>Lanzamiento Misionero 2027</h4><p>Actividades AMCh</p></div>
-            <span class="evento-badge">Misión</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--mision">Misión</span>
+                <h4>Lanzamiento Misionero 2027</h4><p>Actividades AMCh</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Lanzamiento%20Misionero%202027&dates=20261128/20261128&details=Actividades%20AMCh%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MTEyOC1sYW56YW1pZW50by1taXNpb25lckByZXZpc3RhLW1ldHJvDQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNjExMjgNCkRURU5EO1ZBTFVFPURBVEU6MjAyNjExMjgNClNVTU1BUlk6TGFuemFtaWVudG8gTWlzaW9uZXJvIDIwMjcNCkRFU0NSSVBUSU9OOkFjdGl2aWRhZGVzIEFNQ2ggLSBBc29jaWFjaW9uIE1ldHJvcG9saXRhbmEgQWR2ZW50aXN0YSBkZSBDaGlsZQ0KTE9DQVRJT046U2FudGlhZ29cLCBDaGlsZQ0KRU5EOlZFVkVOVA0KRU5EOlZDQUxFTkRBUg0K" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1124,18 +1841,78 @@ footer strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.25rem;font
         <div class="eventos-lista">
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">DIC</div><div class="evento-fecha-dia">06</div></div>
-            <div class="evento-info"><h4>MRNT / RUN</h4><p>Actividades AMCh</p></div>
-            <span class="evento-badge">Misión</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--mision">Misión</span>
+                <h4>MRNT / RUN</h4><p>Actividades AMCh</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=MRNT%20/%20RUN&dates=20261206/20261206&details=Actividades%20AMCh%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MTIwNi1tcm50LS8tcnVuQHJldmlzdGEtbWV0cm8NCkRUU1RBUlQ7VkFMVUU9REFURToyMDI2MTIwNg0KRFRFTkQ7VkFMVUU9REFURToyMDI2MTIwNg0KU1VNTUFSWTpNUk5UIC8gUlVODQpERVNDUklQVElPTjpBY3RpdmlkYWRlcyBBTUNoIC0gQXNvY2lhY2lvbiBNZXRyb3BvbGl0YW5hIEFkdmVudGlzdGEgZGUgQ2hpbGUNCkxPQ0FUSU9OOlNhbnRpYWdvXCwgQ2hpbGUNCkVORDpWRVZFTlQNCkVORDpWQ0FMRU5EQVINCg==" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">DIC</div><div class="evento-fecha-dia">13</div></div>
-            <div class="evento-info"><h4>Pre Trimestral AMCh</h4><p>Actividades AMCh</p></div>
-            <span class="evento-badge">Administración</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--administracion">Administración</span>
+                <h4>Pre Trimestral AMCh</h4><p>Actividades AMCh</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pre%20Trimestral%20AMCh&dates=20261213/20261213&details=Actividades%20AMCh%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MTIxMy1wcmUtdHJpbWVzdHJhbC1hbWNoQHJldmlzdGEtbWV0cm8NCkRUU1RBUlQ7VkFMVUU9REFURToyMDI2MTIxMw0KRFRFTkQ7VkFMVUU9REFURToyMDI2MTIxMw0KU1VNTUFSWTpQcmUgVHJpbWVzdHJhbCBBTUNoDQpERVNDUklQVElPTjpBY3RpdmlkYWRlcyBBTUNoIC0gQXNvY2lhY2lvbiBNZXRyb3BvbGl0YW5hIEFkdmVudGlzdGEgZGUgQ2hpbGUNCkxPQ0FUSU9OOlNhbnRpYWdvXCwgQ2hpbGUNCkVORDpWRVZFTlQNCkVORDpWQ0FMRU5EQVINCg==" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
           <div class="evento-item">
             <div class="evento-fecha"><div class="evento-fecha-mes">DIC</div><div class="evento-fecha-dia">19</div></div>
-            <div class="evento-info"><h4>Programa "Más Amor en Navidad"</h4><p>Iglesia local</p></div>
-            <span class="evento-badge">Social</span>
+            <div class="evento-info"><span class="evento-badge evento-badge--social">Social</span>
+                <h4>Programa "Más Amor en Navidad"</h4><p>Iglesia local</p></div>
+            <div class="cal-add-btn">
+              <button class="cal-add-trigger" onclick="toggleCalDropdown(this)" aria-label="Guardar en calendario">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/></svg>
+                <span>Guardar</span>
+              </button>
+              <div class="cal-dropdown" role="menu">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Programa%20%22M%C3%A1s%20Amor%20en%20Navidad%22&dates=20261219/20261219&details=Iglesia%20local%20%E2%80%94%20Asociaci%C3%B3n%20Metropolitana%20Adventista%20de%20Chile&location=Santiago%2C+Chile" target="_blank" rel="noopener">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--google">
+                    <img src="https://www.google.com/favicon.ico" width="16" height="16" alt="Google" style="border-radius:2px">
+                  </span>
+                  <div class="cal-dropdown-text">🗓 Añadir a Google Calendar<small>Abre Google Calendar en el navegador</small></div>
+                </a>
+                <a href="data:text/calendar;base64,QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1JldmlzdGEgTWV0cm8vL0FNQ2gvL0VTDQpCRUdJTjpWRVZFTlQNClVJRDoyMDI2MTIxOS1wcm9ncmFtYS0ibcOhcy1hbW9yLWVAcmV2aXN0YS1tZXRybw0KRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjYxMjE5DQpEVEVORDtWQUxVRT1EQVRFOjIwMjYxMjE5DQpTVU1NQVJZOlByb2dyYW1hICJNw6FzIEFtb3IgZW4gTmF2aWRhZCINCkRFU0NSSVBUSU9OOklnbGVzaWEgbG9jYWwgLSBBc29jaWFjaW9uIE1ldHJvcG9saXRhbmEgQWR2ZW50aXN0YSBkZSBDaGlsZQ0KTE9DQVRJT046U2FudGlhZ29cLCBDaGlsZQ0KRU5EOlZFVkVOVA0KRU5EOlZDQUxFTkRBUg0K" download="evento-amch.ics">
+                  <span class="cal-dropdown-icon cal-dropdown-icon--native">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2196F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <div class="cal-dropdown-text">📅 Guardar en mi calendario<small>iPhone, Android, Mac, Outlook...</small></div>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1280,25 +2057,45 @@ document.querySelectorAll('.nav-ml').forEach(l => l.addEventListener('click', ()
 const backBtn = document.getElementById('back-to-top');
 window.addEventListener('scroll', () => backBtn.classList.toggle('visible', window.scrollY > 400), {passive:true});
 
-// Fade in + animaciones
+// Fade in — secciones y bloques generales
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (!e.isIntersecting) return;
     e.target.classList.add('visible');
     e.target.querySelectorAll('.barra-fill[data-w]').forEach(b => { b.style.width = b.dataset.w + '%'; });
-    e.target.querySelectorAll('.numero-valor[data-target]').forEach(el => {
-      const target = parseInt(el.dataset.target);
-      const inc = target / (1400/16);
-      let cur = 0;
-      const t = setInterval(() => {
-        cur = Math.min(cur + inc, target);
-        el.textContent = Math.floor(cur).toLocaleString('es-CL');
-        if (cur >= target) clearInterval(t);
-      }, 16);
-    });
   });
-}, {threshold:0.04, rootMargin:'0px 0px 60px 0px'});
+}, {threshold:0.04, rootMargin:'0px 0px 80px 0px'});
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// CARD STAGGER — tarjetas de noticias escalonadas
+// rootMargin grande para que las tarjetas empiecen a prepararse
+// antes de que el usuario llegue a la sección, evitando espacio en blanco
+const cardObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('card-visible');
+      cardObserver.unobserve(e.target);
+    }
+  });
+}, {threshold:0, rootMargin:'0px 0px 120px 0px'});
+document.querySelectorAll('#noticias-grid .noticia-card').forEach(card => {
+  cardObserver.observe(card);
+});
+
+// EVENTO ITEMS — entrada flotante escalonada
+const evObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      // delay escalonado según posición en su lista
+      const siblings = Array.from(e.target.parentElement.children);
+      const idx = siblings.indexOf(e.target);
+      e.target.style.transitionDelay = (idx * 55) + 'ms';
+      e.target.classList.add('ev-visible');
+      evObserver.unobserve(e.target);
+    }
+  });
+}, {threshold:0.1, rootMargin:'0px 0px 60px 0px'});
+document.querySelectorAll('.evento-item').forEach(ev => evObserver.observe(ev));
 
 // Nav activo
 const sections = document.querySelectorAll('section[id], div[id="multimedia"]');
@@ -1308,6 +2105,31 @@ window.addEventListener('scroll', () => {
   sections.forEach(s => { if (window.scrollY >= s.offsetTop - 57) cur = s.id; });
   navLinks.forEach(l => { l.style.color = l.getAttribute('href') === '#'+cur ? 'var(--dorado)' : ''; });
 }, {passive:true});
+
+// Calendario — toggle dropdown
+function toggleCalDropdown(btn){
+  const dropdown = btn.nextElementSibling;
+  const calBtn = btn.parentElement;
+  const eventoItem = calBtn.closest('.evento-item');
+  const isOpen = dropdown.classList.contains('open');
+  // Cierra todos los dropdowns abiertos y baja z-index
+  document.querySelectorAll('.cal-dropdown.open').forEach(d => d.classList.remove('open'));
+  document.querySelectorAll('.cal-add-btn.active').forEach(d => d.classList.remove('active'));
+  document.querySelectorAll('.evento-item.cal-open').forEach(d => d.classList.remove('cal-open'));
+  if(!isOpen){
+    dropdown.classList.add('open');
+    calBtn.classList.add('active');
+    if(eventoItem) eventoItem.classList.add('cal-open');
+  }
+}
+// Cierra al hacer clic fuera
+document.addEventListener('click', e => {
+  if(!e.target.closest('.cal-add-btn')){
+    document.querySelectorAll('.cal-dropdown.open').forEach(d => d.classList.remove('open'));
+    document.querySelectorAll('.cal-add-btn.active').forEach(d => d.classList.remove('active'));
+    document.querySelectorAll('.evento-item.cal-open').forEach(d => d.classList.remove('cal-open'));
+  }
+});
 
 // Filtros
 const filtros = document.querySelectorAll('.filtro-btn');
